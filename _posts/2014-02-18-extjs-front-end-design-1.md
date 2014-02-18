@@ -1,6 +1,6 @@
 ---
-　　layout: default
-　　title: ExtJS前端项目构架探讨(一)
+layout: default
+title: ExtJS前端项目构架探讨(一)
 ---
 
 ##{{ page.title }}
