@@ -1,0 +1,50 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><hr>
+<p>　　layout: default
+</p>
+<h2>　　title: ExtJS前端项目构架探讨(一)</h2>
+<h2>{{ page.title }}</h2>
+<p>此次探讨之旅出发之前，先一起坐下来，说说以下几个问题
+</p>
+<h3>何为ExtJS</h3>
+<blockquote>
+<p>ExtJS是一种主要用于创建前端用户界面，是一个基本与后台技术无关的前端ajax框架。
+
+</p>
+</blockquote>
+<h3>为什么要用ExtJS</h3>
+<p>我们选择某样东西，一定有选择它的理由，而在我看来，采用ExtJS作前端的优势有一下几点
+
+</p>
+<ul>
+<li>界面组件丰富</li>
+<li>易扩展</li>
+<li>页面兼容性得到保障</li>
+<li>可以借助工具进行可视化界面开发</li>
+<li>基于借口的开发模式，可以使前端、后端、测试三方相对来说较独立，提高开发效率</li>
+<li>方便实现自动化测试</li>
+</ul>
+<h3>为什么还要对其构架进行探讨</h3>
+<p>在ExtJS4中，官方推出了一个MVC的构架，但可以看出，这只是一个基础的模型，要让这个模型在项目中能够很好的运用起来，辅助模块的设计就必不可少。那么，让我们打开图纸，看看我们此次之旅要探讨哪些东西。
+
+</p>
+<ul>
+<li>开发模式</li>
+<li>管理器</li>
+<li>事件机制</li>
+<li>同步和异步</li>
+<li>验证器</li>
+<li>框架扩展</li>
+<li>自动化测试</li>
+</ul>
+<p>好了，目标明确，走起！
+
+</p>
+<p>{{ page.date | date_to_string }}
+
+</p>
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>
