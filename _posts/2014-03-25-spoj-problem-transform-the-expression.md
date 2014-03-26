@@ -38,6 +38,7 @@ at+bac++cd+^*
 
 
 
+
 ```python
 # -*- coding: utf-8 -*-  
 import sys
@@ -51,11 +52,9 @@ except IOError:
     print "Error opening input file: ",filename
     sys.exit()
 
-#去除空格
 def trim(line):
 return line.rstrip('\n')
 
-#将字符串换转成list
 def str_to_list(line):
 list = []
 
@@ -64,7 +63,6 @@ for i in xrange(len(line)):
 
 return list
 
-#补零
 def fill_zero(line):
 print 'fill_zero'
 lists = str_to_list(line)
@@ -82,9 +80,6 @@ for i in xrange(middle):
 
 return ''.join(lists)
 
-
-
-#预处理，先处理掉如99999这样最高位需要进位的数字
 def pre_palindrome(line):
 _list = str_to_list(line)
 s = False
@@ -98,7 +93,6 @@ if(s):
 else:
     return str(int(line) + 1)
 
-#主函数递归
 def palindrome(line,s1):
 print 'palindromes'
 _list = str_to_list(line)
