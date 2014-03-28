@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SPOJ problem 4 transform the expression
+title: SPOJ
 ---
 
 ##{{ page.title }}
