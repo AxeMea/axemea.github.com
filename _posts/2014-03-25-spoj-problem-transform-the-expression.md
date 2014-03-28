@@ -23,7 +23,7 @@ google一把，发现这个问题主要是因为一下几个方面引起：
 
 在模块视图中，使用了grid组件，同时里面存在actioncolumn列，由于actioncolumn只有handler方法，它并没有默认的信号释放能够被controller捕获，所以在handler中自定义了释放了一个delete信号
 
-javascript
+```javascript
 this.fireEvent('delete',record);
 ```
 
