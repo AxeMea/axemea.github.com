@@ -1,6 +1,6 @@
 ---
 layout: default
-title: transform the expression (SPOJ 5)
+title: transform-the-expression-SPOJ-4
 ---
 
 ##{{ page.title }}
@@ -68,19 +68,6 @@ def transform_line(line):
             stack_symbol.append(line[i])
 
     return ''.join(stack_ch)
-   
-
-'''if __name__ == '__main__':
-    while True:
-        group = sys.stdin.readline()
-        for i in xrange(int(group)):
-            line = sys.stdin.readline()
-            print 'transform before : ',line 
-            line = transform_line(line)
-            print 'transform after : ',line
-            '''
-        
-
 
 if __name__ == '__main__':
     file = open_file('test.txt')
