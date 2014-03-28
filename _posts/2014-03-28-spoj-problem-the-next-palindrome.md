@@ -28,7 +28,7 @@ Output:
 2222
 ```
 
-
+###Code
 ```python
 # -*- coding: utf-8 -*-  
 import sys
