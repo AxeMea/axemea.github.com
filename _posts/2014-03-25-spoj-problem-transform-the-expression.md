@@ -5,7 +5,7 @@ title: transform-the-expression-SPOJ-4
 
 ##{{ page.title }}
 
-Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no expressions like a*b*c). 
+
 
 ###INPUT
 
@@ -85,4 +85,10 @@ if __name__ == '__main__':
     print 'duration is',time.time() - start
 ```
 
+思路：
+总的想法是通过运算符栈和字符栈来解决问题。
+
+遍历字符串，分别判断三种情况
+
+* 当是字符时，就将其压入字符栈
 {{ page.date | date_to_string }}
