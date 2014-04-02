@@ -61,15 +61,18 @@ def fill_zero(line):
     lists = str_to_list(line)
     l = len(lists)
     middle = int(math.ceil(l/2.0))
+    s = False
 
     for i in xrange(middle):
         front = middle - i - 1
         end =  middle + i - 1
-        if(lists[front] <= lists[end] and int(lists[front]) >= 0 and int(lists[front]) < 9):
+        if(lists[front] <= lists[end] and int(lists[front]) >= 0 and int(lists[front]) < 9 and not s):
             lists[front] = str(int(lists[front]) + 1)
-            for j in xrange(front + 1,end + 1):
-                lists[j] = '0'
-            break
+            s = True
+        elif(s):
+            lists[end] = lists[front]
+        else:
+            lists[i] = '0'
 
     return ''.join(lists)
 
@@ -108,7 +111,7 @@ def palindrome(line,s1):
         _list[l - i  - 1] = _list[i]
 
 
-    if(s):
+    if(s or  s1):
         return ''.join(_list)
     else:
         return palindrome(fill_zero(line),True)
@@ -129,10 +132,15 @@ if __name__ == '__main__':
     file.close();
 
     print 'duration is',time.time() - start
-  
-
-        
 
 ```
+
+###扯淡
+
+思路
+
+* 对输入值进行预处理，过滤掉需要最高位进位的数字，比如99,999,9999等
+
+* 通过循环，将前面的数，赋值给后面，设置标志位，如果发现，前面各位上的数，都比后面的数小，则执行fill_zero方法，称之为补零方法，以219993为case来说，它的前面各位就比后面小，那么开始补零，从中间开始，为9，而9再增1，就要进位了，就直接赋值为0，然后比较第三位的9和第五位的9，相等，并且第三位的9如果再增1也要进位，则直接赋值为0，比较第二位的1和第六位的9，1还可以自增，就将其自增，当有一位数字自增后，数字肯定比以前大了，所以，之后的比较位置，直接将前面的数字赋值给后面即可。
 
 {{ page.date | date_to_string }}
