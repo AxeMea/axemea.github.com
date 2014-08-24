@@ -9,11 +9,12 @@ title: 闲谈console.log
 
 将原本的应用场景简化
 
-```python
-var a = {b:{}};
-console.log(a.b);
-console.log(a.b.c);
-a.b.c= 'so fun';
+
+```javascript
+var a = {b:{}}
+console.log(a.b)
+console.log(a.b.c)
+a.b.c= 'so fun'
 ```
 
 在实际调试场景中，本来是想查看b下面的c属性排查问题，然后习惯性地只console.log(a.b)了，发现c是有的，当时想都没想，应该是别的地方的问题，绕了一大圈还是没找到问题的缘由，于是毫无目的地直接console.log(a.b.c),我勒个去，竟然是undefined,说好的有值呢。
