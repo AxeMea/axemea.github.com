@@ -10,7 +10,7 @@ title: 闲谈console.log
 将原本的应用场景简化
 
 
-```javascript
+```
 
 var a = {b:{}};
 
