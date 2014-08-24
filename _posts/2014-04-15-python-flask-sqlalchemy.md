@@ -48,7 +48,6 @@ User.query.filter(User.email.endswith("@example.com")).all()
 #####非逻辑
 ```python
 User.query.filter(User.username != 'perter').all()
-
 from sqlalchemy import not_
 User.query.filter(not_(User.username == 'peter')).all()
 ```
