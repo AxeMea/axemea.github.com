@@ -1,6 +1,8 @@
 ---
 layout: default
 title: the-next-palindrome-SPOJ-5
+category: python
+comments: true
 ---
 
 ##{{ page.title }}

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: 闲谈console.log
-category:Javascript
+category: Javascript
+comments: true
 ---
 
 ##{{ page.title }}

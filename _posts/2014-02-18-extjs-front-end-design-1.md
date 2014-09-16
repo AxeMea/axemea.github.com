@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ExtJS前端项目构架探讨(一)
+category: ExtJS
+comments: true
 ---
 
 ##{{ page.title }}

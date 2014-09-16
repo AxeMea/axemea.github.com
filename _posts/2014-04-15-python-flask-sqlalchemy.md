@@ -1,7 +1,8 @@
 ---
 layout: default
 title: flask-sqlalchemy使用笔记
-category:flask
+category: flask
+comments: true
 ---
 
 ##{{ page.title }}
