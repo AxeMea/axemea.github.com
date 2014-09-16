@@ -19,6 +19,7 @@ comments: true
 * ![footer](/images/footer-color.png)        footer 
 * ![header](/images/header-color.png)        header 
 * ![aside](/images/aside-color.png)          aside 
+* ![article](/images/article-color.png)      article 
 
 ###36kr首页简略结构图如下
 
