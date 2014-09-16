@@ -1,6 +1,7 @@
 ---
 layout: default
 title: transform-the-expression-SPOJ-4
+category:python
 ---
 
 ##{{ page.title }}

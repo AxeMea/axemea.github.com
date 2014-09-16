@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 闲谈console.log
+category:Javascript
 ---
 
 ##{{ page.title }}
