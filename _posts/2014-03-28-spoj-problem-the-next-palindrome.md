@@ -20,6 +20,7 @@ For each K, output the smallest palindrome larger than K.
 ###Example
 
 Input:
+
 ```
 2
 808
