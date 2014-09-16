@@ -1,6 +1,6 @@
 ---
 　　layout: default
-　　title: 我的Blog
+　　title: Michael's BLOG
 ---
 <!DOCTYPE html>
 <html>
@@ -13,60 +13,44 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>Michael's BLOG</title>
+    <style type="text/css">
+
+    /* init */
+    body{font-family: 微软雅黑;font-size:18px;}
+
+    body .title{font-size:24px;}
+
+    body ul{list-style-type: none}
+    body ul .time{font-size: 12px; color:gray;}
+
+
+    </style>
   </head>
 
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <h1 id="project_title">人生如茶，空杯以对</h1>
-          <h2 id="project_tagline">blog</h2>
-
-        </header>
-    </div>
-
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
+
+      <h2>{{ page.title }}</h2>
+
       <section id="main_content" class="inner">
-        　<h2>{{ page.title }}</h2>
 
-　　<p>最新文章</p>
+　　　　<p class="title">最新文章</p>
 
-　　<ul>
+    　　<ul>
 
-　　　　{% for post in site.posts %}
+    　　　　{% for post in site.posts %}
 
-　　　　　　<li>{{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a></li>
-
-　　　　{% endfor %}
-
-　　</ul>
-
-    <p>分类</p>
-
-    {{ page.category }}
-
-    <ul>
-
-    　　　　{% for category in page.category %}
-
-    　　　　　　<li>{{ category }}</li>
+    　　　　　　<li> <a href="{{ post.url }}">{{ post.title }}</a> <span class="time">{{ post.date | date_to_string }}</span></li>
 
     　　　　{% endfor %}
 
-    </ul>
-
+    　　</ul>
 
 
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        
-      </footer>
     </div>
 
     
