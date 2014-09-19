@@ -78,6 +78,8 @@ Ext.apply(Ext.form.field.VTypes,{
 ```
 
 为了扩展的自由度，还多扩展了几个方法，代码如下：
+
+```
 Ext.apply(Ext.form.field.VTypes,{
 	/*三种基础正则表达式的方法*/
 	regexTest:function(reg,text){
