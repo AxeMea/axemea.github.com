@@ -64,6 +64,7 @@ project_dev-
 ###验证器
 
 验证器是通过组建的vtype属性来设置，监听的change事件。框架里预置了几种验证器，但为了适应项目需求，大部分的验证还是只能通过自己扩展的。扩展的方法是重写Ext.form.field.VTypes，类似如下：
+
 ```
 Ext.apply(Ext.form.field.VTypes,{
 	type1:function(val,field){
@@ -73,8 +74,7 @@ Ext.apply(Ext.form.field.VTypes,{
 			return false;
 	},
 	type1Text:'长度大于4',
-});
-                  
+});               
 ```
 
 为了扩展的自由度，还多扩展了几个方法，代码如下：
