@@ -20,10 +20,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 ####嵌套使用
 
 XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不正确嵌套也能正常显示，如：
+
 ```html
 <b><i>This text is bold and italic</b></i>
 ```
+
 而在XHTML必须要正确嵌套之后才能正常使用，如：
+
 ```html
 <b><i>This text is bold and italic</i></b>
 ```
@@ -31,12 +34,15 @@ XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不�
 ####所有的标签和标签的属性都必须小写，属性值可以大写
 
 错误代码：
+
 ```html
 <BODY>
 　　<P>This is a paragraph</P>
 </BODY>
 ```
+
 正确代码：
+
 ```html
 <body>
 　　<p>This is a paragraph</p>
@@ -46,10 +52,13 @@ XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不�
 ####属性值
 
 错误代码：
+
 ```html
 <table width=100%>
 ```
+
 正确代码：
+
 ```html
 <table width="100%">
 ```
@@ -63,9 +72,11 @@ HTML中的<br>要写成<br/>。注意，后面加了一个空格”“和一个�
 
 如果你使用的是strict.dtd。也就是最严格的XHTML，那么许多定义外观的属性都将不被允许。
 例如你为图片添加链接的同时想去掉边框。不可以再使用
+
 ```html
 <img src="..."border="0">
 ```
+
 ，而是必须通过CSS来实现。我们推荐您在使用strict.dtd时，舍弃所有的定义外观属性，而完全使用CSS来定义页面外观
 
 
@@ -73,6 +84,7 @@ HTML中的<br>要写成<br/>。注意，后面加了一个空格”“和一个�
 
 属性的缩写被禁止。如：
 错误代码
+
 ```html
 <dl compact>
 <input checked>
@@ -83,6 +95,7 @@ HTML中的<br>要写成<br/>。注意，后面加了一个空格”“和一个�
 ```
 
 正确代码
+
 ```html
 <dl compact="compact">
 <input checked="checked" />
@@ -96,18 +109,22 @@ HTML中的<br>要写成<br/>。注意，后面加了一个空格”“和一个�
 
 HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.在 XHTML 里name属性是不能被使用的，应该用id 来替换它。如：
 错误代码：
+
 ```html
 <img src="picture.gif" name="picture1" />
 ```
 
 正确代码：
+
 ```html
 <img src="picture.gif" id="picture1" />
 ```
 注意：我们为了使旧浏览器也能正常的执行该内容我们也可以在标签中同时使用id和name属性。如：
+
 ```html
 <img src="picture.gif" id="picture1" name="picture1" />
 ```
+
 为了适应新的浏览器浏览我们在上述代码中的最后我加了/来结束标签。
 
 ####特殊符号表示
@@ -119,21 +136,27 @@ HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.
 
 ####注释内容
 不要在注释内容中使“--”，“--”只能发生在XHTML注释的开头和结束，也就是说，在内容中它们不再有效。例如下面的代码是无效的:
+
 ```html
 <!--这里是注释-----------这里是注释-->
 ```
+
 用等号或者空格替换内部的虚线。
+
 ```html
 <!--这里是注释============这里是注释-->
 ```
+
 以上这些规范有的看上去比较奇怪，但这一切都是为了使我们的代码有一个统一、唯一的标准，便于以后的数据再利用。
 
 ####图片必须有说明文字
 
 每个图片标签都必须有ALT说明文字。
+
 ```html
 <img src="ball.jpg" alt="large red ball" />
 ```
+
 
 
 
