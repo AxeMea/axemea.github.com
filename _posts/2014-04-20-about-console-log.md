@@ -11,7 +11,7 @@ comments: true
 
 将原本的应用场景简化
 
-```
+```javascript
 var a = {b:{}};
 console.log(a.b);
 console.log(a.b.c);
