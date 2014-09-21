@@ -21,7 +21,8 @@
     body .title{font-size:24px;}
 
     body ul{list-style-type: none}
-    body ul .time{font-size: 12px; color:gray;}
+    body ul .time{font-size: 12px; color:gray;margin-left: 10px;}
+    body ul .category{font-size: 12px; color:gray;margin-left: 10px;}
 
     </style>
   </head>
@@ -41,7 +42,7 @@
 
     　　　　{% for post in site.posts %}
 
-    　　　　　　<li> <a href="{{ post.url }}">{{ post.title }}</a> <span class="time">{{ post.date | date_to_string }}</span></li>
+    　　　　　　<li> <a href="{{ post.url }}">{{ post.title }}</a> <span class="category">{{ post.category }}</span> <span class="time">{{ post.date | date_to_string }}</span></li>
 
     　　　　{% endfor %}
 
