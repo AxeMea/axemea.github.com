@@ -7,14 +7,58 @@ comments: true
 
 ##{{ page.title }}
 
+<style type="text/css">
+#main ul li .note{display: none}
+#main ul li:hover .note{display: block;}
+</style>
+
+<div id="main">
+
 ***
 
 ###Array
 
 * concat()     
 连接两个或更多的数组，并返回结果。
+
+<div class="note">
+```javascript
+
+var arr = new Array(3)
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+var arr2 = new Array(3)
+arr2[0] = "James"
+arr2[1] = "Adrew"
+arr2[2] = "Martin"
+
+document.write(arr.concat(arr2))
+
+George,John,Thomas,James,Adrew,Martin
+
+```
+</div>
+
 * join() 	
 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
+
+<div class="note">
+```javascript
+
+var arr = new Array(3)
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+document.write(arr.join("."))
+
+George.John.Thomas
+
+```
+</div>
+
 * pop() 	
 删除并返回数组的最后一个元素
 * push() 	
@@ -516,5 +560,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 设置或返回当前 URL 的协议。
 * search 	
 设置或返回从问号 (?) 开始的 URL（查询部分）。
+
+</div>
 
 {{ page.date | date_to_string }}
