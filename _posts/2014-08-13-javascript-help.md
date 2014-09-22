@@ -412,7 +412,7 @@ George.John.Thomas
 返回最顶层的先辈窗口。
 * window 	
 window 属性等价于 self 属性，它包含了对窗口自身的引用。
-* screenLeft，screenTop，screenX，screenY
+* screenLeft screenTop screenX screenY</br>
 只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。
 * alert() 	
 显示带有一段消息和一个确认按钮的警告框。
@@ -551,6 +551,39 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 设置或返回当前 URL 的协议。
 * search 	
 设置或返回从问号 (?) 开始的 URL（查询部分）。
+
+***
+
+###Document
+
+* body 	
+提供对 <body> 元素的直接访问。对于定义了框架集的文档，该属性引用最外层的 <frameset>。
+* cookie 	
+设置或返回与当前文档有关的所有 cookie。
+* domain 	
+返回当前文档的域名。
+* lastModified 	
+返回文档被最后修改的日期和时间。
+* referrer 	
+返回载入当前文档的文档的 URL。
+* title 	
+返回当前文档的标题。
+* URL 	
+返回当前文档的 URL。
+* close() 	
+关闭用 document.open() 方法打开的输出流，并显示选定的数据。
+* getElementById() 	
+返回对拥有指定 id 的第一个对象的引用。
+* getElementsByName() 	
+返回带有指定名称的对象集合。
+* getElementsByTagName() 	
+返回带有指定标签名的对象集合。
+* open() 	
+打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。
+* write() 	
+向文档写 HTML 表达式 或 JavaScript 代码。
+* writeln() 	
+等同于 write() 方法，不同的是在每个表达式之后写一个换行符。
 
 
 {{ page.date | date_to_string }}
