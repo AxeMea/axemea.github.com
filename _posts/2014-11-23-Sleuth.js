@@ -7,8 +7,6 @@ comments: true
 
 ##{{ page.title }}
 
-Sleuth.js
-======
 
 ####一.Sleuth.js是什么
     
