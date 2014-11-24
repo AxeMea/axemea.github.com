@@ -7,8 +7,7 @@ comments: true
 
 ##{{ page.title }}
 
-Sleuth.js
-======
+Github:[https://github.com/AxeMea/Sleuth.js](https://github.com/AxeMea/Sleuth.js)
 
 ####一.Sleuth.js是什么
     
