@@ -5,7 +5,7 @@ author: Zheng Yu
 email: michaelcoco1991@gmail.com
 description: "Michael的技术与生活博客" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: "Michael,blog,IT,javascript,front-end,internet"
-baseurl: "/" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://axemea.github.io" # the base hostname & protocol for your site
 
 
