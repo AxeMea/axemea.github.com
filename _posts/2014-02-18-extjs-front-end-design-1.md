@@ -1,11 +1,9 @@
 ---
-layout: default
+layout: page
 title: ExtJS前端项目构架探讨(一)
 category: ExtJS
 comments: true
 ---
-
-##{{ page.title }}
 
 此次探讨之旅出发之前，先一起坐下来，说说以下几个问题
 ###何为ExtJS

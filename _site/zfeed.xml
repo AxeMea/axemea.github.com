@@ -1,0 +1,1781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M的奇葩漂流</title>
+    <description>Michael的技术与生活博客</description>
+    <link>http://axemea.github.io/</link>
+    <atom:link href="http://axemea.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 01 Mar 2015 22:39:35 +0800</pubDate>
+    <lastBuildDate>Sun, 01 Mar 2015 22:39:35 +0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Sleuth.js - 想用啥就用啥</title>
+        <description>&lt;p&gt;Github:&lt;a href=&quot;https://github.com/AxeMea/Sleuth.js&quot;&gt;https://github.com/AxeMea/Sleuth.js&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;oschina:&lt;a href=&quot;http://my.oschina.net/u/1420701/blog/347360&quot;&gt;http://http://my.oschina.net/u/1420701/blog/347360&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;靠这个还上过某周的top博主，哈哈哈&lt;/p&gt;
+
+&lt;h4 id=&quot;sleuthjs&quot;&gt;一.Sleuth.js是什么&lt;/h4&gt;
+
+&lt;p&gt;Sleuth是一个加载框架，它允许开发者只需要require相应的库或者插件，不需要去下载，就可以直接使用，并且允许开发者任意切换版本。&lt;/p&gt;
+
+&lt;h4 id=&quot;sleuthjs-1&quot;&gt;二.使用Sleuth.js&lt;/h4&gt;
+
+&lt;h5 id=&quot;sleuthjs-2&quot;&gt;1.引入Sleuth.js库文件&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;sleuth.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;先后引用mapping-ch.min.js,sleuth.min.js文件，注意顺序。mapping-ch.min.js是库的版本映射文件，定义了引用各个库和插件的源地址。默认的引用的是一个公共的映射文件，当然开发者也可以定义自己的映射文件。&lt;/p&gt;
+
+&lt;h5 id=&quot;section&quot;&gt;2.使用方法&lt;/h5&gt;
+
+&lt;p&gt;Sleuth.js只向外提供了一个require方法&lt;/p&gt;
+
+&lt;p&gt;1-只加载一个库&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//加载一个库&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Sleuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jquery&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//write your code &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;2-加载多个库&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//加载多个库&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Sleuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jquery&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;prototype&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;response&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//write your code &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3-选择版本加载，格式为“库&lt;/td&gt;
+      &lt;td&gt;版本号”，如果没有显式定义版本，则选取映射文件中对应库的第一个版本。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//选择版本加载&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Sleuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jquery|1.8.3&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;prototype&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;response&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//write your code &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;三.定义版本映射文件&lt;/h4&gt;
+
+&lt;p&gt;初始的映射文件为：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;refMapping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.7.2&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;jquery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.8.3&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://code.jquery.com/jquery-1.8.3.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.8.2&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://code.jquery.com/jquery-1.8.2.min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;4.2.1&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&amp;#39;&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;backbone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.1.2&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;0.9.1+201410311050&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;开发者如果需要其它的库或者插件可以Pull Request过来，我们将丰富到映射文件中去，当然开发者也可以编写自己的本地映射配置文件。但我们真诚的希望，您能将您的需求提交给我们，你需要的，必然他人也需要，谢谢。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;四.映射配置文件配置项说明&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;refMapping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//单版本配置&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.7.2&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//多版本配置&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;jquery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.8.3&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://code.jquery.com/jquery-1.8.3.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.8.2&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://code.jquery.com/jquery-1.8.2.min.js&amp;#39;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//带一个css的库的配置&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;4.2.1&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;//url&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;//css&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&amp;#39;&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//带多个css的库的配置&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;demo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;1.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;demo.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;demo1.css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;demo2.css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;需要值得注意的是，在配置版本顺序的时候，推荐最新版本的写在前面，这样默认的话，选择的就是最新版本。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;五.关于引用地址&lt;/h4&gt;
+
+&lt;p&gt;可以是各个cdn点的资源如：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;refMapping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;s1&quot;&gt;&amp;#39;4.2.1&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;//url&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;//css&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&amp;#39;&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;如果想引用github中开源库的代码，需要注意的是其引用地址，比如Sleuth.js,
+&lt;a href=&quot;https://github.com/AxeMea/Sleuth/blob/master/sleuth.js&quot;&gt;Sleuth.js&lt;/a&gt; 
+这个地址是不行的，需要的是直接访问文件系统的地址，
+&lt;a href=&quot;https://rawgithub.com/axemea/sleuth/master/sleuth.js&quot;&gt;Sleuth.js&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;amdcommonjs&quot;&gt;六.支持AMD,CommonJS规范&lt;/h4&gt;
+
+&lt;h5 id=&quot;amd&quot;&gt;AMD规范&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sleuth&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Sleuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;err&quot;&gt;　　　　&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Sleuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jquery|1.8.3&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;prototype&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;response&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+
+			&lt;span class=&quot;c1&quot;&gt;//write your code &lt;/span&gt;
+
+			&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+	&lt;span class=&quot;err&quot;&gt;　　&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;commonjs&quot;&gt;CommonJS规范&lt;/h5&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;七.公共映射配置文件库以及插件列表[及时更新]&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;库名&lt;/th&gt;
+      &lt;th&gt;版本号&lt;/th&gt;
+      &lt;th&gt;脚本引用地址&lt;/th&gt;
+      &lt;th&gt;样式引用地址&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;prototype&lt;/td&gt;
+      &lt;td&gt;1.7.2&lt;/td&gt;
+      &lt;td&gt;http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;jquery&lt;/td&gt;
+      &lt;td&gt;1.8.3&lt;/td&gt;
+      &lt;td&gt;http://code.jquery.com/jquery-1.8.3.min.js&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;1.8.2&lt;/td&gt;
+      &lt;td&gt;http://code.jquery.com/jquery-1.8.2.min.js&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ext&lt;/td&gt;
+      &lt;td&gt;4.2.1&lt;/td&gt;
+      &lt;td&gt;http://cdn.bootcss.com/extjs/4.2.1/ext-all.js&lt;/td&gt;
+      &lt;td&gt;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;backbone&lt;/td&gt;
+      &lt;td&gt;1.1.2&lt;/td&gt;
+      &lt;td&gt;http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;response&lt;/td&gt;
+      &lt;td&gt;0.9.1+201410311050&lt;/td&gt;
+      &lt;td&gt;http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;23 Nov 2014&lt;/p&gt;
+</description>
+        <pubDate>Sun, 23 Nov 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/extjs/2014/11/23/framwork-sleuth.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/extjs/2014/11/23/framwork-sleuth.html</guid>
+        
+        
+        <category>extjs</category>
+        
+      </item>
+    
+      <item>
+        <title>Javascript帮助手册</title>
+        <description>&lt;h3 id=&quot;array&quot;&gt;Array&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;concat()   &lt;br /&gt;
+连接两个或更多的数组，并返回结果。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;George&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Thomas&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;James&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Adrew&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Martin&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;George&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;John&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Thomas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;James&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Adrew&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Martin&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;join() 	
+把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;George&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Thomas&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;George&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;John&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Thomas&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pop() 	
+删除并返回数组的最后一个元素&lt;/li&gt;
+  &lt;li&gt;push() 	
+向数组的末尾添加一个或更多元素，并返回新的长度。&lt;/li&gt;
+  &lt;li&gt;reverse() 	
+颠倒数组中元素的顺序。&lt;/li&gt;
+  &lt;li&gt;shift() 	
+删除并返回数组的第一个元素&lt;/li&gt;
+  &lt;li&gt;slice() 	
+从某个已有的数组返回选定的元素&lt;/li&gt;
+  &lt;li&gt;sort() 	
+对数组的元素进行排序&lt;/li&gt;
+  &lt;li&gt;splice() 	
+删除元素，并向数组添加新元素。&lt;/li&gt;
+  &lt;li&gt;toSource() 	
+返回该对象的源代码。&lt;/li&gt;
+  &lt;li&gt;toString() 	
+把数组转换为字符串，并返回结果。&lt;/li&gt;
+  &lt;li&gt;toLocaleString() 	
+把数组转换为本地数组，并返回结果。&lt;/li&gt;
+  &lt;li&gt;unshift() 	
+向数组的开头添加一个或更多元素，并返回新的长度。&lt;/li&gt;
+  &lt;li&gt;valueOf() 	
+返回数组对象的原始值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;boolean&quot;&gt;Boolean&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;toSource()   &lt;br /&gt;
+返回该对象的源代码。&lt;/li&gt;
+  &lt;li&gt;toString() 	
+把逻辑值转换为字符串，并返回结果。&lt;/li&gt;
+  &lt;li&gt;valueOf() 	
+返回 Boolean 对象的原始值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;date&quot;&gt;Date&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Date()   &lt;br /&gt;
+返回当日的日期和时间。&lt;/li&gt;
+  &lt;li&gt;getDate() 	
+从 Date 对象返回一个月中的某一天 (1 ~ 31)。&lt;/li&gt;
+  &lt;li&gt;getDay() 	
+从 Date 对象返回一周中的某一天 (0 ~ 6)。&lt;/li&gt;
+  &lt;li&gt;getMonth() 	
+从 Date 对象返回月份 (0 ~ 11)。&lt;/li&gt;
+  &lt;li&gt;getFullYear() 	
+从 Date 对象以四位数字返回年份。&lt;/li&gt;
+  &lt;li&gt;getYear() 	
+请使用 getFullYear() 方法代替。&lt;/li&gt;
+  &lt;li&gt;getHours() 	
+返回 Date 对象的小时 (0 ~ 23)。&lt;/li&gt;
+  &lt;li&gt;getMinutes() 	
+返回 Date 对象的分钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;getSeconds() 	
+返回 Date 对象的秒数 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;getMilliseconds() 	
+返回 Date 对象的毫秒(0 ~ 999)。&lt;/li&gt;
+  &lt;li&gt;getTime() 	
+返回 1970 年 1 月 1 日至今的毫秒数。&lt;/li&gt;
+  &lt;li&gt;getTimezoneOffset() 	
+返回本地时间与格林威治标准时间 (GMT) 的分钟差。&lt;/li&gt;
+  &lt;li&gt;getUTCDate() 	
+根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。&lt;/li&gt;
+  &lt;li&gt;getUTCDay() 	
+根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。&lt;/li&gt;
+  &lt;li&gt;getUTCMonth() 	
+根据世界时从 Date 对象返回月份 (0 ~ 11)。&lt;/li&gt;
+  &lt;li&gt;getUTCFullYear() 	
+根据世界时从 Date 对象返回四位数的年份。&lt;/li&gt;
+  &lt;li&gt;getUTCHours() 	
+根据世界时返回 Date 对象的小时 (0 ~ 23)。&lt;/li&gt;
+  &lt;li&gt;getUTCMinutes() 	
+根据世界时返回 Date 对象的分钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;getUTCSeconds() 	
+根据世界时返回 Date 对象的秒钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;getUTCMilliseconds() 	
+根据世界时返回 Date 对象的毫秒(0 ~ 999)。&lt;/li&gt;
+  &lt;li&gt;parse() 	
+返回1970年1月1日午夜到指定日期（字符串）的毫秒数。&lt;/li&gt;
+  &lt;li&gt;setDate() 	
+设置 Date 对象中月的某一天 (1 ~ 31)。&lt;/li&gt;
+  &lt;li&gt;setMonth() 	
+设置 Date 对象中月份 (0 ~ 11)。&lt;/li&gt;
+  &lt;li&gt;setFullYear() 	
+设置 Date 对象中的年份（四位数字）。&lt;/li&gt;
+  &lt;li&gt;setYear() 	
+请使用 setFullYear() 方法代替。&lt;/li&gt;
+  &lt;li&gt;setHours() 	
+设置 Date 对象中的小时 (0 ~ 23)。&lt;/li&gt;
+  &lt;li&gt;setMinutes() 	
+设置 Date 对象中的分钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;setSeconds() 	
+设置 Date 对象中的秒钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;setMilliseconds() 	
+设置 Date 对象中的毫秒 (0 ~ 999)。&lt;/li&gt;
+  &lt;li&gt;setTime() 	
+以毫秒设置 Date 对象。&lt;/li&gt;
+  &lt;li&gt;setUTCDate() 	
+根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。&lt;/li&gt;
+  &lt;li&gt;setUTCMonth() 	
+根据世界时设置 Date 对象中的月份 (0 ~ 11)。&lt;/li&gt;
+  &lt;li&gt;setUTCFullYear() 	
+根据世界时设置 Date 对象中的年份（四位数字）。&lt;/li&gt;
+  &lt;li&gt;setUTCHours() 	
+根据世界时设置 Date 对象中的小时 (0 ~ 23)。&lt;/li&gt;
+  &lt;li&gt;setUTCMinutes() 	
+根据世界时设置 Date 对象中的分钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;setUTCSeconds() 	
+根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。&lt;/li&gt;
+  &lt;li&gt;setUTCMilliseconds() 	
+根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。&lt;/li&gt;
+  &lt;li&gt;toSource() 	
+返回该对象的源代码。&lt;/li&gt;
+  &lt;li&gt;toString() 	
+把 Date 对象转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toTimeString() 	
+把 Date 对象的时间部分转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toDateString() 	
+把 Date 对象的日期部分转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toGMTString() 	
+请使用 toUTCString() 方法代替。&lt;/li&gt;
+  &lt;li&gt;toUTCString() 	
+根据世界时，把 Date 对象转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toLocaleString() 	
+根据本地时间格式，把 Date 对象转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toLocaleTimeString() 	
+根据本地时间格式，把 Date 对象的时间部分转换为字符串。&lt;/li&gt;
+  &lt;li&gt;toLocaleDateString() 	
+根据本地时间格式，把 Date 对象的日期部分转换为字符串。&lt;/li&gt;
+  &lt;li&gt;UTC() 	
+根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。&lt;/li&gt;
+  &lt;li&gt;valueOf() 	
+返回 Date 对象的原始值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;math&quot;&gt;Math&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;abs(x) 	
+返回数的绝对值。&lt;/li&gt;
+  &lt;li&gt;acos(x) 	
+返回数的反余弦值。&lt;/li&gt;
+  &lt;li&gt;asin(x) 	
+返回数的反正弦值。&lt;/li&gt;
+  &lt;li&gt;atan(x) 	
+以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值。&lt;/li&gt;
+  &lt;li&gt;atan2(y,x) 	
+返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）。&lt;/li&gt;
+  &lt;li&gt;ceil(x) 	
+对数进行上舍入。&lt;/li&gt;
+  &lt;li&gt;cos(x) 	
+返回数的余弦。&lt;/li&gt;
+  &lt;li&gt;exp(x) 	
+返回 e 的指数。&lt;/li&gt;
+  &lt;li&gt;floor(x) 	
+对数进行下舍入。&lt;/li&gt;
+  &lt;li&gt;log(x) 	
+返回数的自然对数（底为e）。&lt;/li&gt;
+  &lt;li&gt;max(x,y) 	
+返回 x 和 y 中的最高值。&lt;/li&gt;
+  &lt;li&gt;min(x,y) 	
+返回 x 和 y 中的最低值。&lt;/li&gt;
+  &lt;li&gt;pow(x,y) 	
+返回 x 的 y 次幂。&lt;/li&gt;
+  &lt;li&gt;random() 	
+返回 0 ~ 1 之间的随机数。&lt;/li&gt;
+  &lt;li&gt;round(x) 	
+把数四舍五入为最接近的整数。&lt;/li&gt;
+  &lt;li&gt;sin(x) 	
+返回数的正弦。&lt;/li&gt;
+  &lt;li&gt;sqrt(x) 	
+返回数的平方根。&lt;/li&gt;
+  &lt;li&gt;tan(x) 	
+返回角的正切。&lt;/li&gt;
+  &lt;li&gt;toSource() 	
+返回该对象的源代码。&lt;/li&gt;
+  &lt;li&gt;valueOf() 	
+返回 Math 对象的原始值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;number&quot;&gt;Number&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;toString 	
+把数字转换为字符串，使用指定的基数。&lt;/li&gt;
+  &lt;li&gt;toLocaleString 	
+把数字转换为字符串，使用本地数字格式顺序。&lt;/li&gt;
+  &lt;li&gt;toFixed 	
+把数字转换为字符串，结果的小数点后有指定位数的数字。&lt;/li&gt;
+  &lt;li&gt;toExponential 	
+把对象的值转换为指数计数法。&lt;/li&gt;
+  &lt;li&gt;toPrecision 	
+把数字格式化为指定的长度。&lt;/li&gt;
+  &lt;li&gt;valueOf 	
+返回一个 Number 对象的基本数字值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;string&quot;&gt;String&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;anchor() 	
+创建 HTML 锚。&lt;/li&gt;
+  &lt;li&gt;big() 	
+用大号字体显示字符串。&lt;/li&gt;
+  &lt;li&gt;blink() 	
+显示闪动字符串。&lt;/li&gt;
+  &lt;li&gt;bold() 	
+使用粗体显示字符串。&lt;/li&gt;
+  &lt;li&gt;charAt() 	
+返回在指定位置的字符。&lt;/li&gt;
+  &lt;li&gt;charCodeAt() 	
+返回在指定的位置的字符的 Unicode 编码。&lt;/li&gt;
+  &lt;li&gt;concat() 	
+连接字符串。&lt;/li&gt;
+  &lt;li&gt;fixed() 	
+以打字机文本显示字符串。&lt;/li&gt;
+  &lt;li&gt;fontcolor() 	
+使用指定的颜色来显示字符串。&lt;/li&gt;
+  &lt;li&gt;fontsize() 	
+使用指定的尺寸来显示字符串。&lt;/li&gt;
+  &lt;li&gt;fromCharCode() 	
+从字符编码创建一个字符串。&lt;/li&gt;
+  &lt;li&gt;indexOf() 	
+检索字符串。&lt;/li&gt;
+  &lt;li&gt;italics() 	
+使用斜体显示字符串。&lt;/li&gt;
+  &lt;li&gt;lastIndexOf() 	
+从后向前搜索字符串。&lt;/li&gt;
+  &lt;li&gt;link() 	
+将字符串显示为链接。&lt;/li&gt;
+  &lt;li&gt;localeCompare() 	
+用本地特定的顺序来比较两个字符串。&lt;/li&gt;
+  &lt;li&gt;match() 	
+找到一个或多个正则表达式的匹配。&lt;/li&gt;
+  &lt;li&gt;replace() 	
+替换与正则表达式匹配的子串。&lt;/li&gt;
+  &lt;li&gt;search() 	
+检索与正则表达式相匹配的值。&lt;/li&gt;
+  &lt;li&gt;slice() 	
+提取字符串的片断，并在新的字符串中返回被提取的部分。&lt;/li&gt;
+  &lt;li&gt;small() 	
+使用小字号来显示字符串。&lt;/li&gt;
+  &lt;li&gt;split() 	
+把字符串分割为字符串数组。&lt;/li&gt;
+  &lt;li&gt;strike() 	
+使用删除线来显示字符串。&lt;/li&gt;
+  &lt;li&gt;sub() 	
+把字符串显示为下标。&lt;/li&gt;
+  &lt;li&gt;substr() 	
+从起始索引号提取字符串中指定数目的字符。&lt;/li&gt;
+  &lt;li&gt;substring() 	
+提取字符串中两个指定的索引号之间的字符。&lt;/li&gt;
+  &lt;li&gt;sup() 	
+把字符串显示为上标。&lt;/li&gt;
+  &lt;li&gt;toLocaleLowerCase() 	
+把字符串转换为小写。&lt;/li&gt;
+  &lt;li&gt;toLocaleUpperCase() 	
+把字符串转换为大写。&lt;/li&gt;
+  &lt;li&gt;toLowerCase() 	
+把字符串转换为小写。&lt;/li&gt;
+  &lt;li&gt;toUpperCase() 	
+把字符串转换为大写。&lt;/li&gt;
+  &lt;li&gt;toSource() 	
+代表对象的源代码。&lt;/li&gt;
+  &lt;li&gt;toString() 	
+返回字符串。&lt;/li&gt;
+  &lt;li&gt;valueOf() 	
+返回某个字符串对象的原始值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;regexp&quot;&gt;RegExp&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;compile 	
+编译正则表达式。 	ff:1 	ie:4&lt;/li&gt;
+  &lt;li&gt;exec 	
+检索字符串中指定的值。返回找到的值，并确定其位置。 	ff:1 	ie:4&lt;/li&gt;
+  &lt;li&gt;test 	
+检索字符串中指定的值。返回 true 或 false。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;全局函数&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;decodeURI() 	
+解码某个编码的 URI。&lt;/li&gt;
+  &lt;li&gt;decodeURIComponent() 	
+解码一个编码的 URI 组件。&lt;/li&gt;
+  &lt;li&gt;encodeURI() 	
+把字符串编码为 URI。&lt;/li&gt;
+  &lt;li&gt;encodeURIComponent() 	
+把字符串编码为 URI 组件。&lt;/li&gt;
+  &lt;li&gt;escape() 	
+对字符串进行编码。&lt;/li&gt;
+  &lt;li&gt;eval() 	
+计算 JavaScript 字符串，并把它作为脚本代码来执行。&lt;/li&gt;
+  &lt;li&gt;getClass() 	
+返回一个 JavaObject 的 JavaClass。&lt;/li&gt;
+  &lt;li&gt;isFinite() 	
+检查某个值是否为有穷大的数。&lt;/li&gt;
+  &lt;li&gt;isNaN() 	
+检查某个值是否是数字。&lt;/li&gt;
+  &lt;li&gt;Number() 	
+把对象的值转换为数字。&lt;/li&gt;
+  &lt;li&gt;parseFloat() 	
+解析一个字符串并返回一个浮点数。&lt;/li&gt;
+  &lt;li&gt;parseInt() 	
+解析一个字符串并返回一个整数。&lt;/li&gt;
+  &lt;li&gt;String() 	
+把对象的值转换为字符串。&lt;/li&gt;
+  &lt;li&gt;unescape() 	
+对由 escape() 编码的字符串进行解码。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;window&quot;&gt;Window&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;closed 	
+返回窗口是否已被关闭。&lt;/li&gt;
+  &lt;li&gt;defaultStatus 	
+设置或返回窗口状态栏中的默认文本。&lt;/li&gt;
+  &lt;li&gt;document 	
+对 Document 对象的只读引用。请参阅 Document 对象。&lt;/li&gt;
+  &lt;li&gt;history 	
+对 History 对象的只读引用。请参数 History 对象。&lt;/li&gt;
+  &lt;li&gt;innerheight 	
+返回窗口的文档显示区的高度。&lt;/li&gt;
+  &lt;li&gt;innerwidth 	
+返回窗口的文档显示区的宽度。&lt;/li&gt;
+  &lt;li&gt;length 	
+设置或返回窗口中的框架数量。&lt;/li&gt;
+  &lt;li&gt;location 	
+用于窗口或框架的 Location 对象。请参阅 Location 对象。&lt;/li&gt;
+  &lt;li&gt;name 	
+设置或返回窗口的名称。&lt;/li&gt;
+  &lt;li&gt;Navigator 	
+对 Navigator 对象的只读引用。请参数 Navigator 对象。&lt;/li&gt;
+  &lt;li&gt;opener 	
+返回对创建此窗口的窗口的引用。&lt;/li&gt;
+  &lt;li&gt;outerheight 	
+返回窗口的外部高度。&lt;/li&gt;
+  &lt;li&gt;outerwidth 	
+返回窗口的外部宽度。&lt;/li&gt;
+  &lt;li&gt;pageXOffset 	
+设置或返回当前页面相对于窗口显示区左上角的 X 位置。&lt;/li&gt;
+  &lt;li&gt;pageYOffset 	
+设置或返回当前页面相对于窗口显示区左上角的 Y 位置。&lt;/li&gt;
+  &lt;li&gt;parent 	
+返回父窗口。&lt;/li&gt;
+  &lt;li&gt;Screen 	
+对 Screen 对象的只读引用。请参数 Screen 对象。&lt;/li&gt;
+  &lt;li&gt;self 	
+返回对当前窗口的引用。等价于 Window 属性。&lt;/li&gt;
+  &lt;li&gt;status 	
+设置窗口状态栏的文本。&lt;/li&gt;
+  &lt;li&gt;top 	
+返回最顶层的先辈窗口。&lt;/li&gt;
+  &lt;li&gt;window 	
+window 属性等价于 self 属性，它包含了对窗口自身的引用。&lt;/li&gt;
+  &lt;li&gt;screenLeft screenTop screenX screenY&amp;lt;/br&amp;gt;
+只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。&lt;/li&gt;
+  &lt;li&gt;alert() 	
+显示带有一段消息和一个确认按钮的警告框。&lt;/li&gt;
+  &lt;li&gt;blur() 	
+把键盘焦点从顶层窗口移开。&lt;/li&gt;
+  &lt;li&gt;clearInterval() 	
+取消由 setInterval() 设置的 timeout。&lt;/li&gt;
+  &lt;li&gt;clearTimeout() 	
+取消由 setTimeout() 方法设置的 timeout。&lt;/li&gt;
+  &lt;li&gt;close() 	
+关闭浏览器窗口。&lt;/li&gt;
+  &lt;li&gt;confirm() 	
+显示带有一段消息以及确认按钮和取消按钮的对话框。&lt;/li&gt;
+  &lt;li&gt;createPopup() 	
+创建一个 pop-up 窗口。&lt;/li&gt;
+  &lt;li&gt;focus() 	
+把键盘焦点给予一个窗口。&lt;/li&gt;
+  &lt;li&gt;moveBy() 	
+可相对窗口的当前坐标把它移动指定的像素。&lt;/li&gt;
+  &lt;li&gt;moveTo() 	
+把窗口的左上角移动到一个指定的坐标。&lt;/li&gt;
+  &lt;li&gt;open() 	
+打开一个新的浏览器窗口或查找一个已命名的窗口。&lt;/li&gt;
+  &lt;li&gt;print() 	
+打印当前窗口的内容。&lt;/li&gt;
+  &lt;li&gt;prompt() 	
+显示可提示用户输入的对话框。&lt;/li&gt;
+  &lt;li&gt;resizeBy() 	
+按照指定的像素调整窗口的大小。&lt;/li&gt;
+  &lt;li&gt;resizeTo() 	
+把窗口的大小调整到指定的宽度和高度。&lt;/li&gt;
+  &lt;li&gt;scrollBy() 	
+按照指定的像素值来滚动内容。&lt;/li&gt;
+  &lt;li&gt;scrollTo() 	
+把内容滚动到指定的坐标。&lt;/li&gt;
+  &lt;li&gt;setInterval() 	
+按照指定的周期（以毫秒计）来调用函数或计算表达式。&lt;/li&gt;
+  &lt;li&gt;setTimeout() 	
+在指定的毫秒数后调用函数或计算表达式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;navigator&quot;&gt;Navigator&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;appCodeName 	
+返回浏览器的代码名。&lt;/li&gt;
+  &lt;li&gt;appMinorVersion 	
+返回浏览器的次级版本。&lt;/li&gt;
+  &lt;li&gt;appName 	
+返回浏览器的名称。&lt;/li&gt;
+  &lt;li&gt;appVersion 	
+返回浏览器的平台和版本信息。&lt;/li&gt;
+  &lt;li&gt;browserLanguage 	
+返回当前浏览器的语言。&lt;/li&gt;
+  &lt;li&gt;cookieEnabled 	
+返回指明浏览器中是否启用 cookie 的布尔值。&lt;/li&gt;
+  &lt;li&gt;cpuClass 	
+返回浏览器系统的 CPU 等级。&lt;/li&gt;
+  &lt;li&gt;onLine 	
+返回指明系统是否处于脱机模式的布尔值。&lt;/li&gt;
+  &lt;li&gt;platform 	
+返回运行浏览器的操作系统平台。&lt;/li&gt;
+  &lt;li&gt;systemLanguage 	
+返回 OS 使用的默认语言。&lt;/li&gt;
+  &lt;li&gt;userAgent 	
+返回由客户机发送服务器的 user-agent 头部的值。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;userLanguage 	
+返回 OS 的自然语言设置。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;javaEnabled() 	
+规定浏览器是否启用 Java。&lt;/li&gt;
+  &lt;li&gt;taintEnabled() 	
+规定浏览器是否启用数据污点 (data tainting)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;screen&quot;&gt;Screen&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;availHeight 	
+返回显示屏幕的高度 (除 Windows 任务栏之外)。&lt;/li&gt;
+  &lt;li&gt;availWidth 	
+返回显示屏幕的宽度 (除 Windows 任务栏之外)。&lt;/li&gt;
+  &lt;li&gt;bufferDepth 	
+设置或返回调色板的比特深度。&lt;/li&gt;
+  &lt;li&gt;colorDepth 	
+返回目标设备或缓冲器上的调色板的比特深度。&lt;/li&gt;
+  &lt;li&gt;deviceXDPI 	
+返回显示屏幕的每英寸水平点数。&lt;/li&gt;
+  &lt;li&gt;deviceYDPI 	
+返回显示屏幕的每英寸垂直点数。&lt;/li&gt;
+  &lt;li&gt;fontSmoothingEnabled 	
+返回用户是否在显示控制面板中启用了字体平滑。&lt;/li&gt;
+  &lt;li&gt;height 	
+返回显示屏幕的高度。&lt;/li&gt;
+  &lt;li&gt;logicalXDPI 	
+返回显示屏幕每英寸的水平方向的常规点数。&lt;/li&gt;
+  &lt;li&gt;logicalYDPI 	
+返回显示屏幕每英寸的垂直方向的常规点数。&lt;/li&gt;
+  &lt;li&gt;pixelDepth 	
+返回显示屏幕的颜色分辨率（比特每像素）。&lt;/li&gt;
+  &lt;li&gt;updateInterval 	
+设置或返回屏幕的刷新率。&lt;/li&gt;
+  &lt;li&gt;width 	
+返回显示器屏幕的宽度。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;history&quot;&gt;History&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;length 	
+返回浏览器历史列表中的 URL 数量。&lt;/li&gt;
+  &lt;li&gt;back() 	
+加载 history 列表中的前一个 URL。&lt;/li&gt;
+  &lt;li&gt;forward() 	
+加载 history 列表中的下一个 URL。&lt;/li&gt;
+  &lt;li&gt;go() 	
+加载 history 列表中的某个具体页面。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;location&quot;&gt;Location&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;hash 	
+设置或返回从井号 (#) 开始的 URL（锚）。&lt;/li&gt;
+  &lt;li&gt;host 	
+设置或返回主机名和当前 URL 的端口号。&lt;/li&gt;
+  &lt;li&gt;hostname 	
+设置或返回当前 URL 的主机名。&lt;/li&gt;
+  &lt;li&gt;href 	
+设置或返回完整的 URL。&lt;/li&gt;
+  &lt;li&gt;pathname 	
+设置或返回当前 URL 的路径部分。&lt;/li&gt;
+  &lt;li&gt;port 	
+设置或返回当前 URL 的端口号。&lt;/li&gt;
+  &lt;li&gt;protocol 	
+设置或返回当前 URL 的协议。&lt;/li&gt;
+  &lt;li&gt;search 	
+设置或返回从问号 (?) 开始的 URL（查询部分）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;document&quot;&gt;Document&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;body 	
+提供对 &amp;lt;body&amp;gt; 元素的直接访问。对于定义了框架集的文档，该属性引用最外层的 &lt;frameset&gt;。&lt;/frameset&gt;&lt;/li&gt;
+  &lt;li&gt;cookie 	
+设置或返回与当前文档有关的所有 cookie。&lt;/li&gt;
+  &lt;li&gt;domain 	
+返回当前文档的域名。&lt;/li&gt;
+  &lt;li&gt;lastModified 	
+返回文档被最后修改的日期和时间。&lt;/li&gt;
+  &lt;li&gt;referrer 	
+返回载入当前文档的文档的 URL。&lt;/li&gt;
+  &lt;li&gt;title 	
+返回当前文档的标题。&lt;/li&gt;
+  &lt;li&gt;URL 	
+返回当前文档的 URL。&lt;/li&gt;
+  &lt;li&gt;close() 	
+关闭用 document.open() 方法打开的输出流，并显示选定的数据。&lt;/li&gt;
+  &lt;li&gt;getElementById() 	
+返回对拥有指定 id 的第一个对象的引用。&lt;/li&gt;
+  &lt;li&gt;getElementsByName() 	
+返回带有指定名称的对象集合。&lt;/li&gt;
+  &lt;li&gt;getElementsByTagName() 	
+返回带有指定标签名的对象集合。&lt;/li&gt;
+  &lt;li&gt;open() 	
+打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。&lt;/li&gt;
+  &lt;li&gt;write() 	
+向文档写 HTML 表达式 或 JavaScript 代码。&lt;/li&gt;
+  &lt;li&gt;writeln() 	
+等同于 write() 方法，不同的是在每个表达式之后写一个换行符。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dom-element&quot;&gt;DOM Element&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;element.accessKey 	
+设置或返回元素的快捷键。&lt;/li&gt;
+  &lt;li&gt;element.appendChild() 	
+向元素添加新的子节点，作为最后一个子节点。&lt;/li&gt;
+  &lt;li&gt;element.attributes 	
+返回元素属性的 NamedNodeMap。&lt;/li&gt;
+  &lt;li&gt;element.childNodes 
+返回元素子节点的 NodeList。&lt;/li&gt;
+  &lt;li&gt;element.className 	
+设置或返回元素的 class 属性。&lt;/li&gt;
+  &lt;li&gt;element.clientHeight 	
+返回元素的可见高度。&lt;/li&gt;
+  &lt;li&gt;element.clientWidth 	
+返回元素的可见宽度。&lt;/li&gt;
+  &lt;li&gt;element.cloneNode() 	
+克隆元素。&lt;/li&gt;
+  &lt;li&gt;element.compareDocumentPosition() 	
+比较两个元素的文档位置。&lt;/li&gt;
+  &lt;li&gt;element.contentEditable 	
+设置或返回元素的文本方向。&lt;/li&gt;
+  &lt;li&gt;element.dir 	
+设置或返回元素的文本方向。&lt;/li&gt;
+  &lt;li&gt;element.firstChild 	
+返回元素的首个子。&lt;/li&gt;
+  &lt;li&gt;element.getAttribute() 	
+返回元素节点的指定属性值。&lt;/li&gt;
+  &lt;li&gt;element.getAttributeNode() 	
+返回指定的属性节点。&lt;/li&gt;
+  &lt;li&gt;element.getElementsByTagName() 	
+返回拥有指定标签名的所有子元素的集合。&lt;/li&gt;
+  &lt;li&gt;element.getFeature() 	
+返回实现了指定特性的 API 的某个对象。&lt;/li&gt;
+  &lt;li&gt;element.getUserData() 	
+返回关联元素上键的对象。&lt;/li&gt;
+  &lt;li&gt;element.hasAttribute() 	
+如果元素拥有指定属性，则返回true，否则返回 false。&lt;/li&gt;
+  &lt;li&gt;element.hasAttributes() 	
+如果元素拥有属性，则返回 true，否则返回 false。&lt;/li&gt;
+  &lt;li&gt;element.hasChildNodes() 	
+如果元素拥有子节点，则返回 true，否则 false。&lt;/li&gt;
+  &lt;li&gt;element.id 	
+设置或返回元素的 id。&lt;/li&gt;
+  &lt;li&gt;element.innerHTML 	
+设置或返回元素的内容。&lt;/li&gt;
+  &lt;li&gt;element.insertBefore() 	
+在指定的已有的子节点之前插入新节点。&lt;/li&gt;
+  &lt;li&gt;element.isContentEditable 	
+设置或返回元素的内容。&lt;/li&gt;
+  &lt;li&gt;element.isDefaultNamespace() 	
+如果指定的 namespaceURI 是默认的，则返回 true，否则返回 false。&lt;/li&gt;
+  &lt;li&gt;element.isEqualNode() 	
+检查两个元素是否相等。检查两个元素是否是相同的节点。&lt;/li&gt;
+  &lt;li&gt;element.isSupported() 	
+如果元素支持指定特性，则返回 true。&lt;/li&gt;
+  &lt;li&gt;element.lang 	
+设置或返回元素的语言代码。&lt;/li&gt;
+  &lt;li&gt;element.lastChild 	
+返回元素的最后一个子元素。&lt;/li&gt;
+  &lt;li&gt;element.namespaceURI 	
+返回元素的 namespace URI。&lt;/li&gt;
+  &lt;li&gt;element.nextSibling 	
+返回位于相同节点树层级的下一个节点。&lt;/li&gt;
+  &lt;li&gt;element.nodeName 	
+返回元素的名称。&lt;/li&gt;
+  &lt;li&gt;element.nodeType 	
+返回元素的节点类型。&lt;/li&gt;
+  &lt;li&gt;element.nodeValue 	
+设置或返回元素值。&lt;/li&gt;
+  &lt;li&gt;element.normalize() 	
+合并元素中相邻的文本节点，并移除空的文本节点。&lt;/li&gt;
+  &lt;li&gt;element.offsetHeight 	
+返回元素的高度。&lt;/li&gt;
+  &lt;li&gt;element.offsetWidth 	
+返回元素的宽度。&lt;/li&gt;
+  &lt;li&gt;element.offsetLeft 	
+返回元素的水平偏移位置。&lt;/li&gt;
+  &lt;li&gt;element.offsetParent 	
+返回元素的偏移容器。&lt;/li&gt;
+  &lt;li&gt;element.offsetTop 	
+返回元素的垂直偏移位置。&lt;/li&gt;
+  &lt;li&gt;element.ownerDocument 	
+返回元素的根元素（文档对象）。&lt;/li&gt;
+  &lt;li&gt;element.parentNode 	
+返回元素的父节点。&lt;/li&gt;
+  &lt;li&gt;element.previousSibling 	
+返回位于相同节点树层级的前一个元素。&lt;/li&gt;
+  &lt;li&gt;element.removeAttribute() 	
+从元素中移除指定属性。&lt;/li&gt;
+  &lt;li&gt;element.removeAttributeNode() 	
+移除指定的属性节点，并返回被移除的节点。&lt;/li&gt;
+  &lt;li&gt;element.removeChild() 	
+从元素中移除子节点。&lt;/li&gt;
+  &lt;li&gt;element.replaceChild() 	
+替换元素中的子节点。&lt;/li&gt;
+  &lt;li&gt;element.scrollHeight 	
+返回元素的整体高度。&lt;/li&gt;
+  &lt;li&gt;element.scrollLeft 	
+返回元素左边缘与视图之间的距离。&lt;/li&gt;
+  &lt;li&gt;element.scrollTop 	
+返回元素上边缘与视图之间的距离。&lt;/li&gt;
+  &lt;li&gt;element.scrollWidth 	
+返回元素的整体宽度。&lt;/li&gt;
+  &lt;li&gt;element.setAttribute() 	
+把指定属性设置或更改为指定值。&lt;/li&gt;
+  &lt;li&gt;element.setAttributeNode() 	
+设置或更改指定属性节点。&lt;/li&gt;
+  &lt;li&gt;element.setIdAttribute()&lt;/li&gt;
+  &lt;li&gt;element.setIdAttributeNode()&lt;/li&gt;
+  &lt;li&gt;element.setUserData() 	
+把对象关联到元素上的键。&lt;/li&gt;
+  &lt;li&gt;element.style 	
+设置或返回元素的 style 属性。&lt;/li&gt;
+  &lt;li&gt;element.tabIndex 	
+设置或返回元素的 tab 键控制次序。&lt;/li&gt;
+  &lt;li&gt;element.tagName 	
+返回元素的标签名。&lt;/li&gt;
+  &lt;li&gt;element.textContent 	
+设置或返回节点及其后代的文本内容。&lt;/li&gt;
+  &lt;li&gt;element.title 	
+设置或返回元素的 title 属性。&lt;/li&gt;
+  &lt;li&gt;element.toString() 	
+把元素转换为字符串。&lt;/li&gt;
+  &lt;li&gt;nodelist.item() 	
+返回 NodeList 中位于指定下标的节点。&lt;/li&gt;
+  &lt;li&gt;nodelist.length 	
+返回 NodeList 中的节点数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dom-attribute&quot;&gt;DOM Attribute&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;attr.isId 	
+如果属性是 id 类型，则返回 true，否则返回 false。&lt;/li&gt;
+  &lt;li&gt;attr.name 	
+返回属性的名称。&lt;/li&gt;
+  &lt;li&gt;attr.value 	
+设置或返回属性的值。&lt;/li&gt;
+  &lt;li&gt;attr.specified 	
+如果已指定属性，则返回 true，否则返回 false。&lt;/li&gt;
+  &lt;li&gt;nodemap.getNamedItem() 	
+从 NamedNodeMap 返回指定的属性节点。&lt;/li&gt;
+  &lt;li&gt;nodemap.item() 	
+返回 NamedNodeMap 中位于指定下标的节点。&lt;/li&gt;
+  &lt;li&gt;nodemap.length 	
+返回 NamedNodeMap 中的节点数。&lt;/li&gt;
+  &lt;li&gt;nodemap.removeNamedItem() 	
+移除指定的属性节点。&lt;/li&gt;
+  &lt;li&gt;nodemap.setNamedItem() 	
+设置指定的属性节点（通过名称）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dom-event&quot;&gt;DOM Event&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bubbles 	
+返回布尔值，指示事件是否是起泡事件类型。&lt;/li&gt;
+  &lt;li&gt;cancelable 	
+返回布尔值，指示事件是否可拥可取消的默认动作。&lt;/li&gt;
+  &lt;li&gt;currentTarget 	
+返回其事件监听器触发该事件的元素。&lt;/li&gt;
+  &lt;li&gt;eventPhase 	
+返回事件传播的当前阶段。&lt;/li&gt;
+  &lt;li&gt;target 	
+返回触发此事件的元素（事件的目标节点）。&lt;/li&gt;
+  &lt;li&gt;timeStamp 	
+返回事件生成的日期和时间。&lt;/li&gt;
+  &lt;li&gt;type 	
+返回当前 Event 对象表示的事件的名称。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;13 Aug 2014&lt;/p&gt;
+</description>
+        <pubDate>Wed, 13 Aug 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/javascript/2014/08/13/javascript-help.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/javascript/2014/08/13/javascript-help.html</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>HTML、XHTML的区别</title>
+        <description>&lt;h4 id=&quot;dtd&quot;&gt;声明DTD&lt;/h4&gt;
+
+&lt;p&gt;XHTML文件的开始要声明DTD&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;PUBLIC &amp;quot;-//W3C//DTD XHTML 1.0 Transitional//EN&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&amp;quot;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;嵌套使用&lt;/h4&gt;
+
+&lt;p&gt;XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不正确嵌套也能正常显示，如：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;This text is bold and italic&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;而在XHTML必须要正确嵌套之后才能正常使用，如：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;This text is bold and italic&lt;span class=&quot;nt&quot;&gt;&amp;lt;/i&amp;gt;&amp;lt;/b&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;所有的标签和标签的属性都必须小写，属性值可以大写&lt;/h4&gt;
+
+&lt;p&gt;错误代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;BODY&amp;gt;&lt;/span&gt;
+　　&lt;span class=&quot;nt&quot;&gt;&amp;lt;P&amp;gt;&lt;/span&gt;This is a paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/P&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/BODY&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;正确代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+　　&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;属性值&lt;/h4&gt;
+
+&lt;p&gt;错误代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;正确代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;100%&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;标签闭合&lt;/h4&gt;
+
+&lt;p&gt;所有的标签都必须被关闭，空标签也不例外。关闭空标签的方法如下：
+HTML中的&lt;br /&gt;要写成&lt;br /&gt;。注意，后面加了一个空格”“和一个反斜杠”/“。&lt;/p&gt;
+
+&lt;h4 id=&quot;dtd-1&quot;&gt;严格的dtd&lt;/h4&gt;
+
+&lt;p&gt;如果你使用的是strict.dtd。也就是最严格的XHTML，那么许多定义外观的属性都将不被允许。
+例如你为图片添加链接的同时想去掉边框。不可以再使用&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;...&amp;quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;border=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;，而是必须通过CSS来实现。我们推荐您在使用strict.dtd时，舍弃所有的定义外观属性，而完全使用CSS来定义页面外观&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;属性的缩写&lt;/h4&gt;
+
+&lt;p&gt;属性的缩写被禁止。如：
+错误代码&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dl&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;compact&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;readonly&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;selected&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;noresize&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;正确代码&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dl&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;compact=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;compact&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;checked&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;readonly=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;readonly&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;disabled&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;selected&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;noresize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;noresize&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;name&quot;&gt;部分标签的name属性禁用&lt;/h4&gt;
+
+&lt;p&gt;HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.在 XHTML 里name属性是不能被使用的，应该用id 来替换它。如：
+错误代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture.gif&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture1&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;正确代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture.gif&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture1&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;注意：我们为了使旧浏览器也能正常的执行该内容我们也可以在标签中同时使用id和name属性。如：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture.gif&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture1&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;picture1&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;为了适应新的浏览器浏览我们在上述代码中的最后我加了/来结束标签。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;特殊符号表示&lt;/h4&gt;
+
+&lt;p&gt;任何小于号（&amp;lt;），不是标签的一部分，都必须被编码为&amp;amp; l t ;
+任何大于号（&amp;gt;），不是标签的一部分，都必须被编码为&amp;amp; g t ;
+任何与号（&amp;amp;），不是实体的一部分的，都必须被编码为&amp;amp; a m p;
+注：以上字符之间无空格。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;注释内容&lt;/h4&gt;
+&lt;p&gt;不要在注释内容中使“–”，“–”只能发生在XHTML注释的开头和结束，也就是说，在内容中它们不再有效。例如下面的代码是无效的:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--这里是注释-----------这里是注释--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;用等号或者空格替换内部的虚线。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--这里是注释============这里是注释--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;以上这些规范有的看上去比较奇怪，但这一切都是为了使我们的代码有一个统一、唯一的标准，便于以后的数据再利用。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;图片必须有说明文字&lt;/h4&gt;
+
+&lt;p&gt;每个图片标签都必须有ALT说明文字。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ball.jpg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;large red ball&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;01 Jul 2014&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Jul 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/html/2014/07/01/diff-html-xhtml.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/html/2014/07/01/diff-html-xhtml.html</guid>
+        
+        
+        <category>html</category>
+        
+      </item>
+    
+      <item>
+        <title>ExtJS前端项目构架探讨(二)</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;开发模式&lt;/h3&gt;
+
+&lt;p&gt;在进行界面开发时，最初的版本可以通过SenchaArchitect可视化编辑工具，来进行构建。&lt;/p&gt;
+
+&lt;p&gt;为了适合多人协同开发，我们将每个模块单独划分为一个工程，然后，通过发布聚合到一个工程下。&lt;/p&gt;
+
+&lt;p&gt;这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：&lt;/p&gt;
+
+&lt;pre&gt;
+project_pub-
+            app-
+                controller-
+                           moduleA
+                           moduleB
+                           ...
+                view-
+                     moduleA
+                     moduleB
+                     ...
+                ...
+            ...
+                  
+&lt;/pre&gt;
+
+&lt;pre&gt;
+project_dev-
+            moduleA-   
+		            app-
+		                controller-
+		                           moduleA
+		                view-
+		                     moduleA
+		                ...
+		            ...
+		    moduleB-   
+		            app-
+		                controller-
+		                           moduleB
+		                view-
+		                     moduleB
+		                ...
+		            ...
+		    ...
+ &lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;国际化&lt;/h3&gt;
+
+&lt;p&gt;这里谈国际化，要分两部分，一部分为框架本身组件的国际化，这可以通过直接去切换引用locale文件夹下的国际化文件，第二部分为项目自身的国际化，这里需要注意的是，如果项目视图是由sencha architect工具构建的话，是只能通过硬编码的方式来编写的，因为所有的文字都被当做字符串来处理，所以无法来赋值变量。如果页面视图通过手动编写，那么可以独立出一个国际化的文件，然后通过一个管理器来进行管理。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;同步与异步&lt;/h3&gt;
+
+&lt;p&gt;对于一个ria应用，并不是异步的交互符合所有的操作需求，某一些操作时，同步交互是必要的。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;验证器&lt;/h3&gt;
+
+&lt;p&gt;验证器是通过组建的vtype属性来设置，监听的change事件。框架里预置了几种验证器，但为了适应项目需求，大部分的验证还是只能通过自己扩展的。扩展的方法是重写Ext.form.field.VTypes，类似如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;type1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;type1Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;长度大于4&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;为了扩展的自由度，还多扩展了几个方法，代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,{&lt;/span&gt;
+	&lt;span class=&quot;cm&quot;&gt;/*三种基础正则表达式的方法*/&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;regexTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;regexMatch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;	
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;regexExec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;	
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;		组合验证器验证&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;		参数：&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 val:验证值&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 vtypes：验证器数组&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 signal：验证器之间是并且还是或者的关系&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 	     false是或者&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 	     true是并且&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;			 	     默认值是false&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;	*/&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;vtypeCombin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vtypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vtypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vtypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]](&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vtypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]](&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;事件机制&lt;/h3&gt;
+
+&lt;p&gt;对于事件的管理，设计思路为，所有模块不直接进行业务数据交互，而只是从视图中获取数据，然后向业务管理器发送业务信号，所有与业务相关的核心操作，都是通过业务管理器进行实现。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;组件扩展&lt;/h3&gt;
+
+&lt;p&gt;ExtJS框架对于组件的扩展是很自由的，通过ExtJS的源码则可以体现出来，所以没啥好扯的，值得注意的，如果通过sencha architect进行项目构建时，由于工具自身的约束，会对组件的扩展产生障碍，但可以通过一些兼容的方式进行。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;前端架构参考&lt;/h3&gt;
+
+&lt;p&gt;11 Jun 2014&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Jun 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/extjs/2014/06/11/extjs4-project-design.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/extjs/2014/06/11/extjs4-project-design.html</guid>
+        
+        
+        <category>extjs</category>
+        
+      </item>
+    
+      <item>
+        <title>36kr首页结构分析</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;颜色说明&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/body-color.png&quot; alt=&quot;body&quot; /&gt;      body&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/section-color.png&quot; alt=&quot;section&quot; /&gt;      section&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/nav-color.png&quot; alt=&quot;nav&quot; /&gt;				 nav&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/h1-color.png&quot; alt=&quot;h1&quot; /&gt;                h1&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/h2-color.png&quot; alt=&quot;h2&quot; /&gt;                h2&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/div-color-1.png&quot; alt=&quot;div&quot; /&gt;            div1&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/div-color-2.png&quot; alt=&quot;div&quot; /&gt;            div2&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/footer-color.png&quot; alt=&quot;footer&quot; /&gt;        footer&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/header-color.png&quot; alt=&quot;header&quot; /&gt;        header&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/aside-color.png&quot; alt=&quot;aside&quot; /&gt;          aside&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/axemea/images/article-color.png&quot; alt=&quot;article&quot; /&gt;      article&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;kr&quot;&gt;36kr首页简略结构图如下&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/axemea/images/36kr.png&quot; alt=&quot;36kr&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;16 May 2014&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 May 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/html/2014/05/16/36kr-page-analysis.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/html/2014/05/16/36kr-page-analysis.html</guid>
+        
+        
+        <category>html</category>
+        
+      </item>
+    
+      <item>
+        <title>闲谈console.log</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;现象描述&lt;/h3&gt;
+
+&lt;p&gt;将原本的应用场景简化&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;so fun&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;在实际调试场景中，本来是想查看b下面的c属性排查问题，然后习惯性地只console.log(a.b)了，发现c是有的，当时想都没想，应该是别的地方的问题，绕了一大圈还是没找到问题的缘由，于是毫无目的地直接console.log(a.b.c),我勒个去，竟然是undefined,说好的有值呢。&lt;/p&gt;
+
+&lt;p&gt;回过头来想一想，应该是log只是打出了b的引用，添加的c属性，也都会随后及时地反映到对象中，但就在那个时间来说，c属性是不存在的，所以是undefined。&lt;/p&gt;
+
+&lt;p&gt;在作复杂引用时，对象生命周期的把握很重要，也跟我的教训是，对于某个特定属性值的调试，最好直接log到其本身，就像demo中，直接log到b，而不是c。避免相关的困惑。&lt;/p&gt;
+
+&lt;p&gt;20 Apr 2014&lt;/p&gt;
+</description>
+        <pubDate>Sun, 20 Apr 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/javascript/2014/04/20/about-console-log.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/javascript/2014/04/20/about-console-log.html</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>flask-sqlalchemy使用笔记</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;插入数据&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;peter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;test@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#:插入数据&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#：提交&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;删除数据&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;peter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#:与插入一样，必须是查询返回的对象&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;更新数据&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;guest&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;查询数据&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;用主键获取数据&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#:id = 1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;filterby---filter&quot;&gt;filter_by  || filter&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;peter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;&amp;#39;peter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;startswith----endswith---&quot;&gt;startswith  ||  endswith   模糊查询&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;pet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;非逻辑&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;perter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not_&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;not_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;peter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;section-6&quot;&gt;与逻辑&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;and_&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;and_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;peter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@example.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;section-7&quot;&gt;或逻辑&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;or_&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;or_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;peter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@example.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;section-8&quot;&gt;返回第一条，返回所有条&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#:返回查询到的第一个数据&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#:返回查询到的所有数据&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;section-9&quot;&gt;分页&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paginate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.....&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-10&quot;&gt;限制返回数目&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;section-11&quot;&gt;排序&lt;/h3&gt;
+
+&lt;h4 id=&quot;section-12&quot;&gt;参考字段顺序排序&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-13&quot;&gt;参考字段倒叙排序&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AclLogTable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;15 Apr 2014&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 15 Apr 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/flask/2014/04/15/python-flask-sqlalchemy.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/flask/2014/04/15/python-flask-sqlalchemy.html</guid>
+        
+        
+        <category>flask</category>
+        
+      </item>
+    
+      <item>
+        <title>the-next-palindrome-SPOJ-5</title>
+        <description>&lt;p&gt;&lt;code&gt;
+A positive integer is called a palindrome if its representation in the decimal system is the same when read from left to right and from right to left. For a given positive integer K of not more than 1000000 digits, write the value of the smallest palindrome larger than K to output. Numbers are 
+always displayed without leading zeros.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;input&quot;&gt;INPUT&lt;/h3&gt;
+
+&lt;p&gt;The first line contains integer t, the number of test cases. Integers K are given in the next t lines.&lt;/p&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;OUTPUT&lt;/h3&gt;
+
+&lt;p&gt;For each K, output the smallest palindrome larger than K.&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Input:&lt;/p&gt;
+&lt;pre&gt;
+2
+808
+2133
+&lt;/pre&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;pre&gt;
+818
+2222
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-   &lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;IOError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Error opening input file: &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#去除空格&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#将字符串换转成list&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;str_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#补零&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fill_zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;fill_zero&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;front&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;front&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+
+&lt;span class=&quot;c&quot;&gt;#预处理，先处理掉如99999这样最高位需要进位的数字&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pre_palindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;9&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#主函数递归&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;palindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;palindromes&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            
+        &lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fill_zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  
+&lt;span class=&quot;sd&quot;&gt;&amp;#39;&amp;#39;&amp;#39;if __name__ == &amp;#39;__main__&amp;#39;:&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    while True:&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;        group = sys.stdin.readline()&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;        for i in xrange(int(group)):&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;            line = sys.stdin.readline()&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;            print &amp;#39;transform before : &amp;#39;,line &lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;            line = transform_line(line)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;            print &amp;#39;transform after : &amp;#39;,line&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;            &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+            
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;test.txt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_palindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;palindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;+&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;duration is&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;扯淡&lt;/h3&gt;
+
+&lt;p&gt;思路&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;对输入值进行预处理，过滤掉需要最高位进位的数字，比如99,999,9999等&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过循环，将前面的数，赋值给后面，设置标志位，如果发现，前面各位上的数，都比后面的数小，则执行fill_zero方法，称之为补零方法，以219993为case来说，它的前面各位就比后面小，那么开始补零，从中间开始，为9，而9再增1，就要进位了，就直接赋值为0，然后比较第三位的9和第五位的9，相等，并且第三位的9如果再增1也要进位，则直接赋值为0，比较第二位的1和第六位的9，1还可以自增，就将其自增，当有一位数字自增后，数字肯定比以前大了，而且是最小的，所以，之后的比较位置，直接将前面的数字赋值给后面即可。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;28 Mar 2014&lt;/p&gt;
+</description>
+        <pubDate>Fri, 28 Mar 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/python/2014/03/28/spoj-problem-the-next-palindrome.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/python/2014/03/28/spoj-problem-the-next-palindrome.html</guid>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>transform-the-expression-SPOJ-4</title>
+        <description>&lt;p&gt;&lt;code&gt;
+Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no expressions like a*b*c). 
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;input&quot;&gt;INPUT&lt;/h3&gt;
+
+&lt;p&gt;t [the number of expressions &amp;lt;= 100]
+expression [length &amp;lt;= 400]
+[other expressions]&lt;/p&gt;
+
+&lt;p&gt;Text grouped in [ ] does not appear in the input file.&lt;/p&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;OUTPUT&lt;/h3&gt;
+
+&lt;p&gt;The expressions in RPN form, one per line.&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Input:&lt;/p&gt;
+&lt;pre&gt;
+3
+(a+(b*c))
+((a+b)*(z+x))
+((a+t)*((b+(a+c))^(c+d)))
+&lt;/pre&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;pre&gt;
+abc*+
+ab+zx+*
+at+bac++cd+^*
+&lt;/pre&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;IOError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Error opening input file: &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;transform_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stack_symbol&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;
+           &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_symbol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_symbol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stack_symbol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack_ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;test.txt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;transform before : &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transform_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;transform after : &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;duration is&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;扯淡&lt;/h3&gt;
+
+&lt;p&gt;思路：&lt;/p&gt;
+
+&lt;p&gt;总的想法是通过运算符栈和字符栈来解决问题。&lt;/p&gt;
+
+&lt;p&gt;入栈操作：将运算符和字符分别压入运算符栈和字符栈&lt;/p&gt;
+
+&lt;p&gt;出栈操作：运算符正常pop出栈，字符栈pop弹出两个字符，并且与新弹出的运算符合并成新的字符压入字符栈&lt;/p&gt;
+
+&lt;p&gt;遍历字符串，分别判断三种情况&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;当是字符时，字符进行入栈操作,这里有个特殊情况，当这个字符是最后一个字符时，进行完入栈操作后接着进行出栈操作&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当字符为’)’时，进行出栈操作&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当字符为运算符时，运算符执行入栈操作&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;遍历而结束后运算符栈为空，而字符栈内剩一个，就是转换完后的字符串&lt;/p&gt;
+
+&lt;p&gt;25 Mar 2014&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Mar 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/python/2014/03/25/spoj-problem-transform-the-expression.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/python/2014/03/25/spoj-problem-transform-the-expression.html</guid>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>奇葩年年有今年特别多之ExtJS错误80020101</title>
+        <description>&lt;p&gt;今天在切浏览器测试的时候，以外的发现，ie7，ie8俩兄弟竟然打不开很多模块的页面，查看控制台发现报&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+SCRIPT257: 由于出现错误 80020101 而导致此项操作无法完成
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;google一把，发现这个问题主要是因为一下几个方面引起：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;!-- --&gt;
+    &lt;p&gt;注释惹的祸&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不严格的json格式，比如最后一个变量多了逗号等现象&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;如果用tabpanel加载的是页面，那么注意设置script:true，并且去除页面中的引用库以及html head body等结构，避免引起和主框架的冲突&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对照以上几点，快速把代码过了下，竟然都不存在。。然后我根据请求流来判断哪一个环节出了问题，发现在加载模块的controller后，并没有顺利加载store，view组件，因此判断是在controller中的代码出现问题，但controller的格式是通过工具生成的，应该不会存在问题，然后一行一行调试。。发现。。。&lt;/p&gt;
+
+&lt;p&gt;在模块视图中，使用了grid组件，同时里面存在actioncolumn列，由于actioncolumn只有handler方法，它并没有默认的信号释放能够被controller捕获，所以在handler中自定义了释放了一个delete信号&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;this.fireEvent(&amp;#39;delete&amp;#39;,record);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这本身是正确的，奇葩来了。。就是因为这个’delete’信号，如果换成其他的就ok。。。。。。猜想：因为actioncolumn默认定义了delete信号，当再次定义时，可能存在冲突的原因。。。。等有时间看下源码，再一探究竟。。&lt;/p&gt;
+
+&lt;p&gt;吐槽：error 80020101 这个错误太泛了。。&lt;/p&gt;
+
+&lt;p&gt;19 Mar 2014&lt;/p&gt;
+</description>
+        <pubDate>Wed, 19 Mar 2014 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/extjs/2014/03/19/extjs-error-80020101.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/extjs/2014/03/19/extjs-error-80020101.html</guid>
+        
+        
+        <category>extjs</category>
+        
+      </item>
+    
+  </channel>
+</rss>

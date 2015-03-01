@@ -1,13 +1,17 @@
 ---
-layout: default
+layout: page
 title: Sleuth.js - 想用啥就用啥
 category: ExtJS
-comments: true
+comments: yes
 ---
 
-##{{ page.title }}
-
 Github:[https://github.com/AxeMea/Sleuth.js](https://github.com/AxeMea/Sleuth.js)
+
+oschina:[http://http://my.oschina.net/u/1420701/blog/347360](http://my.oschina.net/u/1420701/blog/347360)
+
+靠这个还上过某周的top博主，哈哈哈
+
+
 
 ####一.Sleuth.js是什么
     
@@ -17,11 +21,11 @@ Sleuth是一个加载框架，它允许开发者只需要require相应的库或�
 
 #####1.引入Sleuth.js库文件
 
-```javascript
-  <script type="text/javascript" src="https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"></script>
-   <script type="text/javascript" src="sleuth.js"></script>
-```
-	
+{% highlight html %}
+<script type="text/javascript" src="https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"></script>
+<script type="text/javascript" src="sleuth.js"></script>
+{% endhighlight html %}
+
 先后引用mapping-ch.min.js,sleuth.min.js文件，注意顺序。mapping-ch.min.js是库的版本映射文件，定义了引用各个库和插件的源地址。默认的引用的是一个公共的映射文件，当然开发者也可以定义自己的映射文件。
 
 #####2.使用方法
@@ -30,43 +34,37 @@ Sleuth.js只向外提供了一个require方法
 
 1-只加载一个库
 
-```javascript
-		//加载一个库
-		Sleuth.require(['jquery'],function(){
-
-			//write your code 
-
-		});
-```
+{% highlight javascript %}
+<script type="text/javascript" src="https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"></script>
+//加载一个库
+Sleuth.require(['jquery'],function(){
+	//write your code 
+});
+{% endhighlight javascript %}
 
 2-加载多个库
 
-```javascript
-		//加载多个库
-		Sleuth.require(['jquery','prototype','response'],function(){
-
-			//write your code 
-
-		});
-```
+{% highlight javascript %}
+//加载多个库
+Sleuth.require(['jquery','prototype','response'],function(){
+//write your code 
+});
+{% endhighlight javascript %}
 
 3-选择版本加载，格式为“库|版本号”，如果没有显式定义版本，则选取映射文件中对应库的第一个版本。
 
-
-```javascript
-		//选择版本加载
-		Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
-
-			//write your code 
-
-		});
-```
+{% highlight javascript %}
+//选择版本加载
+Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
+//write your code 
+});
+{% endhighlight javascript %}
 
 ####三.定义版本映射文件
 
 初始的映射文件为：
 
-```javascript
+{% highlight javascript%}
 
 		var refMapping = {
 			prototype:{
@@ -91,14 +89,12 @@ Sleuth.js只向外提供了一个require方法
 
 		};
 };
-
-```
+{% endhighlight javascript %}
 
 开发者如果需要其它的库或者插件可以Pull Request过来，我们将丰富到映射文件中去，当然开发者也可以编写自己的本地映射配置文件。但我们真诚的希望，您能将您的需求提交给我们，你需要的，必然他人也需要，谢谢。
 
 ####四.映射配置文件配置项说明
-```javascript
-
+{% highlight javascript%}
 		var refMapping = {
 			//单版本配置
 			prototype:{
@@ -126,7 +122,7 @@ Sleuth.js只向外提供了一个require方法
 				}
 			}
 };
-```
+{% endhighlight javascript %}
 
 需要值得注意的是，在配置版本顺序的时候，推荐最新版本的写在前面，这样默认的话，选择的就是最新版本。
 
@@ -136,8 +132,7 @@ Sleuth.js只向外提供了一个require方法
 
 
 可以是各个cdn点的资源如：
-
-```javascript
+{% highlight javascript %}
 
 	var refMapping = {
 			ext:{
@@ -151,8 +146,8 @@ Sleuth.js只向外提供了一个require方法
 
 };
 
+{% endhighlight javascript %}
 
-```
 
 如果想引用github中开源库的代码，需要注意的是其引用地址，比如Sleuth.js,
 [Sleuth.js](https://github.com/AxeMea/Sleuth/blob/master/sleuth.js) 
@@ -163,8 +158,7 @@ Sleuth.js只向外提供了一个require方法
 
 #####AMD规范
 
-```javascript
-		
+{% highlight javascript %}
 		require(['sleuth'], function (Sleuth) {
 
 	　　　　Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
@@ -173,8 +167,8 @@ Sleuth.js只向外提供了一个require方法
 
 			});
 	　　});
-		
-```
+
+{% endhighlight javascript %}
 
 #####CommonJS规范
 

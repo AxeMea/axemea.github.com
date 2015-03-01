@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width initial-scale=1">
+
+<title>transform-the-expression-SPOJ-4</title>
+<meta name="description" content="Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to ...">
+<meta name="keywords" content="Michael,blog,IT,javascript,front-end,internet">
+
+<link rel="icon" href="/axemea/images/favicon.ico">
+<link rel="stylesheet" href="/axemea/css/main.css">
+<link rel="canonical" href="http://axemea.github.io/python/2014/03/25/spoj-problem-transform-the-expression.html">
+<link rel="alternate" type="application/atom+xml" title="M的奇葩漂流" href="http://axemea.github.io/zfeed.xml" />
+
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+  }
+});
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+
+$(document).ready(function(){
+  $(".flip").click(
+      function(){
+        $(".panel").toggle(500);
+      });
+});
+</script>
+
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    <h1 class="site-title"><a href="/axemea/">M的奇葩漂流</a></h1>
+    <h3 class="site-meta">人生如茶，空杯以对。对程序的态度，正如对生活的态度。</h3>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+        <a class="page-link" href="/axemea/">首页</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/about/">关于</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/archives/">文章</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/categories/">分类</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/guestbook/">作品</a>
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/axemea/tags/">推荐</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/zfeed.xml">订阅</a>
+        
+        
+        
+        
+        
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    
+
+  <div class="page-content col-sm-8">
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">transform-the-expression-SPOJ-4</h1>
+  </header>
+
+  <article class="post-content about"> 
+    <p><code>
+Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no expressions like a*b*c). 
+</code></p>
+
+<h3 id="input">INPUT</h3>
+
+<p>t [the number of expressions &lt;= 100]
+expression [length &lt;= 400]
+[other expressions]</p>
+
+<p>Text grouped in [ ] does not appear in the input file.</p>
+
+<h3 id="output">OUTPUT</h3>
+
+<p>The expressions in RPN form, one per line.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Input:</p>
+<pre>
+3
+(a+(b*c))
+((a+b)*(z+x))
+((a+t)*((b+(a+c))^(c+d)))
+</pre>
+<p>Output:</p>
+<pre>
+abc*+
+ab+zx+*
+at+bac++cd+^*
+</pre>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Error opening input file: &quot;</span><span class="p">,</span><span class="n">filename</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">transform_line</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="n">stack_symbol</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stack_ch</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)):</span>
+        <span class="k">if</span><span class="p">(</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s">&#39;a&#39;</span>
+           <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="s">&#39;z&#39;</span><span class="p">):</span>
+            <span class="n">stack_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">stack_symbol</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">c2</span> <span class="o">=</span> <span class="n">stack_ch</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">c1</span> <span class="o">=</span> <span class="n">stack_ch</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">stack_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;)&#39;</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">stack_symbol</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">c2</span> <span class="o">=</span> <span class="n">stack_ch</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">c1</span> <span class="o">=</span> <span class="n">stack_ch</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">stack_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&#39;(&#39;</span><span class="p">):</span>
+            <span class="n">stack_symbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stack_ch</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">open_file</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">)</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">group</span><span class="p">)):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;transform before : &#39;</span><span class="p">,</span><span class="n">line</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">transform_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;transform after : &#39;</span><span class="p">,</span><span class="n">line</span>
+
+    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+
+    <span class="k">print</span> <span class="s">&#39;duration is&#39;</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span></code></pre></div>
+
+<h3 id="section">扯淡</h3>
+
+<p>思路：</p>
+
+<p>总的想法是通过运算符栈和字符栈来解决问题。</p>
+
+<p>入栈操作：将运算符和字符分别压入运算符栈和字符栈</p>
+
+<p>出栈操作：运算符正常pop出栈，字符栈pop弹出两个字符，并且与新弹出的运算符合并成新的字符压入字符栈</p>
+
+<p>遍历字符串，分别判断三种情况</p>
+
+<ul>
+  <li>
+    <p>当是字符时，字符进行入栈操作,这里有个特殊情况，当这个字符是最后一个字符时，进行完入栈操作后接着进行出栈操作</p>
+  </li>
+  <li>
+    <p>当字符为’)’时，进行出栈操作</p>
+  </li>
+  <li>
+    <p>当字符为运算符时，运算符执行入栈操作</p>
+  </li>
+</ul>
+
+<p>遍历而结束后运算符栈为空，而字符栈内剩一个，就是转换完后的字符串</p>
+
+<p>25 Mar 2014</p>
+
+  </article>
+
+  
+  <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+
+  var disqus_developer = 1;
+
+var disqus_shortname ='axemea';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div> 
+
+    <section class="pager">
+  
+  
+</section>
+
+
+  </div>
+  <div class="col-sm-2">
+<div class="sidebar-module about">
+  <h4>关于我</h4>
+  <img title="Zheng Yu" src="https://avatars1.githubusercontent.com/u/4532661?v=3&s=460" alt="Zheng Yu"/>
+  <span>曾经，最苦恼的是，被别人称作安静的美男子。现在，最苦恼的是，特么的这些竟然是真的。待你下次的转身，我会果断抱住你，然后大声地说，我要全世界都知道，我只是一名前端工程师。</span>
+  <br />
+
+  
+
+  You can contact me via:
+
+  
+  <a href="mailto:michaelcoco1991@gmail.com" title="mailto: michaelcoco1991@gmail.com">Email</a> /
+  
+  
+  <a href="https://github.com/axemea" title="GithubID: axemea">Github</a> /
+  
+  
+  <a href="https://twitter.com/zheng yu" title="TwitterID: zheng yu">Twitter</a>
+  
+
+  
+
+</div>
+
+<div class="sidebar-module"> <!-- sidebar-module-inset">-->
+  <h4>版权声明</h4>
+
+  
+
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+    <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+  </a>
+  <br />
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/s">Attribution-NonCommercial-ShareAlike</a>
+
+  
+
+</div>
+
+
+<div class="sidebar-module">
+  <h4>近期文章</h4>
+  
+  <li>
+  <a href="/axemea//extjs/2014/11/23/framwork-sleuth.html" title="Sleuth.js - 想用啥就用啥" rel="bookmark">Sleuth.js - 想用啥就用啥</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//javascript/2014/08/13/javascript-help.html" title="Javascript帮助手册" rel="bookmark">Javascript帮助手册</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/07/01/diff-html-xhtml.html" title="HTML、XHTML的区别" rel="bookmark">HTML、XHTML的区别</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//extjs/2014/06/11/extjs4-project-design.html" title="ExtJS前端项目构架探讨(二)" rel="bookmark">ExtJS前端项目构架探讨(二)</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/05/16/36kr-page-analysis.html" title="36kr首页结构分析" rel="bookmark">36kr首页结构分析</a>
+  </li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>分类目录</h4>
+  
+  <li><a href="/axemea/categories/#影评" title="影评" rel="1">影评 (1)</a></li>
+  
+  <li><a href="/axemea/categories/#书评" title="书评" rel="2">书评 (2)</a></li>
+  
+  <li><a href="/axemea/categories/#extjs" title="extjs" rel="4">extjs (4)</a></li>
+  
+  <li><a href="/axemea/categories/#python" title="python" rel="2">python (2)</a></li>
+  
+  <li><a href="/axemea/categories/#flask" title="flask" rel="1">flask (1)</a></li>
+  
+  <li><a href="/axemea/categories/#javascript" title="javascript" rel="2">javascript (2)</a></li>
+  
+  <li><a href="/axemea/categories/#html" title="html" rel="2">html (2)</a></li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>标签</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>良师益友</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>存档</h4>
+
+  
+  
+  
+  
+  
+  <li id="2014" > <a href="/axemea/archives/#2014">2014</a></li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li id="2013" > <a href="/axemea/archives/#2013">2013</a></li>
+  
+  
+  
+  
+  
+
+</div>
+
+
+</div>
+
+
+
+  
+
+  <footer class="site-footer">
+
+  <p>Copyright &copy; <a href="/axemea/">M的奇葩漂流</a></p>
+  <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> 
+  on 
+  
+  <a href="https://github.com/">Github</a>
+  
+  | Theme <a href="https://github.com/yulijia/freshman21/">Freshman21</a> Design by <a href="http://yulijia.net">Lijia Yu</a>  
+
+</footer>
+
+
+</div>
+
+</body>
+
+</html>

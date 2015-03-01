@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width initial-scale=1">
+
+<title>the-next-palindrome-SPOJ-5</title>
+<meta name="description" content="A positive integer is called a palindrome if its representation in the decimal system is the same when read from left to right and from right to left. For a ...">
+<meta name="keywords" content="Michael,blog,IT,javascript,front-end,internet">
+
+<link rel="icon" href="/axemea/images/favicon.ico">
+<link rel="stylesheet" href="/axemea/css/main.css">
+<link rel="canonical" href="http://axemea.github.io/python/2014/03/28/spoj-problem-the-next-palindrome.html">
+<link rel="alternate" type="application/atom+xml" title="M的奇葩漂流" href="http://axemea.github.io/zfeed.xml" />
+
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+  }
+});
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+
+$(document).ready(function(){
+  $(".flip").click(
+      function(){
+        $(".panel").toggle(500);
+      });
+});
+</script>
+
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    <h1 class="site-title"><a href="/axemea/">M的奇葩漂流</a></h1>
+    <h3 class="site-meta">人生如茶，空杯以对。对程序的态度，正如对生活的态度。</h3>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+        <a class="page-link" href="/axemea/">首页</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/about/">关于</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/archives/">文章</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/categories/">分类</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/guestbook/">作品</a>
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/axemea/tags/">推荐</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/zfeed.xml">订阅</a>
+        
+        
+        
+        
+        
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    
+
+  <div class="page-content col-sm-8">
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">the-next-palindrome-SPOJ-5</h1>
+  </header>
+
+  <article class="post-content about"> 
+    <p><code>
+A positive integer is called a palindrome if its representation in the decimal system is the same when read from left to right and from right to left. For a given positive integer K of not more than 1000000 digits, write the value of the smallest palindrome larger than K to output. Numbers are 
+always displayed without leading zeros.
+</code></p>
+
+<h3 id="input">INPUT</h3>
+
+<p>The first line contains integer t, the number of test cases. Integers K are given in the next t lines.</p>
+
+<h3 id="output">OUTPUT</h3>
+
+<p>For each K, output the smallest palindrome larger than K.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Input:</p>
+<pre>
+2
+808
+2133
+</pre>
+<p>Output:</p>
+<pre>
+818
+2222
+</pre>
+
+<h3 id="code">Code</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># -*- coding: utf-8 -*-   </span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Error opening input file: &quot;</span><span class="p">,</span><span class="n">filename</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+<span class="c">#去除空格</span>
+<span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+<span class="c">#将字符串换转成list</span>
+<span class="k">def</span> <span class="nf">str_to_list</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)):</span>
+        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="nb">list</span>
+
+<span class="c">#补零</span>
+<span class="k">def</span> <span class="nf">fill_zero</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;fill_zero&#39;</span>
+    <span class="n">lists</span> <span class="o">=</span> <span class="n">str_to_list</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lists</span><span class="p">)</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">l</span><span class="o">/</span><span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">middle</span><span class="p">):</span>
+        <span class="n">front</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">end</span> <span class="o">=</span>  <span class="n">l</span> <span class="o">-</span> <span class="n">front</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">lists</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">9</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">):</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">]</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="n">front</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;0&#39;</span>
+
+    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lists</span><span class="p">)</span>
+
+
+
+<span class="c">#预处理，先处理掉如99999这样最高位需要进位的数字</span>
+<span class="k">def</span> <span class="nf">pre_palindrome</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="n">_list</span> <span class="o">=</span> <span class="n">str_to_list</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_list</span><span class="p">)):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&#39;9&#39;</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">line</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c">#主函数递归</span>
+<span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;palindromes&#39;</span>
+    <span class="n">_list</span> <span class="o">=</span> <span class="n">str_to_list</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">_list</span><span class="p">)</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">l</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">_list</span><span class="p">[</span><span class="n">l</span> <span class="o">-</span> <span class="n">i</span>  <span class="o">-</span><span class="mi">1</span><span class="p">])):</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="bp">True</span>
+            
+        <span class="n">_list</span><span class="p">[</span><span class="n">l</span> <span class="o">-</span> <span class="n">i</span>  <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+
+    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_list</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fill_zero</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+  
+<span class="sd">&#39;&#39;&#39;if __name__ == &#39;__main__&#39;:</span>
+<span class="sd">    while True:</span>
+<span class="sd">        group = sys.stdin.readline()</span>
+<span class="sd">        for i in xrange(int(group)):</span>
+<span class="sd">            line = sys.stdin.readline()</span>
+<span class="sd">            print &#39;transform before : &#39;,line </span>
+<span class="sd">            line = transform_line(line)</span>
+<span class="sd">            print &#39;transform after : &#39;,line</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">open_file</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">)</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">trim</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">group</span><span class="p">)):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">line</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">pre_palindrome</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">palindrome</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;+&#39;</span><span class="p">,</span><span class="n">line</span>
+
+    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+
+    <span class="k">print</span> <span class="s">&#39;duration is&#39;</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span></code></pre></div>
+
+<h3 id="section">扯淡</h3>
+
+<p>思路</p>
+
+<ul>
+  <li>
+    <p>对输入值进行预处理，过滤掉需要最高位进位的数字，比如99,999,9999等</p>
+  </li>
+  <li>
+    <p>通过循环，将前面的数，赋值给后面，设置标志位，如果发现，前面各位上的数，都比后面的数小，则执行fill_zero方法，称之为补零方法，以219993为case来说，它的前面各位就比后面小，那么开始补零，从中间开始，为9，而9再增1，就要进位了，就直接赋值为0，然后比较第三位的9和第五位的9，相等，并且第三位的9如果再增1也要进位，则直接赋值为0，比较第二位的1和第六位的9，1还可以自增，就将其自增，当有一位数字自增后，数字肯定比以前大了，而且是最小的，所以，之后的比较位置，直接将前面的数字赋值给后面即可。</p>
+  </li>
+</ul>
+
+<p>28 Mar 2014</p>
+
+  </article>
+
+  
+  <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+
+  var disqus_developer = 1;
+
+var disqus_shortname ='axemea';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div> 
+
+    <section class="pager">
+  
+  
+</section>
+
+
+  </div>
+  <div class="col-sm-2">
+<div class="sidebar-module about">
+  <h4>关于我</h4>
+  <img title="Zheng Yu" src="https://avatars1.githubusercontent.com/u/4532661?v=3&s=460" alt="Zheng Yu"/>
+  <span>曾经，最苦恼的是，被别人称作安静的美男子。现在，最苦恼的是，特么的这些竟然是真的。待你下次的转身，我会果断抱住你，然后大声地说，我要全世界都知道，我只是一名前端工程师。</span>
+  <br />
+
+  
+
+  You can contact me via:
+
+  
+  <a href="mailto:michaelcoco1991@gmail.com" title="mailto: michaelcoco1991@gmail.com">Email</a> /
+  
+  
+  <a href="https://github.com/axemea" title="GithubID: axemea">Github</a> /
+  
+  
+  <a href="https://twitter.com/zheng yu" title="TwitterID: zheng yu">Twitter</a>
+  
+
+  
+
+</div>
+
+<div class="sidebar-module"> <!-- sidebar-module-inset">-->
+  <h4>版权声明</h4>
+
+  
+
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+    <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+  </a>
+  <br />
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/s">Attribution-NonCommercial-ShareAlike</a>
+
+  
+
+</div>
+
+
+<div class="sidebar-module">
+  <h4>近期文章</h4>
+  
+  <li>
+  <a href="/axemea//extjs/2014/11/23/framwork-sleuth.html" title="Sleuth.js - 想用啥就用啥" rel="bookmark">Sleuth.js - 想用啥就用啥</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//javascript/2014/08/13/javascript-help.html" title="Javascript帮助手册" rel="bookmark">Javascript帮助手册</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/07/01/diff-html-xhtml.html" title="HTML、XHTML的区别" rel="bookmark">HTML、XHTML的区别</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//extjs/2014/06/11/extjs4-project-design.html" title="ExtJS前端项目构架探讨(二)" rel="bookmark">ExtJS前端项目构架探讨(二)</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/05/16/36kr-page-analysis.html" title="36kr首页结构分析" rel="bookmark">36kr首页结构分析</a>
+  </li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>分类目录</h4>
+  
+  <li><a href="/axemea/categories/#影评" title="影评" rel="1">影评 (1)</a></li>
+  
+  <li><a href="/axemea/categories/#书评" title="书评" rel="2">书评 (2)</a></li>
+  
+  <li><a href="/axemea/categories/#extjs" title="extjs" rel="4">extjs (4)</a></li>
+  
+  <li><a href="/axemea/categories/#python" title="python" rel="2">python (2)</a></li>
+  
+  <li><a href="/axemea/categories/#flask" title="flask" rel="1">flask (1)</a></li>
+  
+  <li><a href="/axemea/categories/#javascript" title="javascript" rel="2">javascript (2)</a></li>
+  
+  <li><a href="/axemea/categories/#html" title="html" rel="2">html (2)</a></li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>标签</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>良师益友</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>存档</h4>
+
+  
+  
+  
+  
+  
+  <li id="2014" > <a href="/axemea/archives/#2014">2014</a></li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li id="2013" > <a href="/axemea/archives/#2013">2013</a></li>
+  
+  
+  
+  
+  
+
+</div>
+
+
+</div>
+
+
+
+  
+
+  <footer class="site-footer">
+
+  <p>Copyright &copy; <a href="/axemea/">M的奇葩漂流</a></p>
+  <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> 
+  on 
+  
+  <a href="https://github.com/">Github</a>
+  
+  | Theme <a href="https://github.com/yulijia/freshman21/">Freshman21</a> Design by <a href="http://yulijia.net">Lijia Yu</a>  
+
+</footer>
+
+
+</div>
+
+</body>
+
+</html>

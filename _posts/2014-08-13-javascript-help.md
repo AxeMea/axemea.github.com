@@ -1,20 +1,17 @@
 ---
-layout: default
+layout: page
 title: Javascript帮助手册
 category: javascript
 comments: true
 ---
 
-##{{ page.title }}
-
-***
 
 ###Array
 
 * concat()     
 连接两个或更多的数组，并返回结果。
 
-```javascript
+{% highlight  javascript %}
 
 var arr = new Array(3)
 arr[0] = "George"
@@ -30,14 +27,14 @@ document.write(arr.concat(arr2))
 
 George,John,Thomas,James,Adrew,Martin
 
-```
+{% endhighlight  javascript %}
 
 
 * join() 	
 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
 
 
-```javascript
+{% highlight  javascript %}
 
 var arr = new Array(3)
 arr[0] = "George"
@@ -48,7 +45,7 @@ document.write(arr.join("."))
 
 George.John.Thomas
 
-```
+{% endhighlight  javascript %}
 
 * pop() 	
 删除并返回数组的最后一个元素

@@ -1,11 +1,10 @@
 ---
-layout: default
+layout: page
 title: transform-the-expression-SPOJ-4
 category: python
 comments: true
 ---
 
-##{{ page.title }}
 
 ```
 Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no expressions like a*b*c). 
@@ -26,20 +25,21 @@ The expressions in RPN form, one per line.
 ###Example
 
 Input:
-```
+<pre>
 3
 (a+(b*c))
 ((a+b)*(z+x))
 ((a+t)*((b+(a+c))^(c+d)))
-
+</pre>
 Output:
+<pre>
 abc*+
 ab+zx+*
 at+bac++cd+^*
-```
+</pre>
 
-###Code
-```python
+
+{% highlight python %}
 import sys
 import time
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     file.close();
 
     print 'duration is',time.time() - start
-```
+{% endhighlight html %}
 
 ###扯淡
 

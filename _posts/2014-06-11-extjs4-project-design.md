@@ -1,11 +1,9 @@
 ---
-layout: default
+layout: page
 title: ExtJS前端项目构架探讨(二)
 category: ExtJS
 comments: true
 ---
-
-##{{ page.title }}
 
 ###开发模式
 
@@ -15,7 +13,7 @@ comments: true
 
 这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：
 
-```
+<pre>
 project_pub-
             app-
                 controller-
@@ -29,9 +27,9 @@ project_pub-
                 ...
             ...
                   
-```
+</pre>
 
-```
+<pre>
 project_dev-
             moduleA-   
 		            app-
@@ -50,8 +48,7 @@ project_dev-
 		                ...
 		            ...
 		    ...
-                  
-```
+ </pre>
 
 ###国际化
 
@@ -65,7 +62,7 @@ project_dev-
 
 验证器是通过组建的vtype属性来设置，监听的change事件。框架里预置了几种验证器，但为了适应项目需求，大部分的验证还是只能通过自己扩展的。扩展的方法是重写Ext.form.field.VTypes，类似如下：
 
-```javascript
+{% highlight javascript %}
 Ext.apply(Ext.form.field.VTypes,{
 	type1:function(val,field){
 		if(val.length >= 4)
@@ -75,11 +72,11 @@ Ext.apply(Ext.form.field.VTypes,{
 	},
 	type1Text:'长度大于4',
 });               
-```
+{% endhighlight javascript %}
 
 为了扩展的自由度，还多扩展了几个方法，代码如下：
 
-```javascript
+{% highlight javascript %}
 Ext.apply(Ext.form.field.VTypes,{
 	/*三种基础正则表达式的方法*/
 	regexTest:function(reg,text){
@@ -141,8 +138,7 @@ Ext.apply(Ext.form.field.VTypes,{
 	},
 	...
 });
-                  
-```
+{% endhighlight javascript %}
 
 ###事件机制
 

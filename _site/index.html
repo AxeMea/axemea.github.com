@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width initial-scale=1">
+
+<title>M的奇葩漂流</title>
+<meta name="description" content="Michael的技术与生活博客">
+<meta name="keywords" content="Michael,blog,IT,javascript,front-end,internet">
+
+<link rel="icon" href="/axemea/images/favicon.ico">
+<link rel="stylesheet" href="/axemea/css/main.css">
+<link rel="canonical" href="http://axemea.github.io/">
+<link rel="alternate" type="application/atom+xml" title="M的奇葩漂流" href="http://axemea.github.io/zfeed.xml" />
+
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+  }
+});
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+
+$(document).ready(function(){
+  $(".flip").click(
+      function(){
+        $(".panel").toggle(500);
+      });
+});
+</script>
+
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    <h1 class="site-title"><a href="/axemea/">M的奇葩漂流</a></h1>
+    <h3 class="site-meta">人生如茶，空杯以对。对程序的态度，正如对生活的态度。</h3>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+        <a class="page-link" href="/axemea/">首页</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/about/">关于</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/archives/">文章</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/categories/">分类</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/guestbook/">作品</a>
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/axemea/tags/">推荐</a>
+        
+        
+        
+        <a class="page-link" href="/axemea/zfeed.xml">订阅</a>
+        
+        
+        
+        
+        
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    
+
+  <div class="page-content col-sm-8">
+    <div class="home">
+  <div class="post">
+    
+    
+  
+    <header class="post-header">
+      <h1 class="post-title">
+        <a class="post-link" href="/axemea/extjs/2014/11/23/framwork-sleuth.html">Sleuth.js - 想用啥就用啥</a>
+      </h1>
+      <p class="post-meta">
+      目录:
+      
+      <a href="/axemea/categories/#extjs">extjs</a>&nbsp;
+      
+      
+      | 发表时间: Nov 23, 2014
+      </p>
+    </header>
+
+    <article class="post-content">
+      <p>Github:<a href="https://github.com/AxeMea/Sleuth.js">https://github.com/AxeMea/Sleuth.js</a></p>
+
+<p>oschina:<a href="http://my.oschina.net/u/1420701/blog/347360">http://http://my.oschina.net/u/1420701/blog/347360</a></p>
+
+<p>靠这个还上过某周的top博主，哈哈哈</p>
+
+<h4 id="sleuthjs">一.Sleuth.js是什么</h4>
+
+<p>Sleuth是一个加载框架，它允许开发者只需要require相应的库或者插件，不需要去下载，就可以直接使用，并且允许开发者任意切换版本。</p>
+
+<h4 id="sleuthjs-1">二.使用Sleuth.js</h4>
+
+<h5 id="sleuthjs-2">1.引入Sleuth.js库文件</h5>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;sleuth.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+<p>先后引用mapping-ch.min.js,sleuth.min.js文件，注意顺序。mapping-ch.min.js是库的版本映射文件，定义了引用各个库和插件的源地址。默认的引用的是一个公共的映射文件，当然开发者也可以定义自己的映射文件。</p>
+
+<h5 id="section">2.使用方法</h5>
+
+<p>Sleuth.js只向外提供了一个require方法</p>
+
+<p>1-只加载一个库</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="c1">//加载一个库</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="c1">//write your code </span>
+<span class="p">});</span></code></pre></div>
+
+<p>2-加载多个库</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//加载多个库</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;prototype&#39;</span><span class="p">,</span><span class="s1">&#39;response&#39;</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+<span class="c1">//write your code </span>
+<span class="p">});</span></code></pre></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>3-选择版本加载，格式为“库</td>
+      <td>版本号”，如果没有显式定义版本，则选取映射文件中对应库的第一个版本。</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//选择版本加载</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;jquery|1.8.3&#39;</span><span class="p">,</span><span class="s1">&#39;prototype&#39;</span><span class="p">,</span><span class="s1">&#39;response&#39;</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+<span class="c1">//write your code </span>
+<span class="p">});</span></code></pre></div>
+
+<h4 id="section-1">三.定义版本映射文件</h4>
+
+<p>初始的映射文件为：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="nx">prototype</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.7.2&#39;</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js&#39;</span>
+			<span class="p">},</span>
+			<span class="nx">jquery</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.8.3&#39;</span><span class="o">:</span><span class="s1">&#39;http://code.jquery.com/jquery-1.8.3.min.js&#39;</span><span class="p">,</span>
+				<span class="s1">&#39;1.8.2&#39;</span><span class="o">:</span><span class="s1">&#39;http://code.jquery.com/jquery-1.8.2.min.js&#39;</span>
+			<span class="p">},</span>
+			<span class="nx">ext</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;4.2.1&#39;</span><span class="o">:</span><span class="p">{</span>
+					<span class="nx">u</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&#39;</span><span class="p">,</span>
+					<span class="nx">c</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&#39;</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="nx">backbone</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.1.2&#39;</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js&#39;</span>
+			<span class="p">},</span>
+			<span class="nx">response</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;0.9.1+201410311050&#39;</span><span class="o">:</span><span class="s1">&#39;http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js&#39;</span>
+			<span class="p">}</span>
+
+		<span class="p">};</span>
+<span class="p">};</span></code></pre></div>
+
+<p>开发者如果需要其它的库或者插件可以Pull Request过来，我们将丰富到映射文件中去，当然开发者也可以编写自己的本地映射配置文件。但我们真诚的希望，您能将您的需求提交给我们，你需要的，必然他人也需要，谢谢。</p>
+
+<h4 id="section-2">四.映射配置文件配置项说明</h4>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="c1">//单版本配置</span>
+			<span class="nx">prototype</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.7.2&#39;</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js&#39;</span>
+			<span class="p">},</span>
+			<span class="c1">//多版本配置</span>
+			<span class="nx">jquery</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.8.3&#39;</span><span class="o">:</span><span class="s1">&#39;http://code.jquery.com/jquery-1.8.3.min.js&#39;</span><span class="p">,</span>
+				<span class="s1">&#39;1.8.2&#39;</span><span class="o">:</span><span class="s1">&#39;http://code.jquery.com/jquery-1.8.2.min.js&#39;</span>
+			<span class="p">},</span>
+			<span class="c1">//带一个css的库的配置</span>
+			<span class="nx">ext</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;4.2.1&#39;</span><span class="o">:</span><span class="p">{</span>
+					<span class="c1">//url</span>
+					<span class="nx">u</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&#39;</span><span class="p">,</span>
+					<span class="c1">//css</span>
+					<span class="nx">c</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&#39;</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="c1">//带多个css的库的配置</span>
+			<span class="nx">demo</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;1.0&#39;</span><span class="o">:</span><span class="p">{</span>
+					<span class="nx">u</span><span class="o">:</span><span class="s1">&#39;demo.js&#39;</span><span class="p">,</span>
+					<span class="nx">c</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;demo1.css&#39;</span><span class="p">,</span><span class="s1">&#39;demo2.css&#39;</span><span class="p">]</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+<span class="p">};</span></code></pre></div>
+
+<p>需要值得注意的是，在配置版本顺序的时候，推荐最新版本的写在前面，这样默认的话，选择的就是最新版本。</p>
+
+<h4 id="section-3">五.关于引用地址</h4>
+
+<p>可以是各个cdn点的资源如：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="nx">ext</span><span class="o">:</span><span class="p">{</span>
+				<span class="s1">&#39;4.2.1&#39;</span><span class="o">:</span><span class="p">{</span>
+					<span class="c1">//url</span>
+					<span class="nx">u</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js&#39;</span><span class="p">,</span>
+					<span class="c1">//css</span>
+					<span class="nx">c</span><span class="o">:</span><span class="s1">&#39;http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css&#39;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+
+<span class="p">};</span></code></pre></div>
+
+<p>如果想引用github中开源库的代码，需要注意的是其引用地址，比如Sleuth.js,
+<a href="https://github.com/AxeMea/Sleuth/blob/master/sleuth.js">Sleuth.js</a> 
+这个地址是不行的，需要的是直接访问文件系统的地址，
+<a href="https://rawgithub.com/axemea/sleuth/master/sleuth.js">Sleuth.js</a></p>
+
+<h4 id="amdcommonjs">六.支持AMD,CommonJS规范</h4>
+
+<h5 id="amd">AMD规范</h5>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;sleuth&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Sleuth</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="err">　　　　</span><span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;jquery|1.8.3&#39;</span><span class="p">,</span><span class="s1">&#39;prototype&#39;</span><span class="p">,</span><span class="s1">&#39;response&#39;</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+
+			<span class="c1">//write your code </span>
+
+			<span class="p">});</span>
+	<span class="err">　　</span><span class="p">});</span></code></pre></div>
+
+<h5 id="commonjs">CommonJS规范</h5>
+
+<h4 id="section-4">七.公共映射配置文件库以及插件列表[及时更新]</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>库名</th>
+      <th>版本号</th>
+      <th>脚本引用地址</th>
+      <th>样式引用地址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>prototype</td>
+      <td>1.7.2</td>
+      <td>http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>jquery</td>
+      <td>1.8.3</td>
+      <td>http://code.jquery.com/jquery-1.8.3.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>1.8.2</td>
+      <td>http://code.jquery.com/jquery-1.8.2.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ext</td>
+      <td>4.2.1</td>
+      <td>http://cdn.bootcss.com/extjs/4.2.1/ext-all.js</td>
+      <td>http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css</td>
+    </tr>
+    <tr>
+      <td>backbone</td>
+      <td>1.1.2</td>
+      <td>http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>response</td>
+      <td>0.9.1+201410311050</td>
+      <td>http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>23 Nov 2014</p>
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 class="post-title">
+        <a class="post-link" href="/axemea/javascript/2014/08/13/javascript-help.html">Javascript帮助手册</a>
+      </h1>
+      <p class="post-meta">
+      目录:
+      
+      <a href="/axemea/categories/#javascript">javascript</a>&nbsp;
+      
+      
+      | 发表时间: Aug 13, 2014
+      </p>
+    </header>
+
+    <article class="post-content">
+      <h3 id="array">Array</h3>
+
+<ul>
+  <li>concat()   <br />
+连接两个或更多的数组，并返回结果。</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;George&quot;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Thomas&quot;</span>
+
+<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nx">arr2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;James&quot;</span>
+<span class="nx">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Adrew&quot;</span>
+<span class="nx">arr2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Martin&quot;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr2</span><span class="p">))</span>
+
+<span class="nx">George</span><span class="p">,</span><span class="nx">John</span><span class="p">,</span><span class="nx">Thomas</span><span class="p">,</span><span class="nx">James</span><span class="p">,</span><span class="nx">Adrew</span><span class="p">,</span><span class="nx">Martin</span></code></pre></div>
+
+<ul>
+  <li>join() 	
+把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;George&quot;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Thomas&quot;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+
+<span class="nx">George</span><span class="p">.</span><span class="nx">John</span><span class="p">.</span><span class="nx">Thomas</span></code></pre></div>
+
+<ul>
+  <li>pop() 	
+删除并返回数组的最后一个元素</li>
+  <li>push() 	
+向数组的末尾添加一个或更多元素，并返回新的长度。</li>
+  <li>reverse() 	
+颠倒数组中元素的顺序。</li>
+  <li>shift() 	
+删除并返回数组的第一个元素</li>
+  <li>slice() 	
+从某个已有的数组返回选定的元素</li>
+  <li>sort() 	
+对数组的元素进行排序</li>
+  <li>splice() 	
+删除元素，并向数组添加新元素。</li>
+  <li>toSource() 	
+返回该对象的源代码。</li>
+  <li>toString() 	
+把数组转换为字符串，并返回结果。</li>
+  <li>toLocaleString() 	
+把数组转换为本地数组，并返回结果。</li>
+  <li>unshift() 	
+向数组的开头添加一个或更多元素，并返回新的长度。</li>
+  <li>valueOf() 	
+返回数组对象的原始值</li>
+</ul>
+
+<hr />
+
+<h3 id="boolean">Boolean</h3>
+
+<ul>
+  <li>toSource()   <br />
+返回该对象的源代码。</li>
+  <li>toString() 	
+把逻辑值转换为字符串，并返回结果。</li>
+  <li>valueOf() 	
+返回 Boolean 对象的原始值。</li>
+</ul>
+
+<hr />
+
+<h3 id="date">Date</h3>
+
+<ul>
+  <li>Date()   <br />
+返回当日的日期和时间。</li>
+  <li>getDate() 	
+从 Date 对象返回一个月中的某一天 (1 ~ 31)。</li>
+  <li>getDay() 	
+从 Date 对象返回一周中的某一天 (0 ~ 6)。</li>
+  <li>getMonth() 	
+从 Date 对象返回月份 (0 ~ 11)。</li>
+  <li>getFullYear() 	
+从 Date 对象以四位数字返回年份。</li>
+  <li>getYear() 	
+请使用 getFullYear() 方法代替。</li>
+  <li>getHours() 	
+返回 Date 对象的小时 (0 ~ 23)。</li>
+  <li>getMinutes() 	
+返回 Date 对象的分钟 (0 ~ 59)。</li>
+  <li>getSeconds() 	
+返回 Date 对象的秒数 (0 ~ 59)。</li>
+  <li>getMilliseconds() 	
+返回 Date 对象的毫秒(0 ~ 999)。</li>
+  <li>getTime() 	
+返回 1970 年 1 月 1 日至今的毫秒数。</li>
+  <li>getTimezoneOffset() 	
+返回本地时间与格林威治标准时间 (GMT) 的分钟差。</li>
+  <li>getUTCDate() 	
+根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</li>
+  <li>getUTCDay() 	
+根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</li>
+  <li>getUTCMonth() 	
+根据世界时从 Date 对象返回月份 (0 ~ 11)。</li>
+  <li>getUTCFullYear() 	
+根据世界时从 Date 对象返回四位数的年份。</li>
+  <li>getUTCHours() 	
+根据世界时返回 Date 对象的小时 (0 ~ 23)。</li>
+  <li>getUTCMinutes() 	
+根据世界时返回 Date 对象的分钟 (0 ~ 59)。</li>
+  <li>getUTCSeconds() 	
+根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</li>
+  <li>getUTCMilliseconds() 	
+根据世界时返回 Date 对象的毫秒(0 ~ 999)。</li>
+  <li>parse() 	
+返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</li>
+  <li>setDate() 	
+设置 Date 对象中月的某一天 (1 ~ 31)。</li>
+  <li>setMonth() 	
+设置 Date 对象中月份 (0 ~ 11)。</li>
+  <li>setFullYear() 	
+设置 Date 对象中的年份（四位数字）。</li>
+  <li>setYear() 	
+请使用 setFullYear() 方法代替。</li>
+  <li>setHours() 	
+设置 Date 对象中的小时 (0 ~ 23)。</li>
+  <li>setMinutes() 	
+设置 Date 对象中的分钟 (0 ~ 59)。</li>
+  <li>setSeconds() 	
+设置 Date 对象中的秒钟 (0 ~ 59)。</li>
+  <li>setMilliseconds() 	
+设置 Date 对象中的毫秒 (0 ~ 999)。</li>
+  <li>setTime() 	
+以毫秒设置 Date 对象。</li>
+  <li>setUTCDate() 	
+根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</li>
+  <li>setUTCMonth() 	
+根据世界时设置 Date 对象中的月份 (0 ~ 11)。</li>
+  <li>setUTCFullYear() 	
+根据世界时设置 Date 对象中的年份（四位数字）。</li>
+  <li>setUTCHours() 	
+根据世界时设置 Date 对象中的小时 (0 ~ 23)。</li>
+  <li>setUTCMinutes() 	
+根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</li>
+  <li>setUTCSeconds() 	
+根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</li>
+  <li>setUTCMilliseconds() 	
+根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</li>
+  <li>toSource() 	
+返回该对象的源代码。</li>
+  <li>toString() 	
+把 Date 对象转换为字符串。</li>
+  <li>toTimeString() 	
+把 Date 对象的时间部分转换为字符串。</li>
+  <li>toDateString() 	
+把 Date 对象的日期部分转换为字符串。</li>
+  <li>toGMTString() 	
+请使用 toUTCString() 方法代替。</li>
+  <li>toUTCString() 	
+根据世界时，把 Date 对象转换为字符串。</li>
+  <li>toLocaleString() 	
+根据本地时间格式，把 Date 对象转换为字符串。</li>
+  <li>toLocaleTimeString() 	
+根据本地时间格式，把 Date 对象的时间部分转换为字符串。</li>
+  <li>toLocaleDateString() 	
+根据本地时间格式，把 Date 对象的日期部分转换为字符串。</li>
+  <li>UTC() 	
+根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</li>
+  <li>valueOf() 	
+返回 Date 对象的原始值。</li>
+</ul>
+
+<hr />
+
+<h3 id="math">Math</h3>
+
+<ul>
+  <li>abs(x) 	
+返回数的绝对值。</li>
+  <li>acos(x) 	
+返回数的反余弦值。</li>
+  <li>asin(x) 	
+返回数的反正弦值。</li>
+  <li>atan(x) 	
+以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值。</li>
+  <li>atan2(y,x) 	
+返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）。</li>
+  <li>ceil(x) 	
+对数进行上舍入。</li>
+  <li>cos(x) 	
+返回数的余弦。</li>
+  <li>exp(x) 	
+返回 e 的指数。</li>
+  <li>floor(x) 	
+对数进行下舍入。</li>
+  <li>log(x) 	
+返回数的自然对数（底为e）。</li>
+  <li>max(x,y) 	
+返回 x 和 y 中的最高值。</li>
+  <li>min(x,y) 	
+返回 x 和 y 中的最低值。</li>
+  <li>pow(x,y) 	
+返回 x 的 y 次幂。</li>
+  <li>random() 	
+返回 0 ~ 1 之间的随机数。</li>
+  <li>round(x) 	
+把数四舍五入为最接近的整数。</li>
+  <li>sin(x) 	
+返回数的正弦。</li>
+  <li>sqrt(x) 	
+返回数的平方根。</li>
+  <li>tan(x) 	
+返回角的正切。</li>
+  <li>toSource() 	
+返回该对象的源代码。</li>
+  <li>valueOf() 	
+返回 Math 对象的原始值。</li>
+</ul>
+
+<hr />
+
+<h3 id="number">Number</h3>
+
+<ul>
+  <li>toString 	
+把数字转换为字符串，使用指定的基数。</li>
+  <li>toLocaleString 	
+把数字转换为字符串，使用本地数字格式顺序。</li>
+  <li>toFixed 	
+把数字转换为字符串，结果的小数点后有指定位数的数字。</li>
+  <li>toExponential 	
+把对象的值转换为指数计数法。</li>
+  <li>toPrecision 	
+把数字格式化为指定的长度。</li>
+  <li>valueOf 	
+返回一个 Number 对象的基本数字值。</li>
+</ul>
+
+<hr />
+
+<h3 id="string">String</h3>
+
+<ul>
+  <li>anchor() 	
+创建 HTML 锚。</li>
+  <li>big() 	
+用大号字体显示字符串。</li>
+  <li>blink() 	
+显示闪动字符串。</li>
+  <li>bold() 	
+使用粗体显示字符串。</li>
+  <li>charAt() 	
+返回在指定位置的字符。</li>
+  <li>charCodeAt() 	
+返回在指定的位置的字符的 Unicode 编码。</li>
+  <li>concat() 	
+连接字符串。</li>
+  <li>fixed() 	
+以打字机文本显示字符串。</li>
+  <li>fontcolor() 	
+使用指定的颜色来显示字符串。</li>
+  <li>fontsize() 	
+使用指定的尺寸来显示字符串。</li>
+  <li>fromCharCode() 	
+从字符编码创建一个字符串。</li>
+  <li>indexOf() 	
+检索字符串。</li>
+  <li>italics() 	
+使用斜体显示字符串。</li>
+  <li>lastIndexOf() 	
+从后向前搜索字符串。</li>
+  <li>link() 	
+将字符串显示为链接。</li>
+  <li>localeCompare() 	
+用本地特定的顺序来比较两个字符串。</li>
+  <li>match() 	
+找到一个或多个正则表达式的匹配。</li>
+  <li>replace() 	
+替换与正则表达式匹配的子串。</li>
+  <li>search() 	
+检索与正则表达式相匹配的值。</li>
+  <li>slice() 	
+提取字符串的片断，并在新的字符串中返回被提取的部分。</li>
+  <li>small() 	
+使用小字号来显示字符串。</li>
+  <li>split() 	
+把字符串分割为字符串数组。</li>
+  <li>strike() 	
+使用删除线来显示字符串。</li>
+  <li>sub() 	
+把字符串显示为下标。</li>
+  <li>substr() 	
+从起始索引号提取字符串中指定数目的字符。</li>
+  <li>substring() 	
+提取字符串中两个指定的索引号之间的字符。</li>
+  <li>sup() 	
+把字符串显示为上标。</li>
+  <li>toLocaleLowerCase() 	
+把字符串转换为小写。</li>
+  <li>toLocaleUpperCase() 	
+把字符串转换为大写。</li>
+  <li>toLowerCase() 	
+把字符串转换为小写。</li>
+  <li>toUpperCase() 	
+把字符串转换为大写。</li>
+  <li>toSource() 	
+代表对象的源代码。</li>
+  <li>toString() 	
+返回字符串。</li>
+  <li>valueOf() 	
+返回某个字符串对象的原始值。</li>
+</ul>
+
+<hr />
+
+<h3 id="regexp">RegExp</h3>
+
+<ul>
+  <li>compile 	
+编译正则表达式。 	ff:1 	ie:4</li>
+  <li>exec 	
+检索字符串中指定的值。返回找到的值，并确定其位置。 	ff:1 	ie:4</li>
+  <li>test 	
+检索字符串中指定的值。返回 true 或 false。</li>
+</ul>
+
+<hr />
+
+<h3 id="section">全局函数</h3>
+
+<ul>
+  <li>decodeURI() 	
+解码某个编码的 URI。</li>
+  <li>decodeURIComponent() 	
+解码一个编码的 URI 组件。</li>
+  <li>encodeURI() 	
+把字符串编码为 URI。</li>
+  <li>encodeURIComponent() 	
+把字符串编码为 URI 组件。</li>
+  <li>escape() 	
+对字符串进行编码。</li>
+  <li>eval() 	
+计算 JavaScript 字符串，并把它作为脚本代码来执行。</li>
+  <li>getClass() 	
+返回一个 JavaObject 的 JavaClass。</li>
+  <li>isFinite() 	
+检查某个值是否为有穷大的数。</li>
+  <li>isNaN() 	
+检查某个值是否是数字。</li>
+  <li>Number() 	
+把对象的值转换为数字。</li>
+  <li>parseFloat() 	
+解析一个字符串并返回一个浮点数。</li>
+  <li>parseInt() 	
+解析一个字符串并返回一个整数。</li>
+  <li>String() 	
+把对象的值转换为字符串。</li>
+  <li>unescape() 	
+对由 escape() 编码的字符串进行解码。</li>
+</ul>
+
+<hr />
+
+<h3 id="window">Window</h3>
+
+<ul>
+  <li>closed 	
+返回窗口是否已被关闭。</li>
+  <li>defaultStatus 	
+设置或返回窗口状态栏中的默认文本。</li>
+  <li>document 	
+对 Document 对象的只读引用。请参阅 Document 对象。</li>
+  <li>history 	
+对 History 对象的只读引用。请参数 History 对象。</li>
+  <li>innerheight 	
+返回窗口的文档显示区的高度。</li>
+  <li>innerwidth 	
+返回窗口的文档显示区的宽度。</li>
+  <li>length 	
+设置或返回窗口中的框架数量。</li>
+  <li>location 	
+用于窗口或框架的 Location 对象。请参阅 Location 对象。</li>
+  <li>name 	
+设置或返回窗口的名称。</li>
+  <li>Navigator 	
+对 Navigator 对象的只读引用。请参数 Navigator 对象。</li>
+  <li>opener 	
+返回对创建此窗口的窗口的引用。</li>
+  <li>outerheight 	
+返回窗口的外部高度。</li>
+  <li>outerwidth 	
+返回窗口的外部宽度。</li>
+  <li>pageXOffset 	
+设置或返回当前页面相对于窗口显示区左上角的 X 位置。</li>
+  <li>pageYOffset 	
+设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</li>
+  <li>parent 	
+返回父窗口。</li>
+  <li>Screen 	
+对 Screen 对象的只读引用。请参数 Screen 对象。</li>
+  <li>self 	
+返回对当前窗口的引用。等价于 Window 属性。</li>
+  <li>status 	
+设置窗口状态栏的文本。</li>
+  <li>top 	
+返回最顶层的先辈窗口。</li>
+  <li>window 	
+window 属性等价于 self 属性，它包含了对窗口自身的引用。</li>
+  <li>screenLeft screenTop screenX screenY&lt;/br&gt;
+只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。</li>
+  <li>alert() 	
+显示带有一段消息和一个确认按钮的警告框。</li>
+  <li>blur() 	
+把键盘焦点从顶层窗口移开。</li>
+  <li>clearInterval() 	
+取消由 setInterval() 设置的 timeout。</li>
+  <li>clearTimeout() 	
+取消由 setTimeout() 方法设置的 timeout。</li>
+  <li>close() 	
+关闭浏览器窗口。</li>
+  <li>confirm() 	
+显示带有一段消息以及确认按钮和取消按钮的对话框。</li>
+  <li>createPopup() 	
+创建一个 pop-up 窗口。</li>
+  <li>focus() 	
+把键盘焦点给予一个窗口。</li>
+  <li>moveBy() 	
+可相对窗口的当前坐标把它移动指定的像素。</li>
+  <li>moveTo() 	
+把窗口的左上角移动到一个指定的坐标。</li>
+  <li>open() 	
+打开一个新的浏览器窗口或查找一个已命名的窗口。</li>
+  <li>print() 	
+打印当前窗口的内容。</li>
+  <li>prompt() 	
+显示可提示用户输入的对话框。</li>
+  <li>resizeBy() 	
+按照指定的像素调整窗口的大小。</li>
+  <li>resizeTo() 	
+把窗口的大小调整到指定的宽度和高度。</li>
+  <li>scrollBy() 	
+按照指定的像素值来滚动内容。</li>
+  <li>scrollTo() 	
+把内容滚动到指定的坐标。</li>
+  <li>setInterval() 	
+按照指定的周期（以毫秒计）来调用函数或计算表达式。</li>
+  <li>setTimeout() 	
+在指定的毫秒数后调用函数或计算表达式。</li>
+</ul>
+
+<hr />
+
+<h3 id="navigator">Navigator</h3>
+
+<ul>
+  <li>appCodeName 	
+返回浏览器的代码名。</li>
+  <li>appMinorVersion 	
+返回浏览器的次级版本。</li>
+  <li>appName 	
+返回浏览器的名称。</li>
+  <li>appVersion 	
+返回浏览器的平台和版本信息。</li>
+  <li>browserLanguage 	
+返回当前浏览器的语言。</li>
+  <li>cookieEnabled 	
+返回指明浏览器中是否启用 cookie 的布尔值。</li>
+  <li>cpuClass 	
+返回浏览器系统的 CPU 等级。</li>
+  <li>onLine 	
+返回指明系统是否处于脱机模式的布尔值。</li>
+  <li>platform 	
+返回运行浏览器的操作系统平台。</li>
+  <li>systemLanguage 	
+返回 OS 使用的默认语言。</li>
+  <li>userAgent 	
+返回由客户机发送服务器的 user-agent 头部的值。</li>
+  <li>
+    <p>userLanguage 	
+返回 OS 的自然语言设置。</p>
+  </li>
+  <li>javaEnabled() 	
+规定浏览器是否启用 Java。</li>
+  <li>taintEnabled() 	
+规定浏览器是否启用数据污点 (data tainting)。</li>
+</ul>
+
+<hr />
+
+<h3 id="screen">Screen</h3>
+
+<ul>
+  <li>availHeight 	
+返回显示屏幕的高度 (除 Windows 任务栏之外)。</li>
+  <li>availWidth 	
+返回显示屏幕的宽度 (除 Windows 任务栏之外)。</li>
+  <li>bufferDepth 	
+设置或返回调色板的比特深度。</li>
+  <li>colorDepth 	
+返回目标设备或缓冲器上的调色板的比特深度。</li>
+  <li>deviceXDPI 	
+返回显示屏幕的每英寸水平点数。</li>
+  <li>deviceYDPI 	
+返回显示屏幕的每英寸垂直点数。</li>
+  <li>fontSmoothingEnabled 	
+返回用户是否在显示控制面板中启用了字体平滑。</li>
+  <li>height 	
+返回显示屏幕的高度。</li>
+  <li>logicalXDPI 	
+返回显示屏幕每英寸的水平方向的常规点数。</li>
+  <li>logicalYDPI 	
+返回显示屏幕每英寸的垂直方向的常规点数。</li>
+  <li>pixelDepth 	
+返回显示屏幕的颜色分辨率（比特每像素）。</li>
+  <li>updateInterval 	
+设置或返回屏幕的刷新率。</li>
+  <li>width 	
+返回显示器屏幕的宽度。</li>
+</ul>
+
+<hr />
+
+<h3 id="history">History</h3>
+
+<ul>
+  <li>length 	
+返回浏览器历史列表中的 URL 数量。</li>
+  <li>back() 	
+加载 history 列表中的前一个 URL。</li>
+  <li>forward() 	
+加载 history 列表中的下一个 URL。</li>
+  <li>go() 	
+加载 history 列表中的某个具体页面。</li>
+</ul>
+
+<hr />
+
+<h3 id="location">Location</h3>
+
+<ul>
+  <li>hash 	
+设置或返回从井号 (#) 开始的 URL（锚）。</li>
+  <li>host 	
+设置或返回主机名和当前 URL 的端口号。</li>
+  <li>hostname 	
+设置或返回当前 URL 的主机名。</li>
+  <li>href 	
+设置或返回完整的 URL。</li>
+  <li>pathname 	
+设置或返回当前 URL 的路径部分。</li>
+  <li>port 	
+设置或返回当前 URL 的端口号。</li>
+  <li>protocol 	
+设置或返回当前 URL 的协议。</li>
+  <li>search 	
+设置或返回从问号 (?) 开始的 URL（查询部分）。</li>
+</ul>
+
+<hr />
+
+<h3 id="document">Document</h3>
+
+<ul>
+  <li>body 	
+提供对 &lt;body&gt; 元素的直接访问。对于定义了框架集的文档，该属性引用最外层的 <frameset>。</frameset></li>
+  <li>cookie 	
+设置或返回与当前文档有关的所有 cookie。</li>
+  <li>domain 	
+返回当前文档的域名。</li>
+  <li>lastModified 	
+返回文档被最后修改的日期和时间。</li>
+  <li>referrer 	
+返回载入当前文档的文档的 URL。</li>
+  <li>title 	
+返回当前文档的标题。</li>
+  <li>URL 	
+返回当前文档的 URL。</li>
+  <li>close() 	
+关闭用 document.open() 方法打开的输出流，并显示选定的数据。</li>
+  <li>getElementById() 	
+返回对拥有指定 id 的第一个对象的引用。</li>
+  <li>getElementsByName() 	
+返回带有指定名称的对象集合。</li>
+  <li>getElementsByTagName() 	
+返回带有指定标签名的对象集合。</li>
+  <li>open() 	
+打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。</li>
+  <li>write() 	
+向文档写 HTML 表达式 或 JavaScript 代码。</li>
+  <li>writeln() 	
+等同于 write() 方法，不同的是在每个表达式之后写一个换行符。</li>
+</ul>
+
+<hr />
+
+<h3 id="dom-element">DOM Element</h3>
+
+<ul>
+  <li>element.accessKey 	
+设置或返回元素的快捷键。</li>
+  <li>element.appendChild() 	
+向元素添加新的子节点，作为最后一个子节点。</li>
+  <li>element.attributes 	
+返回元素属性的 NamedNodeMap。</li>
+  <li>element.childNodes 
+返回元素子节点的 NodeList。</li>
+  <li>element.className 	
+设置或返回元素的 class 属性。</li>
+  <li>element.clientHeight 	
+返回元素的可见高度。</li>
+  <li>element.clientWidth 	
+返回元素的可见宽度。</li>
+  <li>element.cloneNode() 	
+克隆元素。</li>
+  <li>element.compareDocumentPosition() 	
+比较两个元素的文档位置。</li>
+  <li>element.contentEditable 	
+设置或返回元素的文本方向。</li>
+  <li>element.dir 	
+设置或返回元素的文本方向。</li>
+  <li>element.firstChild 	
+返回元素的首个子。</li>
+  <li>element.getAttribute() 	
+返回元素节点的指定属性值。</li>
+  <li>element.getAttributeNode() 	
+返回指定的属性节点。</li>
+  <li>element.getElementsByTagName() 	
+返回拥有指定标签名的所有子元素的集合。</li>
+  <li>element.getFeature() 	
+返回实现了指定特性的 API 的某个对象。</li>
+  <li>element.getUserData() 	
+返回关联元素上键的对象。</li>
+  <li>element.hasAttribute() 	
+如果元素拥有指定属性，则返回true，否则返回 false。</li>
+  <li>element.hasAttributes() 	
+如果元素拥有属性，则返回 true，否则返回 false。</li>
+  <li>element.hasChildNodes() 	
+如果元素拥有子节点，则返回 true，否则 false。</li>
+  <li>element.id 	
+设置或返回元素的 id。</li>
+  <li>element.innerHTML 	
+设置或返回元素的内容。</li>
+  <li>element.insertBefore() 	
+在指定的已有的子节点之前插入新节点。</li>
+  <li>element.isContentEditable 	
+设置或返回元素的内容。</li>
+  <li>element.isDefaultNamespace() 	
+如果指定的 namespaceURI 是默认的，则返回 true，否则返回 false。</li>
+  <li>element.isEqualNode() 	
+检查两个元素是否相等。检查两个元素是否是相同的节点。</li>
+  <li>element.isSupported() 	
+如果元素支持指定特性，则返回 true。</li>
+  <li>element.lang 	
+设置或返回元素的语言代码。</li>
+  <li>element.lastChild 	
+返回元素的最后一个子元素。</li>
+  <li>element.namespaceURI 	
+返回元素的 namespace URI。</li>
+  <li>element.nextSibling 	
+返回位于相同节点树层级的下一个节点。</li>
+  <li>element.nodeName 	
+返回元素的名称。</li>
+  <li>element.nodeType 	
+返回元素的节点类型。</li>
+  <li>element.nodeValue 	
+设置或返回元素值。</li>
+  <li>element.normalize() 	
+合并元素中相邻的文本节点，并移除空的文本节点。</li>
+  <li>element.offsetHeight 	
+返回元素的高度。</li>
+  <li>element.offsetWidth 	
+返回元素的宽度。</li>
+  <li>element.offsetLeft 	
+返回元素的水平偏移位置。</li>
+  <li>element.offsetParent 	
+返回元素的偏移容器。</li>
+  <li>element.offsetTop 	
+返回元素的垂直偏移位置。</li>
+  <li>element.ownerDocument 	
+返回元素的根元素（文档对象）。</li>
+  <li>element.parentNode 	
+返回元素的父节点。</li>
+  <li>element.previousSibling 	
+返回位于相同节点树层级的前一个元素。</li>
+  <li>element.removeAttribute() 	
+从元素中移除指定属性。</li>
+  <li>element.removeAttributeNode() 	
+移除指定的属性节点，并返回被移除的节点。</li>
+  <li>element.removeChild() 	
+从元素中移除子节点。</li>
+  <li>element.replaceChild() 	
+替换元素中的子节点。</li>
+  <li>element.scrollHeight 	
+返回元素的整体高度。</li>
+  <li>element.scrollLeft 	
+返回元素左边缘与视图之间的距离。</li>
+  <li>element.scrollTop 	
+返回元素上边缘与视图之间的距离。</li>
+  <li>element.scrollWidth 	
+返回元素的整体宽度。</li>
+  <li>element.setAttribute() 	
+把指定属性设置或更改为指定值。</li>
+  <li>element.setAttributeNode() 	
+设置或更改指定属性节点。</li>
+  <li>element.setIdAttribute()</li>
+  <li>element.setIdAttributeNode()</li>
+  <li>element.setUserData() 	
+把对象关联到元素上的键。</li>
+  <li>element.style 	
+设置或返回元素的 style 属性。</li>
+  <li>element.tabIndex 	
+设置或返回元素的 tab 键控制次序。</li>
+  <li>element.tagName 	
+返回元素的标签名。</li>
+  <li>element.textContent 	
+设置或返回节点及其后代的文本内容。</li>
+  <li>element.title 	
+设置或返回元素的 title 属性。</li>
+  <li>element.toString() 	
+把元素转换为字符串。</li>
+  <li>nodelist.item() 	
+返回 NodeList 中位于指定下标的节点。</li>
+  <li>nodelist.length 	
+返回 NodeList 中的节点数。</li>
+</ul>
+
+<hr />
+
+<h3 id="dom-attribute">DOM Attribute</h3>
+
+<ul>
+  <li>attr.isId 	
+如果属性是 id 类型，则返回 true，否则返回 false。</li>
+  <li>attr.name 	
+返回属性的名称。</li>
+  <li>attr.value 	
+设置或返回属性的值。</li>
+  <li>attr.specified 	
+如果已指定属性，则返回 true，否则返回 false。</li>
+  <li>nodemap.getNamedItem() 	
+从 NamedNodeMap 返回指定的属性节点。</li>
+  <li>nodemap.item() 	
+返回 NamedNodeMap 中位于指定下标的节点。</li>
+  <li>nodemap.length 	
+返回 NamedNodeMap 中的节点数。</li>
+  <li>nodemap.removeNamedItem() 	
+移除指定的属性节点。</li>
+  <li>nodemap.setNamedItem() 	
+设置指定的属性节点（通过名称）。</li>
+</ul>
+
+<hr />
+
+<h3 id="dom-event">DOM Event</h3>
+
+<ul>
+  <li>bubbles 	
+返回布尔值，指示事件是否是起泡事件类型。</li>
+  <li>cancelable 	
+返回布尔值，指示事件是否可拥可取消的默认动作。</li>
+  <li>currentTarget 	
+返回其事件监听器触发该事件的元素。</li>
+  <li>eventPhase 	
+返回事件传播的当前阶段。</li>
+  <li>target 	
+返回触发此事件的元素（事件的目标节点）。</li>
+  <li>timeStamp 	
+返回事件生成的日期和时间。</li>
+  <li>type 	
+返回当前 Event 对象表示的事件的名称。</li>
+</ul>
+
+<p>13 Aug 2014</p>
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 class="post-title">
+        <a class="post-link" href="/axemea/html/2014/07/01/diff-html-xhtml.html">HTML、XHTML的区别</a>
+      </h1>
+      <p class="post-meta">
+      目录:
+      
+      <a href="/axemea/categories/#html">html</a>&nbsp;
+      
+      
+      | 发表时间: Jul 1, 2014
+      </p>
+    </header>
+
+    <article class="post-content">
+      <h4 id="dtd">声明DTD</h4>
+
+<p>XHTML文件的开始要声明DTD</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html</span>
+<span class="cp">PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span>
+<span class="cp">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span></code></pre></div>
+
+<h4 id="section">嵌套使用</h4>
+
+<p>XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不正确嵌套也能正常显示，如：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;b&gt;&lt;i&gt;</span>This text is bold and italic<span class="nt">&lt;/b&gt;&lt;/i&gt;</span></code></pre></div>
+
+<p>而在XHTML必须要正确嵌套之后才能正常使用，如：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;b&gt;&lt;i&gt;</span>This text is bold and italic<span class="nt">&lt;/i&gt;&lt;/b&gt;</span></code></pre></div>
+
+<h4 id="section-1">所有的标签和标签的属性都必须小写，属性值可以大写</h4>
+
+<p>错误代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;BODY&gt;</span>
+　　<span class="nt">&lt;P&gt;</span>This is a paragraph<span class="nt">&lt;/P&gt;</span>
+<span class="nt">&lt;/BODY&gt;</span></code></pre></div>
+
+<p>正确代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+　　<span class="nt">&lt;p&gt;</span>This is a paragraph<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<h4 id="section-2">属性值</h4>
+
+<p>错误代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">100%</span><span class="nt">&gt;</span></code></pre></div>
+
+<p>正确代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+<h4 id="section-3">标签闭合</h4>
+
+<p>所有的标签都必须被关闭，空标签也不例外。关闭空标签的方法如下：
+HTML中的<br />要写成<br />。注意，后面加了一个空格”“和一个反斜杠”/“。</p>
+
+<h4 id="dtd-1">严格的dtd</h4>
+
+<p>如果你使用的是strict.dtd。也就是最严格的XHTML，那么许多定义外观的属性都将不被允许。
+例如你为图片添加链接的同时想去掉边框。不可以再使用</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;...&quot;</span><span class="na">border=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+<p>，而是必须通过CSS来实现。我们推荐您在使用strict.dtd时，舍弃所有的定义外观属性，而完全使用CSS来定义页面外观</p>
+
+<h4 id="section-4">属性的缩写</h4>
+
+<p>属性的缩写被禁止。如：
+错误代码</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;dl</span> <span class="na">compact</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">checked</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected</span><span class="nt">&gt;</span>
+<span class="nt">&lt;frame</span> <span class="na">noresize</span><span class="nt">&gt;</span></code></pre></div>
+
+<p>正确代码</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;dl</span> <span class="na">compact=</span><span class="s">&quot;compact&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">checked=</span><span class="s">&quot;checked&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">readonly=</span><span class="s">&quot;readonly&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">disabled=</span><span class="s">&quot;disabled&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">&quot;selected&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;frame</span> <span class="na">noresize=</span><span class="s">&quot;noresize&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<h4 id="name">部分标签的name属性禁用</h4>
+
+<p>HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.在 XHTML 里name属性是不能被使用的，应该用id 来替换它。如：
+错误代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;picture.gif&quot;</span> <span class="na">name=</span><span class="s">&quot;picture1&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<p>正确代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;picture.gif&quot;</span> <span class="na">id=</span><span class="s">&quot;picture1&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<p>注意：我们为了使旧浏览器也能正常的执行该内容我们也可以在标签中同时使用id和name属性。如：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;picture.gif&quot;</span> <span class="na">id=</span><span class="s">&quot;picture1&quot;</span> <span class="na">name=</span><span class="s">&quot;picture1&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<p>为了适应新的浏览器浏览我们在上述代码中的最后我加了/来结束标签。</p>
+
+<h4 id="section-5">特殊符号表示</h4>
+
+<p>任何小于号（&lt;），不是标签的一部分，都必须被编码为&amp; l t ;
+任何大于号（&gt;），不是标签的一部分，都必须被编码为&amp; g t ;
+任何与号（&amp;），不是实体的一部分的，都必须被编码为&amp; a m p;
+注：以上字符之间无空格。</p>
+
+<h4 id="section-6">注释内容</h4>
+<p>不要在注释内容中使“–”，“–”只能发生在XHTML注释的开头和结束，也就是说，在内容中它们不再有效。例如下面的代码是无效的:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--这里是注释-----------这里是注释--&gt;</span></code></pre></div>
+
+<p>用等号或者空格替换内部的虚线。</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--这里是注释============这里是注释--&gt;</span></code></pre></div>
+
+<p>以上这些规范有的看上去比较奇怪，但这一切都是为了使我们的代码有一个统一、唯一的标准，便于以后的数据再利用。</p>
+
+<h4 id="section-7">图片必须有说明文字</h4>
+
+<p>每个图片标签都必须有ALT说明文字。</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;ball.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;large red ball&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<p>01 Jul 2014</p>
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 class="post-title">
+        <a class="post-link" href="/axemea/extjs/2014/06/11/extjs4-project-design.html">ExtJS前端项目构架探讨(二)</a>
+      </h1>
+      <p class="post-meta">
+      目录:
+      
+      <a href="/axemea/categories/#extjs">extjs</a>&nbsp;
+      
+      
+      | 发表时间: Jun 11, 2014
+      </p>
+    </header>
+
+    <article class="post-content">
+      <h3 id="section">开发模式</h3>
+
+<p>在进行界面开发时，最初的版本可以通过SenchaArchitect可视化编辑工具，来进行构建。</p>
+
+<p>为了适合多人协同开发，我们将每个模块单独划分为一个工程，然后，通过发布聚合到一个工程下。</p>
+
+<p>这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：</p>
+
+<pre>
+project_pub-
+            app-
+                controller-
+                           moduleA
+                           moduleB
+                           ...
+                view-
+                     moduleA
+                     moduleB
+                     ...
+                ...
+            ...
+                  
+</pre>
+
+<pre>
+project_dev-
+            moduleA-   
+		            app-
+		                controller-
+		                           moduleA
+		                view-
+		                     moduleA
+		                ...
+		            ...
+		    moduleB-   
+		            app-
+		                controller-
+		                           moduleB
+		                view-
+		                     moduleB
+		                ...
+		            ...
+		    ...
+ </pre>
+
+<h3 id="section-1">国际化</h3>
+
+<p>这里谈国际化，要分两部分，一部分为框架本身组件的国际化，这可以通过直接去切换引用locale文件夹下的国际化文件，第二部分为项目自身的国际化，这里需要注意的是，如果项目视图是由sencha architect工具构建的话，是只能通过硬编码的方式来编写的，因为所有的文字都被当做字符串来处理，所以无法来赋值变量。如果页面视图通过手动编写，那么可以独立出一个国际化的文件，然后通过一个管理器来进行管理。</p>
+
+<h3 id="section-2">同步与异步</h3>
+
+<p>对于一个ria应用，并不是异步的交互符合所有的操作需求，某一些操作时，同步交互是必要的。</p>
+
+<h3 id="section-3">验证器</h3>
+
+<p>验证器是通过组建的vtype属性来设置，监听的change事件。框架里预置了几种验证器，但为了适应项目需求，大部分的验证还是只能通过自己扩展的。扩展的方法是重写Ext.form.field.VTypes，类似如下：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">Ext</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">field</span><span class="p">.</span><span class="nx">VTypes</span><span class="p">,{</span>
+	<span class="nx">type1</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span><span class="nx">field</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="nx">type1Text</span><span class="o">:</span><span class="s1">&#39;长度大于4&#39;</span><span class="p">,</span>
+<span class="p">});</span></code></pre></div>
+
+<p>为了扩展的自由度，还多扩展了几个方法，代码如下：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">Ext</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">field</span><span class="p">.</span><span class="nx">VTypes</span><span class="p">,{</span>
+	<span class="cm">/*三种基础正则表达式的方法*/</span>
+	<span class="nx">regexTest</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="nx">regexMatch</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+		<span class="p">}</span>	
+	<span class="p">},</span>
+	<span class="nx">regexExec</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">reg</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+		<span class="p">}</span>	
+	<span class="p">},</span>
+	<span class="cm">/*</span>
+<span class="cm">		组合验证器验证</span>
+<span class="cm">		参数：</span>
+<span class="cm">			 val:验证值</span>
+<span class="cm">			 vtypes：验证器数组</span>
+<span class="cm">			 signal：验证器之间是并且还是或者的关系</span>
+<span class="cm">			 	     false是或者</span>
+<span class="cm">			 	     true是并且</span>
+<span class="cm">			 	     默认值是false</span>
+<span class="cm">	*/</span>
+	<span class="nx">vtypeCombin</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span><span class="nx">vtypes</span><span class="p">,</span><span class="nx">signal</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">vtypes</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+			<span class="nx">signal</span> <span class="o">=</span> <span class="nx">signal</span> <span class="o">||</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">i</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="nx">signal</span><span class="p">){</span>
+			<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">[</span><span class="nx">vtypes</span><span class="p">[</span><span class="nx">i</span><span class="p">]](</span><span class="nx">val</span><span class="p">,</span><span class="kc">null</span><span class="p">))</span>
+					<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+			<span class="p">}</span>
+
+			<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+			<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">vtypes</span><span class="p">[</span><span class="nx">i</span><span class="p">]](</span><span class="nx">val</span><span class="p">,</span><span class="kc">null</span><span class="p">))</span>
+					<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="p">...</span>
+<span class="p">});</span></code></pre></div>
+
+<h3 id="section-4">事件机制</h3>
+
+<p>对于事件的管理，设计思路为，所有模块不直接进行业务数据交互，而只是从视图中获取数据，然后向业务管理器发送业务信号，所有与业务相关的核心操作，都是通过业务管理器进行实现。</p>
+
+<h3 id="section-5">组件扩展</h3>
+
+<p>ExtJS框架对于组件的扩展是很自由的，通过ExtJS的源码则可以体现出来，所以没啥好扯的，值得注意的，如果通过sencha architect进行项目构建时，由于工具自身的约束，会对组件的扩展产生障碍，但可以通过一些兼容的方式进行。</p>
+
+<h3 id="section-6">前端架构参考</h3>
+
+<p>11 Jun 2014</p>
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 class="post-title">
+        <a class="post-link" href="/axemea/html/2014/05/16/36kr-page-analysis.html">36kr首页结构分析</a>
+      </h1>
+      <p class="post-meta">
+      目录:
+      
+      <a href="/axemea/categories/#html">html</a>&nbsp;
+      
+      
+      | 发表时间: May 16, 2014
+      </p>
+    </header>
+
+    <article class="post-content">
+      <h3 id="section">颜色说明</h3>
+<ul>
+  <li><img src="/axemea/images/body-color.png" alt="body" />      body</li>
+  <li><img src="/axemea/images/section-color.png" alt="section" />      section</li>
+  <li><img src="/axemea/images/nav-color.png" alt="nav" />				 nav</li>
+  <li><img src="/axemea/images/h1-color.png" alt="h1" />                h1</li>
+  <li><img src="/axemea/images/h2-color.png" alt="h2" />                h2</li>
+  <li><img src="/axemea/images/div-color-1.png" alt="div" />            div1</li>
+  <li><img src="/axemea/images/div-color-2.png" alt="div" />            div2</li>
+  <li><img src="/axemea/images/footer-color.png" alt="footer" />        footer</li>
+  <li><img src="/axemea/images/header-color.png" alt="header" />        header</li>
+  <li><img src="/axemea/images/aside-color.png" alt="aside" />          aside</li>
+  <li><img src="/axemea/images/article-color.png" alt="article" />      article</li>
+</ul>
+
+<h3 id="kr">36kr首页简略结构图如下</h3>
+
+<p><img src="/axemea/images/36kr.png" alt="36kr" /></p>
+
+<p>16 May 2014</p>
+
+    </article> <hr />
+    
+    
+  
+  </div>
+</div>
+
+    <section class="pager">
+  
+  
+  <li class="next"><a href="/axemea/page2/" title="前一页">前一页 &rarr;</a></li>
+  
+</section>
+
+
+  </div>
+  <div class="col-sm-2">
+<div class="sidebar-module about">
+  <h4>关于我</h4>
+  <img title="Zheng Yu" src="https://avatars1.githubusercontent.com/u/4532661?v=3&s=460" alt="Zheng Yu"/>
+  <span>曾经，最苦恼的是，被别人称作安静的美男子。现在，最苦恼的是，特么的这些竟然是真的。待你下次的转身，我会果断抱住你，然后大声地说，我要全世界都知道，我只是一名前端工程师。</span>
+  <br />
+
+  
+
+  You can contact me via:
+
+  
+  <a href="mailto:michaelcoco1991@gmail.com" title="mailto: michaelcoco1991@gmail.com">Email</a> /
+  
+  
+  <a href="https://github.com/axemea" title="GithubID: axemea">Github</a> /
+  
+  
+  <a href="https://twitter.com/zheng yu" title="TwitterID: zheng yu">Twitter</a>
+  
+
+  
+
+</div>
+
+<div class="sidebar-module"> <!-- sidebar-module-inset">-->
+  <h4>版权声明</h4>
+
+  
+
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+    <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+  </a>
+  <br />
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/s">Attribution-NonCommercial-ShareAlike</a>
+
+  
+
+</div>
+
+
+<div class="sidebar-module">
+  <h4>近期文章</h4>
+  
+  <li>
+  <a href="/axemea//extjs/2014/11/23/framwork-sleuth.html" title="Sleuth.js - 想用啥就用啥" rel="bookmark">Sleuth.js - 想用啥就用啥</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//javascript/2014/08/13/javascript-help.html" title="Javascript帮助手册" rel="bookmark">Javascript帮助手册</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/07/01/diff-html-xhtml.html" title="HTML、XHTML的区别" rel="bookmark">HTML、XHTML的区别</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//extjs/2014/06/11/extjs4-project-design.html" title="ExtJS前端项目构架探讨(二)" rel="bookmark">ExtJS前端项目构架探讨(二)</a>
+  </li>
+  
+  <li>
+  <a href="/axemea//html/2014/05/16/36kr-page-analysis.html" title="36kr首页结构分析" rel="bookmark">36kr首页结构分析</a>
+  </li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>分类目录</h4>
+  
+  <li><a href="/axemea/categories/#影评" title="影评" rel="1">影评 (1)</a></li>
+  
+  <li><a href="/axemea/categories/#书评" title="书评" rel="2">书评 (2)</a></li>
+  
+  <li><a href="/axemea/categories/#extjs" title="extjs" rel="4">extjs (4)</a></li>
+  
+  <li><a href="/axemea/categories/#python" title="python" rel="2">python (2)</a></li>
+  
+  <li><a href="/axemea/categories/#flask" title="flask" rel="1">flask (1)</a></li>
+  
+  <li><a href="/axemea/categories/#javascript" title="javascript" rel="2">javascript (2)</a></li>
+  
+  <li><a href="/axemea/categories/#html" title="html" rel="2">html (2)</a></li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>标签</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>良师益友</h4>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>存档</h4>
+
+  
+  
+  
+  
+  
+  <li id="2014" > <a href="/axemea/archives/#2014">2014</a></li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li id="2013" > <a href="/axemea/archives/#2013">2013</a></li>
+  
+  
+  
+  
+  
+
+</div>
+
+
+</div>
+
+
+
+  
+
+  <footer class="site-footer">
+
+  <p>Copyright &copy; <a href="/axemea/">M的奇葩漂流</a></p>
+  <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> 
+  on 
+  
+  <a href="https://github.com/">Github</a>
+  
+  | Theme <a href="https://github.com/yulijia/freshman21/">Freshman21</a> Design by <a href="http://yulijia.net">Lijia Yu</a>  
+
+</footer>
+
+
+</div>
+
+</body>
+
+</html>
