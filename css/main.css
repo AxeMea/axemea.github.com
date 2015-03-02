@@ -685,3 +685,7 @@ q:after {
     color: #40ffff; }
   .highlight .il {
     color: #3677a9; }
+
+.post-content table{
+  word-break:break-all;
+}
