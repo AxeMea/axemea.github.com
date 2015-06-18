@@ -30,20 +30,20 @@ PC端：
 
 ### 一、下载Mini Designer插件
 
-{% hightlight %}
+{% highlight %}
     git clone https://github.com/AxeMea/miniDesigner.git
-{% endhightlight %}
+{% endhighlight %}
 
 ### 二、引入插件
 
 插件是基于jQuery，所以，你懂的。
-{% hightlight %}
+{% highlight %}
     <script src="jquery-1.9.1.min.js"></script>
     <script src="mini-designer.min.js"></script>
-{% endhightlight %}
+{% endhighlight %}
 
 ### 三、初始化插件
-{% hightlight %}
+{% highlight %}
     <script>
        var opts = {
 		  picture:'design.jpg', ／／设计图的地址
@@ -51,7 +51,7 @@ PC端：
 	      };
        miniDesigner(opts);
     </script>
-{% endhightlight %}
+{% endhighlight %}
 
 #### 附图
 
