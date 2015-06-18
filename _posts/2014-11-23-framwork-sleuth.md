@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sleuth.js - 想用啥就用啥
-category: ExtJS
+category: javascript
 comments: yes
 ---
 
