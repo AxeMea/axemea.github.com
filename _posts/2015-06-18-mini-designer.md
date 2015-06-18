@@ -31,37 +31,39 @@ PC端：
 ### 一、下载Mini Designer插件
 
 {% highlight %}
-    git clone https://github.com/AxeMea/miniDesigner.git
+git clone https://github.com/AxeMea/miniDesigner.git
 {% endhighlight %}
 
 ### 二、引入插件
 
 插件是基于jQuery，所以，你懂的。
-{% highlight %}
-    <script src="jquery-1.9.1.min.js"></script>
-    <script src="mini-designer.min.js"></script>
-{% endhighlight %}
+
+{% highlight javascript %}
+<script src="jquery-1.9.1.min.js"></script>
+<script src="mini-designer.min.js"></script>
+{% endhighlight javascript %}
 
 ### 三、初始化插件
-{% highlight %}
-    <script>
-       var opts = {
-		  picture:'design.jpg', ／／设计图的地址
-		  debug:true ／／默认为true，为true时，插件启用，为false时，插件关闭
-	      };
-       miniDesigner(opts);
-    </script>
-{% endhighlight %}
+
+{% highlight javascript%}
+<script>
+   var opts = {
+	  picture:'design.jpg', ／／设计图的地址
+	  debug:true ／／默认为true，为true时，插件启用，为false时，插件关闭
+      };
+   miniDesigner(opts);
+</script>
+{% endhighlight javascript %}
 
 #### 附图
 
 PC端：
 
-![article](/images/mini-designer/mini-designer-pc.jpg)
+![pc](/images/mini-designer/mini-designer-pc.jpg)
 
 移动端：
 
-![article](/images/mini-designer/mini-designer-mobile.jpg)
+![mobile](/images/mini-designer/mini-designer-mobile.jpg)
 
 
 {{ page.date | date_to_string }}
