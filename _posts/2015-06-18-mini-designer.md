@@ -5,11 +5,11 @@ category: javascript
 comments: yes
 ---
 
-#### Mini Designer是什么？
+### Mini Designer是什么？
 
 Mini Designer是一个为前端工程师而生的简易JS插件，它能辅助前端工程师，更加方便、高效，优质地按照设计图来完成前端页面，减少pm与ui来找茬的机会。
 
-#### 特色
+### 特色
 
 同时支持手机端与PC端。
 
@@ -26,15 +26,15 @@ PC端：
 * 设计图透明度调节
 * 重置设计图初始状态
 
-#### 安装步骤
+### 安装步骤
 
-##### 一、下载Mini Designer插件
+#### 一、下载Mini Designer插件
 
 {% highlight html %}
 git clone https://github.com/AxeMea/miniDesigner.git
 {% endhighlight html %}
 
-##### 二、引入插件
+#### 二、引入插件
 
 插件是基于jQuery，所以，你懂的。
 
@@ -43,7 +43,7 @@ git clone https://github.com/AxeMea/miniDesigner.git
 <script src="mini-designer.min.js"></script>
 {% endhighlight javascript %}
 
-##### 三、初始化插件
+#### 三、初始化插件
 
 {% highlight javascript %}
 <script>
@@ -55,7 +55,7 @@ git clone https://github.com/AxeMea/miniDesigner.git
 </script>
 {% endhighlight javascript %}
 
-#### 附图
+### 附图
 
 PC端：
 
