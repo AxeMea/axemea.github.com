@@ -700,3 +700,18 @@ q:after {
 .post-content table{
   word-break:break-all;
 }
+
+
+.post-content{
+  font-size: 14px;
+  line-height: 25px;
+}
+
+h5{
+  font-size: 15px;
+  margin: 10px 0px
+}
+
+.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5{
+  margin: 15px 0px;
+}
