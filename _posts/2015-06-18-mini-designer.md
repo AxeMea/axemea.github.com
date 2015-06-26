@@ -9,6 +9,10 @@ comments: yes
 
 Mini Designer是一个为前端工程师而生的简易JS插件，它能辅助前端工程师，更加方便、高效，优质地按照设计图来完成前端页面，减少pm与ui来找茬的机会。
 
+### Github
+
+Github:[https://github.com/AxeMea/miniDesigner](https://github.com/AxeMea/miniDesigner)
+
 ### 特色
 
 同时支持手机端与PC端。
