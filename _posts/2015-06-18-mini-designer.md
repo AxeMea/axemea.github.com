@@ -45,7 +45,7 @@ git clone https://github.com/AxeMea/miniDesigner.git
 
 ### 三、初始化插件
 
-{% highlight javascript%}
+{% highlight javascript %}
 <script>
    var opts = {
 	  picture:'design.jpg', ／／设计图的地址
@@ -55,15 +55,6 @@ git clone https://github.com/AxeMea/miniDesigner.git
 </script>
 {% endhighlight javascript %}
 
-#### 附图
-
-PC端：
-
-![pc](/images/mini-designer/mini-designer-pc.jpg)
-
-移动端：
-
-![mobile](/images/mini-designer/mini-designer-mobile.jpg)
 
 
 {{ page.date | date_to_string }}
