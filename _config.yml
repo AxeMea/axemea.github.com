@@ -55,9 +55,9 @@ locales:
 ### your Blogroll info, only name can shown on the page.
 
 Blogroll:
-#    - name: axemea
-#      href: http://axemea.github.io
-#      title: blog
+   - name: 幽興靈
+     href: http://x007007007.info/wordpress/
+     title: 幽興靈
 #    - name: author's website
 #      href: http://axemea.github.io/
 #      title: Zheng yu's website
