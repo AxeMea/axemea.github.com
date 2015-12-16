@@ -689,3 +689,86 @@ q:after {
 .post-content table{
   word-break:break-all;
 }
+
+
+/* 主题 */
+body{
+  background-color: #1a1a1a;
+}
+
+a:visited,
+a,
+.post-content a:visited,
+.post-content a{
+  color: #ff6666;
+  text-decoration: none;
+  border-bottom: 0
+}
+
+a:hover,
+.post-content a:hover,
+.post-header .post-title .post-link:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.container{
+  background: #2a2a2a;
+  color: #ccc;
+  box-shadow:none;
+}
+
+.site-title a, .site-title a:visited .site-title a:hover{
+    color: #f2f2f2;
+    border-bottom: none;
+}
+
+.site-meta{
+  color: #cccccc;
+}
+
+.site-nav .page-link{
+  color: #cccccc;
+}
+
+.site-nav{
+  border-top: 1px #cccccc solid;
+  border-bottom: 1px #cccccc solid;
+}
+
+.site-nav a:hover{
+  color: #f2f2f2;
+}
+
+.post-header .post-title .post-link{
+      color: #ff6666;
+    margin: 20px 0 ;
+}
+
+.post-meta,
+.sidebar-module h4{
+  color: inherit;
+}
+
+
+.post-content{
+  line-height: 35px;
+}
+
+.site-footer{
+  background-color: transparent;
+  border-top: 1px solid #6F5858
+}
+
+.nav-primary>ul>li.active>a{
+  color: inherit !important;
+}
+
+.post-content .post-message p{
+  color: inherit;
+}
+
+.post-title{
+  color: #f2f2f2;
+  line-height: 50px;
+}
