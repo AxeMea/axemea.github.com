@@ -13,7 +13,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 16px;
   line-height: 1.6em;
   font-weight: 300;
@@ -202,12 +202,13 @@ table {
 
 table tr {
   border-top: 1px solid #cccccc;
-  background-color: white;
+  /*background-color: white;*/
   margin: 0;
   padding: 0; }
 
 table tr:nth-child(2n) {
-  background-color: #f8f8f8; }
+  /*background-color: #f8f8f8;*/
+   }
 
 table tr th {
   font-weight: bold;
