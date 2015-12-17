@@ -13,7 +13,7 @@ comments: yes
 
 ### Github
 
-Github:[https://github.com/AxeMea/iFreeLayer](https://github.com/AxeMea/iFreeLayer.js)
+Github:[https://github.com/AxeMea/iFreeLayer.js](https://github.com/AxeMea/iFreeLayer.js)
 
 Demo:[链接](http://axemea.github.io/javascripts/move-container/move.html)
 
@@ -48,7 +48,7 @@ html代码中，有两个点是强制要有的。
 
 {% highlight javascript %}
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script type="text/javascript" src="iFreeLayer.min.js"></script>
+<script type="text/javascript" src="https://rawgit.com/axemea/iFreeLayer.js/master/iFreeLayer.min.js"></script>
 {% endhighlight javascript %}
 
 ####初始化
