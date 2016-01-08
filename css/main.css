@@ -726,7 +726,7 @@ a:hover,
 .container{
   background: #2a2a2a;
   color: #ccc;
-  box-shadow:none;
+  box-shadow:0px 0px 40px 1px #943B3B
 }
 
 .site-title a, .site-title a:visited .site-title a:hover{
