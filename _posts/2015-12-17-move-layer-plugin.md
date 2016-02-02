@@ -19,7 +19,7 @@ Demo:[链接](http://axemea.github.io/javascripts/move-container/move.html)
 
 ### 使用方法
 
-####html结构
+#### html结构
 
 html的基础结构如下。
 
@@ -44,14 +44,14 @@ html代码中，有两个点是强制要有的。
 * className中的block。其他的样式为demo样式，根据实际的设计稿进行相应的定制。
 
 
-####引用脚本
+#### 引用脚本
 
 {% highlight javascript %}
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script>
 <script type="text/javascript" src="https://rawgit.com/axemea/iFreeLayer.js/master/iFreeLayer.min.js"></script>
 {% endhighlight javascript %}
 
-####初始化
+#### 初始化
 
 {% highlight javascript %}
 $('.move-box').iFreeLayer({
@@ -65,7 +65,7 @@ $('.move-box').iFreeLayer({
 
 实现过程中，有两个值得注意的点。
 
-####动态调节top，right，bottom，left四值
+#### 动态调节top，right，bottom，left四值
 
 在初始状态时，move-box的定位的四个值分别为
 
@@ -91,7 +91,7 @@ $('.move-box').iFreeLayer({
 
 通理，8个操作区域会有各自的变换。
 
-####监听对象的转移
+#### 监听对象的转移
 
 从表面上看，iFreeLayer是对8个操作区域的mousemove事件进行了监听，然后去改变容器的高宽。如果只简单这样实现，会出现一个问题。由于8个操作区域的大小有限，当鼠标的移动速度超过宽高的改变速度，鼠标很容易超出操作区域范围，中止移动。为了解决这个问题，在鼠标按下后，iFreeLayer同时还监听了它的parent的mousemove事件，这样，就算鼠标移出了区域范围，仍然能够调整宽高。
 
