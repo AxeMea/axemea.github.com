@@ -747,6 +747,7 @@ code{
 .highlight *{
     line-height: 18px !important;
     font-size: 14px !important;
+    font-family: Source Code Pro,Consolas,Menlo,Monaco,Courier New,monospace;
 }
 
 .site-meta{
