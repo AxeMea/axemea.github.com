@@ -6,7 +6,7 @@ comments: true
 ---
 
 
-###Array
+### Array
 
 * concat()     
 连接两个或更多的数组，并返回结果。
@@ -74,7 +74,7 @@ George.John.Thomas
 
 ***
 
-###Boolean
+### Boolean
 
 * toSource()     
 返回该对象的源代码。
@@ -85,7 +85,7 @@ George.John.Thomas
 
 ***
 
-###Date
+### Date
 
 * Date()     
 返回当日的日期和时间。
@@ -186,7 +186,7 @@ George.John.Thomas
 
 ***
 
-###Math
+### Math
 
 * abs(x) 	
 返回数的绝对值。
@@ -231,7 +231,7 @@ George.John.Thomas
 
 ***
 
-###Number
+### Number
 
 * toString 	
 把数字转换为字符串，使用指定的基数。
@@ -248,7 +248,7 @@ George.John.Thomas
 
 ***
 
-###	String
+### 	String
 
 * anchor() 	
 创建 HTML 锚。
@@ -321,7 +321,7 @@ George.John.Thomas
 
 ***
 
-###RegExp
+### RegExp
 
 * compile 	
 编译正则表达式。 	ff:1 	ie:4
@@ -332,7 +332,7 @@ George.John.Thomas
 
 ***
 
-###全局函数
+### 全局函数
 
 * decodeURI() 	
 解码某个编码的 URI。
@@ -365,7 +365,7 @@ George.John.Thomas
 
 ***
 
-###Window
+### Window
 
 * closed 	
 返回窗口是否已被关闭。
@@ -452,7 +452,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###Navigator
+### Navigator
 
 * appCodeName 	
 返回浏览器的代码名。
@@ -486,7 +486,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###Screen
+### Screen
 
 * availHeight 	
 返回显示屏幕的高度 (除 Windows 任务栏之外)。
@@ -517,7 +517,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###History
+### History
 
 * length 	
 返回浏览器历史列表中的 URL 数量。
@@ -530,7 +530,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###Location
+### Location
 
 * hash 	
 设置或返回从井号 (#) 开始的 URL（锚）。
@@ -551,7 +551,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###Document
+### Document
 
 * body 	
 提供对 <body> 元素的直接访问。对于定义了框架集的文档，该属性引用最外层的 <frameset>。
@@ -584,7 +584,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###DOM Element
+### DOM Element
 
 * element.accessKey 	
 设置或返回元素的快捷键。
@@ -715,7 +715,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###DOM Attribute
+### DOM Attribute
 
 * attr.isId 	
 如果属性是 id 类型，则返回 true，否则返回 false。
@@ -738,7 +738,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 
 ***
 
-###DOM Event
+### DOM Event
 
 * bubbles 	
 返回布尔值，指示事件是否是起泡事件类型。

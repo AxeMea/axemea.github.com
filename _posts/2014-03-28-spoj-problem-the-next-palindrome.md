@@ -10,15 +10,15 @@ A positive integer is called a palindrome if its representation in the decimal s
 always displayed without leading zeros.
 ```
 
-###INPUT
+### INPUT
 
 The first line contains integer t, the number of test cases. Integers K are given in the next t lines.
 
-###OUTPUT
+### OUTPUT
 
 For each K, output the smallest palindrome larger than K.
 
-###Example
+### Example
 
 Input:
 <pre>
@@ -32,7 +32,7 @@ Output:
 2222
 </pre>
 
-###Code
+### Code
 {% highlight python %}
 
 # -*- coding: utf-8 -*-   
@@ -149,7 +149,7 @@ if __name__ == '__main__':
   
 {% endhighlight python %}
 
-###扯淡
+### 扯淡
 
 思路
 

@@ -5,7 +5,7 @@ category: html
 comments: true
 ---
 
-###颜色说明
+### 颜色说明
 * ![body](/images/body-color.png)      body 
 * ![section](/images/section-color.png)      section 
 * ![nav](/images/nav-color.png)				 nav 
