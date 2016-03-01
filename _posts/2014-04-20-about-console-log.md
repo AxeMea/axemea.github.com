@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 闲谈console.log
-category: Javascript
+category: javascript
 comments: true
 ---
 
