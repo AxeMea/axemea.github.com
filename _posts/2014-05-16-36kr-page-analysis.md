@@ -18,7 +18,7 @@ comments: true
 * ![aside](/images/aside-color.png)          aside 
 * ![article](/images/article-color.png)      article 
 
-###36kr首页简略结构图如下
+### 36kr首页简略结构图如下
 
 ![36kr](/images/36kr.png)
 
