@@ -836,3 +836,8 @@ h5{
   .col-sm-2 {
     float: right;
     width: 25%; } }
+
+.post-content.about img{
+  height: auto;
+  max-width: 100%;
+}
