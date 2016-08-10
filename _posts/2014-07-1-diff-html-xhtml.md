@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: HTML、XHTML的区别
 category: CSS
 comments: true

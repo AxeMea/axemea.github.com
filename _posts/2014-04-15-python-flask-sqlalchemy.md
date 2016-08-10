@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: flask-sqlalchemy使用笔记
 category: Python
 comments: true

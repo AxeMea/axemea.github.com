@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Sleuth.js - 想用啥就用啥
 category: Javascript
 comments: yes

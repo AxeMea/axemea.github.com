@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 36kr首页结构分析
 category: CSS
 comments: true

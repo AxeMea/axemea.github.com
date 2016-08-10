@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 仿google的play模块左侧菜单
 category: Javascript
 comments: yes

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: the-next-palindrome-SPOJ-5
 category: Python
 comments: true

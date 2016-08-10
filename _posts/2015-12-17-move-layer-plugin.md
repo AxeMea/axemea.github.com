@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: iFreeLayer.js - 基于jQuery的可随意拖拉大小浮动层插件
 category: Javascript
 comments: yes

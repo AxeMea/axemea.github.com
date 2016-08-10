@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: ExtJS前端项目构架探讨(二)
 category: Javascript
 comments: true

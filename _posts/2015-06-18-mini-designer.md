@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Mini Designer 小而高效
 category: Javascript
 comments: yes

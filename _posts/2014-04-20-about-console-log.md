@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 闲谈console.log
 category: Javascript
 comments: true

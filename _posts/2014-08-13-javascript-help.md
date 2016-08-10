@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Javascript帮助手册
 category: Javascript
 comments: true

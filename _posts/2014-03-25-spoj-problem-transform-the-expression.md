@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: transform-the-expression-SPOJ-4
 category: Python
 comments: true
