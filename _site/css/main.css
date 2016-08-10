@@ -12,7 +12,7 @@ a {
   text-decoration: none; }
 
 p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 32px; }
 
 img {
@@ -74,7 +74,7 @@ strong {
   color: #828282;
   font-size: 18px;
   margin: 0px;
-  margin-top: 6px;
+  margin-top: 15px;
   padding: 0px;
   list-style-type: none; }
 
@@ -116,7 +116,7 @@ strong {
   margin-bottom: 110px; }
 
 .post-title__text {
-  font-size: 40px; }
+  font-size: 30px; }
 
 .post-title__subtitle {
   font-size: 20px; }
