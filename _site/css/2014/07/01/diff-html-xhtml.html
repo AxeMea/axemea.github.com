@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> HTML、XHTML的区别 —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/css/2014/07/01/diff-html-xhtml.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="HTML、XHTML的区别" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML、XHTML的区别">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/css/2014/07/01/diff-html-xhtml.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<h4 id="dtd">声明DTD</h4>
+
+<p>XHTML文件的开始要声明DTD</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span></code></pre></figure>
+
+<h4 id="section">嵌套使用</h4>
+
+<p>XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不正确嵌套也能正常显示，如：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;b&gt;&lt;i&gt;</span>This text is bold and italic<span class="nt">&lt;/b&gt;&lt;/i&gt;</span></code></pre></figure>
+
+<p>而在XHTML必须要正确嵌套之后才能正常使用，如：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;b&gt;&lt;i&gt;</span>This text is bold and italic<span class="nt">&lt;/i&gt;&lt;/b&gt;</span></code></pre></figure>
+
+<h4 id="section-1">所有的标签和标签的属性都必须小写，属性值可以大写</h4>
+
+<p>错误代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;BODY&gt;</span>
+　　<span class="nt">&lt;P&gt;</span>This is a paragraph<span class="nt">&lt;/P&gt;</span>
+<span class="nt">&lt;/BODY&gt;</span></code></pre></figure>
+
+<p>正确代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+　　<span class="nt">&lt;p&gt;</span>This is a paragraph<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></figure>
+
+<h4 id="section-2">属性值</h4>
+
+<p>错误代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">100%</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>正确代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<h4 id="section-3">标签闭合</h4>
+
+<p>所有的标签都必须被关闭，空标签也不例外。关闭空标签的方法如下：
+HTML中的<br />要写成<br />。注意，后面加了一个空格”“和一个反斜杠”/“。</p>
+
+<h4 id="dtd-1">严格的dtd</h4>
+
+<p>如果你使用的是strict.dtd。也就是最严格的XHTML，那么许多定义外观的属性都将不被允许。
+例如你为图片添加链接的同时想去掉边框。不可以再使用</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span><span class="na">border=</span><span class="s">"0"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>，而是必须通过CSS来实现。我们推荐您在使用strict.dtd时，舍弃所有的定义外观属性，而完全使用CSS来定义页面外观</p>
+
+<h4 id="section-4">属性的缩写</h4>
+
+<p>属性的缩写被禁止。如：
+错误代码</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;dl</span> <span class="na">compact</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">checked</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected</span><span class="nt">&gt;</span>
+<span class="nt">&lt;frame</span> <span class="na">noresize</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>正确代码</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;dl</span> <span class="na">compact=</span><span class="s">"compact"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">checked=</span><span class="s">"checked"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">readonly=</span><span class="s">"readonly"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">disabled=</span><span class="s">"disabled"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">"selected"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;frame</span> <span class="na">noresize=</span><span class="s">"noresize"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<h4 id="name">部分标签的name属性禁用</h4>
+
+<p>HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.在 XHTML 里name属性是不能被使用的，应该用id 来替换它。如：
+错误代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"picture.gif"</span> <span class="na">name=</span><span class="s">"picture1"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>正确代码：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"picture.gif"</span> <span class="na">id=</span><span class="s">"picture1"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>注意：我们为了使旧浏览器也能正常的执行该内容我们也可以在标签中同时使用id和name属性。如：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"picture.gif"</span> <span class="na">id=</span><span class="s">"picture1"</span> <span class="na">name=</span><span class="s">"picture1"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>为了适应新的浏览器浏览我们在上述代码中的最后我加了/来结束标签。</p>
+
+<h4 id="section-5">特殊符号表示</h4>
+
+<p>任何小于号（&lt;），不是标签的一部分，都必须被编码为&amp; l t ;
+任何大于号（&gt;），不是标签的一部分，都必须被编码为&amp; g t ;
+任何与号（&amp;），不是实体的一部分的，都必须被编码为&amp; a m p;
+注：以上字符之间无空格。</p>
+
+<h4 id="section-6">注释内容</h4>
+<p>不要在注释内容中使“–”，“–”只能发生在XHTML注释的开头和结束，也就是说，在内容中它们不再有效。例如下面的代码是无效的:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--这里是注释-----------这里是注释--&gt;</span></code></pre></figure>
+
+<p>用等号或者空格替换内部的虚线。</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--这里是注释============这里是注释--&gt;</span></code></pre></figure>
+
+<p>以上这些规范有的看上去比较奇怪，但这一切都是为了使我们的代码有一个统一、唯一的标准，便于以后的数据再利用。</p>
+
+<h4 id="section-7">图片必须有说明文字</h4>
+
+<p>每个图片标签都必须有ALT说明文字。</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"ball.jpg"</span> <span class="na">alt=</span><span class="s">"large red ball"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>01 Jul 2014</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

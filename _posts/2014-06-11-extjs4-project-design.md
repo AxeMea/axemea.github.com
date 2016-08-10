@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ExtJS前端项目构架探讨(二)
-category: ExtJS
+category: Javascript
 comments: true
 ---
 
@@ -26,7 +26,7 @@ project_pub-
                      ...
                 ...
             ...
-                  
+
 </pre>
 
 <pre>
@@ -93,7 +93,7 @@ Ext.apply(Ext.form.field.VTypes,{
 			return text.match(reg);
 		}catch(err){
 			return null;
-		}	
+		}
 	},
 	regexExec:function(reg,text){
 		var reg = new RegExp(reg);
@@ -101,7 +101,7 @@ Ext.apply(Ext.form.field.VTypes,{
 			return reg.exec(text);
 		}catch(err){
 			return null;
-		}	
+		}
 	},
 	/*
 		组合验证器验证

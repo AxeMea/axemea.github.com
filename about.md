@@ -1,14 +1,8 @@
 ---
 layout: page
 title: 关于
-comments: yes
+subtitle: 我是谁?
 permalink: /about/
 ---
 
-
-### 我最诚恳的自白
-
-还在编，别急。
-
-
-
+一名在魔都漂流的前端工程师...

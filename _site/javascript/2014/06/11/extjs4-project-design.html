@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> ExtJS前端项目构架探讨(二) —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/javascript/2014/06/11/extjs4-project-design.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="ExtJS前端项目构架探讨(二)" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ExtJS前端项目构架探讨(二)">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/javascript/2014/06/11/extjs4-project-design.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<h3 id="section">开发模式</h3>
+
+<p>在进行界面开发时，最初的版本可以通过SenchaArchitect可视化编辑工具，来进行构建。</p>
+
+<p>为了适合多人协同开发，我们将每个模块单独划分为一个工程，然后，通过发布聚合到一个工程下。</p>
+
+<p>这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：</p>
+
+<pre>
+project_pub-
+            app-
+                controller-
+                           moduleA
+                           moduleB
+                           ...
+                view-
+                     moduleA
+                     moduleB
+                     ...
+                ...
+            ...
+
+</pre>
+
+<pre>
+project_dev-
+            moduleA-   
+		            app-
+		                controller-
+		                           moduleA
+		                view-
+		                     moduleA
+		                ...
+		            ...
+		    moduleB-   
+		            app-
+		                controller-
+		                           moduleB
+		                view-
+		                     moduleB
+		                ...
+		            ...
+		    ...
+ </pre>
+
+<h3 id="section-1">国际化</h3>
+
+<p>这里谈国际化，要分两部分，一部分为框架本身组件的国际化，这可以通过直接去切换引用locale文件夹下的国际化文件，第二部分为项目自身的国际化，这里需要注意的是，如果项目视图是由sencha architect工具构建的话，是只能通过硬编码的方式来编写的，因为所有的文字都被当做字符串来处理，所以无法来赋值变量。如果页面视图通过手动编写，那么可以独立出一个国际化的文件，然后通过一个管理器来进行管理。</p>
+
+<h3 id="section-2">同步与异步</h3>
+
+<p>对于一个ria应用，并不是异步的交互符合所有的操作需求，某一些操作时，同步交互是必要的。</p>
+
+<h3 id="section-3">验证器</h3>
+
+<p>验证器是通过组建的vtype属性来设置，监听的change事件。框架里预置了几种验证器，但为了适应项目需求，大部分的验证还是只能通过自己扩展的。扩展的方法是重写Ext.form.field.VTypes，类似如下：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">Ext</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">field</span><span class="p">.</span><span class="nx">VTypes</span><span class="p">,{</span>
+	<span class="na">type1</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span><span class="nx">field</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="na">type1Text</span><span class="p">:</span><span class="s1">'长度大于4'</span><span class="p">,</span>
+<span class="p">});</span>               </code></pre></figure>
+
+<p>为了扩展的自由度，还多扩展了几个方法，代码如下：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">Ext</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">field</span><span class="p">.</span><span class="nx">VTypes</span><span class="p">,{</span>
+	<span class="cm">/*三种基础正则表达式的方法*/</span>
+	<span class="na">regexTest</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="na">regexMatch</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="na">regexExec</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">,</span><span class="nx">text</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+		<span class="k">try</span><span class="p">{</span>
+			<span class="k">return</span> <span class="nx">reg</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+		<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="cm">/*
+		组合验证器验证
+		参数：
+			 val:验证值
+			 vtypes：验证器数组
+			 signal：验证器之间是并且还是或者的关系
+			 	     false是或者
+			 	     true是并且
+			 	     默认值是false
+	*/</span>
+	<span class="na">vtypeCombin</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span><span class="nx">vtypes</span><span class="p">,</span><span class="nx">signal</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">vtypes</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+			<span class="nx">signal</span> <span class="o">=</span> <span class="nx">signal</span> <span class="o">||</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">i</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="nx">signal</span><span class="p">){</span>
+			<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">[</span><span class="nx">vtypes</span><span class="p">[</span><span class="nx">i</span><span class="p">]](</span><span class="nx">val</span><span class="p">,</span><span class="kc">null</span><span class="p">))</span>
+					<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+			<span class="p">}</span>
+
+			<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+			<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">vtypes</span><span class="p">[</span><span class="nx">i</span><span class="p">]](</span><span class="nx">val</span><span class="p">,</span><span class="kc">null</span><span class="p">))</span>
+					<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="p">...</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="section-4">事件机制</h3>
+
+<p>对于事件的管理，设计思路为，所有模块不直接进行业务数据交互，而只是从视图中获取数据，然后向业务管理器发送业务信号，所有与业务相关的核心操作，都是通过业务管理器进行实现。</p>
+
+<h3 id="section-5">组件扩展</h3>
+
+<p>ExtJS框架对于组件的扩展是很自由的，通过ExtJS的源码则可以体现出来，所以没啥好扯的，值得注意的，如果通过sencha architect进行项目构建时，由于工具自身的约束，会对组件的扩展产生障碍，但可以通过一些兼容的方式进行。</p>
+
+<h3 id="section-6">前端架构参考</h3>
+
+<p>11 Jun 2014</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

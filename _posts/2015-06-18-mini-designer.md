@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Mini Designer 小而高效
-category: javascript
+category: Javascript
 comments: yes
 ---
 

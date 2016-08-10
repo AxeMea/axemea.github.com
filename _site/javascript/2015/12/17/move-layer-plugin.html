@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> iFreeLayer.js - 基于jQuery的可随意拖拉大小浮动层插件 —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/javascript/2015/12/17/move-layer-plugin.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="iFreeLayer.js - 基于jQuery的可随意拖拉大小浮动层插件" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iFreeLayer.js - 基于jQuery的可随意拖拉大小浮动层插件">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/javascript/2015/12/17/move-layer-plugin.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<h3 id="section">缘由</h3>
+
+<p>＝ ＝ ，当然起因是公司的项目的一个需求，然后在网上一顿乱找，感觉都不太合适，然后抽了几个小时时间自己干了一个。使用了一段时间后，感觉还不错，简单封装成jQuery插件，就拿出来分享了，希望给需要的人节省造轮子的时间。</p>
+
+<p>如在使用期间出现bug，请在下面给出的Github中反馈。</p>
+
+<h3 id="github">Github</h3>
+
+<p>Github:<a href="https://github.com/AxeMea/iFreeLayer.js">https://github.com/AxeMea/iFreeLayer.js</a></p>
+
+<p>Demo:<a href="http://axemea.github.io/javascripts/move-container/move.html">链接</a></p>
+
+<h3 id="section-1">使用方法</h3>
+
+<h4 id="html">html结构</h4>
+
+<p>html的基础结构如下。</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"move-box"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block border top"</span> <span class="na">data-dir=</span><span class="s">"1"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block cross right-top"</span> <span class="na">data-dir=</span><span class="s">"2"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block border right"</span> <span class="na">data-dir=</span><span class="s">"3"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block cross right-bottom"</span> <span class="na">data-dir=</span><span class="s">"4"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block border bottom"</span> <span class="na">data-dir=</span><span class="s">"5"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block cross left-bottom"</span> <span class="na">data-dir=</span><span class="s">"6"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block border left"</span> <span class="na">data-dir=</span><span class="s">"7"</span><span class="nt">&gt;&lt;/section&gt;</span>
+		<span class="nt">&lt;section</span>  <span class="na">class=</span><span class="s">"block cross left-top"</span> <span class="na">data-dir=</span><span class="s">"8"</span><span class="nt">&gt;&lt;/section&gt;</span>
+	<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>html代码中，有两个点是强制要有的。</p>
+
+<ul>
+  <li>data-dir属性，代表8个可操作区域的标志。1－8，代表从上开始，顺时针的顺序。</li>
+  <li>className中的block。其他的样式为demo样式，根据实际的设计稿进行相应的定制。</li>
+</ul>
+
+<h4 id="section-2">引用脚本</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"http://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://rawgit.com/axemea/iFreeLayer.js/master/iFreeLayer.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<h4 id="section-3">初始化</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'.move-box'</span><span class="p">).</span><span class="nx">iFreeLayer</span><span class="p">({</span>
+      <span class="na">parent</span><span class="p">:</span><span class="s1">'.container'</span>
+    <span class="p">}).</span><span class="nx">setup</span><span class="p">();</span></code></pre></figure>
+
+<p>初始化方法只有parent一个可选参数，代表浮动层的可移动区域，也代表它的父节点，如果不配置默认情况下为window。</p>
+
+<h3 id="section-4">细节</h3>
+
+<p>实现过程中，有两个值得注意的点。</p>
+
+<h4 id="toprightbottomleft">动态调节top，right，bottom，left四值</h4>
+
+<p>在初始状态时，move-box的定位的四个值分别为</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.move-box</span><span class="p">{</span>
+	<span class="nl">left</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span><span class="nb">auto</span><span class="p">,</span>
+    <span class="nb">right</span><span class="p">:</span><span class="nb">auto</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>当鼠标点击标志为4的操作区域，也就是右下角的区域时。为了达到，调整宽高时，右边不动的效果，需要对四值进行这样的初始变换。</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.move-box</span><span class="p">{</span>
+	<span class="nl">left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span><span class="nb">auto</span><span class="p">,</span>
+    <span class="nb">right</span><span class="p">:</span><span class="err">屏幕宽度</span> <span class="n">-</span> <span class="n">move-box</span><span class="err">的</span><span class="n">X</span><span class="err">值</span> <span class="err">－</span> <span class="n">move-box</span><span class="err">的宽度</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>通理，8个操作区域会有各自的变换。</p>
+
+<h4 id="section-5">监听对象的转移</h4>
+
+<p>从表面上看，iFreeLayer是对8个操作区域的mousemove事件进行了监听，然后去改变容器的高宽。如果只简单这样实现，会出现一个问题。由于8个操作区域的大小有限，当鼠标的移动速度超过宽高的改变速度，鼠标很容易超出操作区域范围，中止移动。为了解决这个问题，在鼠标按下后，iFreeLayer同时还监听了它的parent的mousemove事件，这样，就算鼠标移出了区域范围，仍然能够调整宽高。</p>
+
+<p>其他部分就没啥好讲的了。</p>
+
+<p>17 Dec 2015</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

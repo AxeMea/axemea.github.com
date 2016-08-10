@@ -1,7 +1,7 @@
 ---
 layout: page
 title: flask-sqlalchemy使用笔记
-category: flask
+category: Python
 comments: true
 ---
 
@@ -100,7 +100,3 @@ User.query.order_by(desc(AclLogTable.date))
 
 
 {{ page.date | date_to_string }}
-
-
-
-

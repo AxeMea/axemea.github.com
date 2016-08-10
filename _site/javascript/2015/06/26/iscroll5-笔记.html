@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> iScroll5 笔记 —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/javascript/2015/06/26/iscroll5-%E7%AC%94%E8%AE%B0.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="iScroll5 笔记" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iScroll5 笔记">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/javascript/2015/06/26/iscroll5-%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<h4 id="iscroll5">1.使用iScroll5的场景</h4>
+
+<p>iScroll5主要解决的两个问题，弹性效果，以及浏览器不支持fixed。产品设计中，涉及到许多的表单填写，同时，有许多悬浮在屏幕底部的按钮以及输入框。因此引入iScroll5框架。同时对于设备进行判断，只有iphone使用该框架。</p>
+
+<h4 id="tapclick">2.tap与click</h4>
+
+<p>tap事件，一般是由移动端的touchstart，touchmove，touchend组合而成。对于这样做，可以解决，click的300ms延迟。</p>
+
+<p>在iScroll5中，默认click事件是禁止的。官方推荐是响应tap事件来进行处理。但项目中，一部分功能是从其它项目迁过来的，中间不少的代码，以及插件都需要click事件。所以需要根据具体的设备，来判断是否开启click配置，代码如下。</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//设备识别来控制iscroll的click真假
+</span>
+<span class="kd">function</span> <span class="nx">iScrollClick</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">UA</span> <span class="o">=</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/iPhone|iPad|iPod|Macintosh/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">UA</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/Chrome/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">UA</span><span class="p">))</span> <span class="k">return</span> <span class="p">(</span><span class="sr">/Android/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">UA</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/Silk/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">UA</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/Android/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">UA</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">UA</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/Android </span><span class="se">[\d</span><span class="sr">+.</span><span class="se">]{1,5}</span><span class="sr">/</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'Android '</span><span class="p">,</span><span class="s1">''</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="nx">s</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">442</span> <span class="o">&amp;&amp;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="nx">s</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">430</span> <span class="p">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">scroll</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IScroll</span><span class="p">(</span><span class="s1">'#wrapper'</span><span class="p">,{</span>
+            <span class="na">click</span><span class="p">:</span><span class="nx">iScrollClick</span><span class="p">()</span>
+        <span class="p">});</span></code></pre></figure>
+
+<h4 id="section">2.双击问题</h4>
+
+<p>click配置放开后，问题就出来了，移动端，会出现类似点击一次，响应两次的问题。原因装要是因为，iScroll同时响应了tap和click，而click由于延迟300ms，所以，先触发tap，后触发click。</p>
+
+<p>可以通过修改iScroll的源码来解决，代码段如下：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// we scrolled less than 10 pixels
+</span>
+<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">moved</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">tap</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="nx">utils</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">tap</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">click</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="nx">utils</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">_execEvent</span><span class="p">(</span><span class="s1">'scrollCancel'</span><span class="p">);</span>
+	<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>修改后代码如下：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">moved</span> <span class="p">)</span> <span class="p">{</span>  
+
+    <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">tap</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">utils</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">tap</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">click</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">endTime</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startTime</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">)</span> <span class="p">{</span>
+            	<span class="nx">utils</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_execEvent</span><span class="p">(</span><span class="s1">'scrollCancel'</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>判断两次响应的时间间隔。</p>
+
+<h4 id="click">3.在不开启click配置时，节点无法点击</h4>
+
+<p>由于click配置未开启，iScroll屏蔽了所有点击。如果想解除某些节点的屏蔽。可以在初始化中配置代码类似于：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">preventDefaultException</span><span class="err">:</span><span class="p">{</span><span class="nl">tagName</span><span class="p">:</span> <span class="sr">/^</span><span class="se">(</span><span class="sr">INPUT|TEXTAREA|BUTTON|DIV|SELECT|A|SPAN|I|TABLE|TR|TD|P|UL|LI|H4|IMG</span><span class="se">)</span><span class="sr">$/</span> <span class="p">}</span></code></pre></figure>
+
+<h4 id="clickselectinputtextareaclick">4.开启click配置后，select，input，textarea无法响应click</h4>
+
+<p>开启click配置后，本以为所有的节点都可以响应click了，结果不然。select，input，textarea还是无法绑定click。解决这个问题，也是从iScroll源码下手，找到如下代码段：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">SELECT|INPUT|TEXTAREA</span><span class="se">)</span><span class="sr">/i</span><span class="p">).</span><span class="nx">test</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="nx">ev</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">'MouseEvents'</span><span class="p">);</span>
+	<span class="nx">ev</span><span class="p">.</span><span class="nx">initMouseEvent</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">view</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+		<span class="nx">target</span><span class="p">.</span><span class="nx">screenX</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">screenY</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">clientY</span><span class="p">,</span>
+		<span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">altKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">shiftKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">,</span>
+		<span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+
+	<span class="nx">ev</span><span class="p">.</span><span class="nx">_constructed</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="nx">target</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>修改后代码如下：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">SELECT|TEXTAREA</span><span class="se">)</span><span class="sr">/i</span><span class="p">).</span><span class="nx">test</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="p">))</span> <span class="p">{</span>
+	<span class="nx">ev</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">'MouseEvents'</span><span class="p">);</span>
+	<span class="nx">ev</span><span class="p">.</span><span class="nx">initMouseEvent</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">view</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+		<span class="nx">target</span><span class="p">.</span><span class="nx">screenX</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">screenY</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">clientY</span><span class="p">,</span>
+		<span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">altKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">shiftKey</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">,</span>
+		<span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+
+	<span class="nx">ev</span><span class="p">.</span><span class="nx">_constructed</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="nx">target</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>这样就开启了input节点，如果要开启其它的，也是类似的处理。</p>
+
+<h4 id="section-1">5.页面节点动态变化</h4>
+
+<p>由于iScroll的scroll高度，是初始化时，就计算好了。如果在页面中动态添加节点，则会出现，显示不全的现象。可以在每一次操作完dom后，通过scroll.refresh方法刷新视图，重新计算高度。但可能在实际的页面中，会有许多地方对dom节点进行动态的操作。所以，可以用一个定时器，定时刷新视图，方便许多。
+26 Jun 2015</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

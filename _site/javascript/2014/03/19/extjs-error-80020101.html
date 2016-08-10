@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> 奇葩年年有今年特别多之ExtJS错误80020101 —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/javascript/2014/03/19/extjs-error-80020101.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="奇葩年年有今年特别多之ExtJS错误80020101" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="奇葩年年有今年特别多之ExtJS错误80020101">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/javascript/2014/03/19/extjs-error-80020101.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<p>今天在切浏览器测试的时候，以外的发现，ie7，ie8俩兄弟竟然打不开很多模块的页面，查看控制台发现报</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SCRIPT257: 由于出现错误 80020101 而导致此项操作无法完成
+</code></pre>
+</div>
+
+<p>google一把，发现这个问题主要是因为一下几个方面引起：</p>
+
+<ul>
+  <li>
+    <!-- -->
+    <p>注释惹的祸</p>
+  </li>
+  <li>
+    <p>不严格的json格式，比如最后一个变量多了逗号等现象</p>
+  </li>
+  <li>如果用tabpanel加载的是页面，那么注意设置script:true，并且去除页面中的引用库以及html head body等结构，避免引起和主框架的冲突</li>
+</ul>
+
+<p>对照以上几点，快速把代码过了下，竟然都不存在。。然后我根据请求流来判断哪一个环节出了问题，发现在加载模块的controller后，并没有顺利加载store，view组件，因此判断是在controller中的代码出现问题，但controller的格式是通过工具生成的，应该不会存在问题，然后一行一行调试。。发现。。。</p>
+
+<p>在模块视图中，使用了grid组件，同时里面存在actioncolumn列，由于actioncolumn只有handler方法，它并没有默认的信号释放能够被controller捕获，所以在handler中自定义了释放了一个delete信号</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">this.fireEvent('delete',record);</code></pre></figure>
+
+<p>这本身是正确的，奇葩来了。。就是因为这个’delete’信号，如果换成其他的就ok。。。。。。猜想：因为actioncolumn默认定义了delete信号，当再次定义时，可能存在冲突的原因。。。。等有时间看下源码，再一探究竟。。</p>
+
+<p>吐槽：error 80020101 这个错误太泛了。。</p>
+
+<p>19 Mar 2014</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

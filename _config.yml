@@ -1,69 +1,27 @@
-### Site info:
+# Site settings
 title: M的奇葩漂流
-tagline: 人生如茶，空杯以对。对程序的态度，正如对生活的态度。
-author: Zheng Yu
-email: michaelcoco1991@gmail.com
-description: "Michael的技术与生活博客" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
-keywords: "Michael,blog,IT,javascript,front-end,internet"
+description: >
+  人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://axemea.github.io" # the base hostname & protocol for your site
 
+author:
+  fullname: Zheng Yu
+  googleplus: https://www.google.com/+MotaquillahMaddane
+  github: axemea
+  twitter: zheng yu
+  # disqus: your_disqus_forum_shortname
 
-### Personal info and site tools info:
-twitter_username: zheng yu
-github_username:  axemea
-disqus_shortname: axemea
-favicon:     "/images/favicon.ico"
-aboutme: 曾经，最苦恼的是，被别人称作安静的美男子。现在，最苦恼的是，特么的这些竟然是真的。待你下次的转身，我会果断抱住你，然后大声地说，我要全世界都知道，我只是一名前端工程师。  # these are shown on aboutme-sidebar.
-aboutme_photo: http://axemea.github.io/images/avatar.jpeg # your photo.
+# google_analytics: 'UA-XXXXXXXX-X'
 
+# Syntax highlighting
+highlightstyle: ''
+styles: [agate, androidstudio, arta, asceti, atelier-cave.dark, atelier-cave.light, atelier-dune.dark, atelier-dune.light, atelier-estuary.dark, atelier-estuary.light, atelier-forest.dark, atelier-forest.light, atelier-heath.dark, atelier-heath.light, atelier-lakeside.dark, atelier-lakeside.light, atelier-plateau.dark, atelier-plateau.light, atelier-savanna.dark, atelier-savanna.light, atelier-seaside.dark, atelier-seaside.light, atelier-sulphurpool.dark, atelier-sulphurpool.light, brown_paper, codepen-embed, color-brewer, dark, darkula, default, docco, far, foundation, github, github-gist, googlecode, grayscale, hopscotch, hybrid, idea, ir_black, kimbie.dark, kimbie.light, magula, mono-blue, monokai, monokai_sublime, obsidian, paraiso.dark, paraiso.light, pojoaque, railscast, rainbow, school_book, solarized_dark, solarized_light, styles_list.txt, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eightie, v, xcode, zenburn]
 
-### Site setting:
-ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown where ShowContactInfo == True
-default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
-default_locale: "cn" # blog sidebar language set, only include: English(en) and Chinese (cn)
+# Handling Reading
+exclude: ["README.md", "README.html"]
 
-locales:
-    en:
-      Aboutme: "About Me"
-      Archives: "Archives"
-      Blogroll: "Blogroll"
-      Categories: "Categories"
-      Copyright_Notice: "Copyright Notice"
-      Resent_Posts: "Resent Posts"
-      Tags: "Tags"
-      Previous: "Older"
-      Next: "Newer"
-      PostedInCategories: "Posted in"
-      Taggedwith: "and tagged"  
-      PostDate: "on "
-    cn:
-      Aboutme: "关于我"
-      Archives: "存档"
-      Blogroll: "良师益友"        
-      Categories: "分类目录"    
-      Copyright_Notice: "版权声明"
-      Resent_Posts: "近期文章"
-      Tags: "标签" 
-      Previous: "前一页"
-      Next: "后一页"
-      PostedInCategories: "目录:"   
-      Taggedwith: "| 标签:"
-      PostDate: "| 发表时间: "
-
-
-### your Blogroll info, only name can shown on the page.
-
-Blogroll:
-#    - name: axemea
-#      href: http://axemea.github.io
-#      title: blog
-#    - name: author's website
-#      href: http://axemea.github.io/
-#      title: Zheng yu's website
-
-
-### Build settings
+# Build settings
+highlighter: null
 markdown: kramdown
-highlighter: pygments
-paginate: 5

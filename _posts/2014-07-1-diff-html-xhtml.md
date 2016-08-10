@@ -1,7 +1,7 @@
 ---
 layout: page
 title: HTML、XHTML的区别
-category: html
+category: CSS
 comments: true
 ---
 

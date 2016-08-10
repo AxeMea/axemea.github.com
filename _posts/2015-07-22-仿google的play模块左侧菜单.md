@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 仿google的play模块左侧菜单
-category: javascript
+category: Javascript
 comments: yes
 ---
 

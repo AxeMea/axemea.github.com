@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ExtJS前端项目构架探讨(一)
-category: ExtJS
+category: Javascript
 comments: true
 ---
 

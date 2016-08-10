@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Sleuth.js - 想用啥就用啥 —  &raquo;  M的奇葩漂流</title>
+<meta name="description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://axemea.github.io/javascript/2014/11/23/framwork-sleuth.html">
+        
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sleuth.js - 想用啥就用啥" />
+<meta name="twitter:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+" />
+<meta name="twitter:image" content="http://axemea.github.io" />
+
+<!-- Google plus -->
+<meta name="author" content="https://www.google.com/+MotaquillahMaddane">
+<link rel="author" href="https://www.google.com/+MotaquillahMaddane">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sleuth.js - 想用啥就用啥">
+<meta property="og:description" content="人生如茶，空杯以对。对程序的态度，正如对生活的态度。
+">
+<meta property="og:url" content="http://axemea.github.io/javascript/2014/11/23/framwork-sleuth.html">
+<meta property="og:site_name" content="M的奇葩漂流">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/assets/vendor/highlight/styles/solarized_dark.css">
+
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+    <div class="navigation">
+        <a href="/" class="logo">M的奇葩漂流</a>
+
+        <ul class="menu">
+            <li class="menu__entry"><a href="/">Blog</a></li>
+            <li class="menu__entry"><a href="/about">关于</a></li>
+        </ul>
+    </div>
+
+    <ul class="social-links">
+        
+            <a href="https://github.com/axemea" class="social-links__entry" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        
+    </ul>
+</header>
+
+
+            <h1 class="page-title">
+    <div class="page-title__subtitle"></div>
+</h1>
+
+
+<p>Github:<a href="https://github.com/AxeMea/Sleuth.js">https://github.com/AxeMea/Sleuth.js</a></p>
+
+<p>oschina:<a href="http://my.oschina.net/u/1420701/blog/347360">http://http://my.oschina.net/u/1420701/blog/347360</a></p>
+
+<p>靠这个还上过某周的top博主，哈哈哈</p>
+
+<h4 id="sleuthjs">一.Sleuth.js是什么</h4>
+
+<p>Sleuth是一个加载框架，它允许开发者只需要require相应的库或者插件，不需要去下载，就可以直接使用，并且允许开发者任意切换版本。</p>
+
+<h4 id="sleuthjs-1">二.使用Sleuth.js</h4>
+
+<h5 id="sleuthjs-2">1.引入Sleuth.js库文件</h5>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"sleuth.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+
+<p>先后引用mapping-ch.min.js,sleuth.min.js文件，注意顺序。mapping-ch.min.js是库的版本映射文件，定义了引用各个库和插件的源地址。默认的引用的是一个公共的映射文件，当然开发者也可以定义自己的映射文件。</p>
+
+<h5 id="section">2.使用方法</h5>
+
+<p>Sleuth.js只向外提供了一个require方法</p>
+
+<p>1-只加载一个库</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;</span><span class="err">
+</span><span class="c1">//加载一个库
+</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">'jquery'</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="c1">//write your code
+</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>2-加载多个库</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//加载多个库
+</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">'jquery'</span><span class="p">,</span><span class="s1">'prototype'</span><span class="p">,</span><span class="s1">'response'</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+<span class="c1">//write your code
+</span>
+<span class="p">});</span></code></pre></figure>
+
+<table>
+  <tbody>
+    <tr>
+      <td>3-选择版本加载，格式为“库</td>
+      <td>版本号”，如果没有显式定义版本，则选取映射文件中对应库的第一个版本。</td>
+    </tr>
+  </tbody>
+</table>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//选择版本加载
+</span>
+<span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">'jquery|1.8.3'</span><span class="p">,</span><span class="s1">'prototype'</span><span class="p">,</span><span class="s1">'response'</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+<span class="c1">//write your code
+</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="section-1">三.定义版本映射文件</h4>
+
+<p>初始的映射文件为：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">		<span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="na">prototype</span><span class="p">:{</span>
+				<span class="s1">'1.7.2'</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js'</span>
+			<span class="p">},</span>
+			<span class="na">jquery</span><span class="p">:{</span>
+				<span class="s1">'1.8.3'</span><span class="p">:</span><span class="s1">'http://code.jquery.com/jquery-1.8.3.min.js'</span><span class="p">,</span>
+				<span class="s1">'1.8.2'</span><span class="p">:</span><span class="s1">'http://code.jquery.com/jquery-1.8.2.min.js'</span>
+			<span class="p">},</span>
+			<span class="na">ext</span><span class="p">:{</span>
+				<span class="s1">'4.2.1'</span><span class="p">:{</span>
+					<span class="na">u</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js'</span><span class="p">,</span>
+					<span class="na">c</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css'</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="na">backbone</span><span class="p">:{</span>
+				<span class="s1">'1.1.2'</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js'</span>
+			<span class="p">},</span>
+			<span class="na">response</span><span class="p">:{</span>
+				<span class="s1">'0.9.1+201410311050'</span><span class="p">:</span><span class="s1">'http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js'</span>
+			<span class="p">}</span>
+
+		<span class="p">};</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>开发者如果需要其它的库或者插件可以Pull Request过来，我们将丰富到映射文件中去，当然开发者也可以编写自己的本地映射配置文件。但我们真诚的希望，您能将您的需求提交给我们，你需要的，必然他人也需要，谢谢。</p>
+
+<h4 id="section-2">四.映射配置文件配置项说明</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">		<span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="c1">//单版本配置
+</span>
+			<span class="na">prototype</span><span class="p">:{</span>
+				<span class="s1">'1.7.2'</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js'</span>
+			<span class="p">},</span>
+			<span class="c1">//多版本配置
+</span>
+			<span class="na">jquery</span><span class="p">:{</span>
+				<span class="s1">'1.8.3'</span><span class="p">:</span><span class="s1">'http://code.jquery.com/jquery-1.8.3.min.js'</span><span class="p">,</span>
+				<span class="s1">'1.8.2'</span><span class="p">:</span><span class="s1">'http://code.jquery.com/jquery-1.8.2.min.js'</span>
+			<span class="p">},</span>
+			<span class="c1">//带一个css的库的配置
+</span>
+			<span class="na">ext</span><span class="p">:{</span>
+				<span class="s1">'4.2.1'</span><span class="p">:{</span>
+					<span class="c1">//url
+</span>
+					<span class="na">u</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js'</span><span class="p">,</span>
+					<span class="c1">//css
+</span>
+					<span class="na">c</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css'</span>
+				<span class="p">}</span>
+			<span class="p">},</span>
+			<span class="c1">//带多个css的库的配置
+</span>
+			<span class="na">demo</span><span class="p">:{</span>
+				<span class="s1">'1.0'</span><span class="p">:{</span>
+					<span class="na">u</span><span class="p">:</span><span class="s1">'demo.js'</span><span class="p">,</span>
+					<span class="na">c</span><span class="p">:[</span><span class="s1">'demo1.css'</span><span class="p">,</span><span class="s1">'demo2.css'</span><span class="p">]</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>需要值得注意的是，在配置版本顺序的时候，推荐最新版本的写在前面，这样默认的话，选择的就是最新版本。</p>
+
+<h4 id="section-3">五.关于引用地址</h4>
+
+<p>可以是各个cdn点的资源如：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">	<span class="kd">var</span> <span class="nx">refMapping</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="na">ext</span><span class="p">:{</span>
+				<span class="s1">'4.2.1'</span><span class="p">:{</span>
+					<span class="c1">//url
+</span>
+					<span class="na">u</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/ext-all.min.js'</span><span class="p">,</span>
+					<span class="c1">//css
+</span>
+					<span class="na">c</span><span class="p">:</span><span class="s1">'http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css'</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+
+<span class="p">};</span></code></pre></figure>
+
+<p>如果想引用github中开源库的代码，需要注意的是其引用地址，比如Sleuth.js,
+<a href="https://github.com/AxeMea/Sleuth/blob/master/sleuth.js">Sleuth.js</a>
+这个地址是不行的，需要的是直接访问文件系统的地址，
+<a href="https://rawgithub.com/axemea/sleuth/master/sleuth.js">Sleuth.js</a></p>
+
+<h4 id="amdcommonjs">六.支持AMD,CommonJS规范</h4>
+
+<h5 id="amd">AMD规范</h5>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">		<span class="nx">require</span><span class="p">([</span><span class="s1">'sleuth'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Sleuth</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="err">　　　　</span><span class="nx">Sleuth</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span><span class="s1">'jquery|1.8.3'</span><span class="p">,</span><span class="s1">'prototype'</span><span class="p">,</span><span class="s1">'response'</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+
+			<span class="c1">//write your code
+</span>
+
+			<span class="p">});</span>
+	<span class="err">　　</span><span class="p">});</span></code></pre></figure>
+
+<h5 id="commonjs">CommonJS规范</h5>
+
+<h4 id="section-4">七.公共映射配置文件库以及插件列表[及时更新]</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>库名</th>
+      <th>版本号</th>
+      <th>脚本引用地址</th>
+      <th>样式引用地址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>prototype</td>
+      <td>1.7.2</td>
+      <td>http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>jquery</td>
+      <td>1.8.3</td>
+      <td>http://code.jquery.com/jquery-1.8.3.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>1.8.2</td>
+      <td>http://code.jquery.com/jquery-1.8.2.min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ext</td>
+      <td>4.2.1</td>
+      <td>http://cdn.bootcss.com/extjs/4.2.1/ext-all.js</td>
+      <td>http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css</td>
+    </tr>
+    <tr>
+      <td>backbone</td>
+      <td>1.1.2</td>
+      <td>http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>response</td>
+      <td>0.9.1+201410311050</td>
+      <td>http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>23 Nov 2014</p>
+
+
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">记录平凡中的细节</div>
+    <ul class="categories">
+        
+            <li class="categories__item"><a href="/categories/javascript">Javascript</a></li>
+        
+            <li class="categories__item"><a href="/categories/css">CSS</a></li>
+        
+            <li class="categories__item"><a href="/categories/python">Python</a></li>
+        
+            <li class="categories__item"><a href="/categories/production">产品</a></li>
+        
+            <li class="categories__item"><a href="/categories/daily">日记</a></li>
+        
+		<li class="categories__item"><a href="/">All</a></li>
+    </ul>
+</div>
+
+
+        </div>
+
+        <script src="/assets/vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

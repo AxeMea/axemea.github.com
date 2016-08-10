@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sleuth.js - 想用啥就用啥
-category: javascript
+category: Javascript
 comments: yes
 ---
 
@@ -14,7 +14,7 @@ oschina:[http://http://my.oschina.net/u/1420701/blog/347360](http://my.oschina.n
 
 
 #### 一.Sleuth.js是什么
-    
+
 Sleuth是一个加载框架，它允许开发者只需要require相应的库或者插件，不需要去下载，就可以直接使用，并且允许开发者任意切换版本。
 
 #### 二.使用Sleuth.js
@@ -38,7 +38,7 @@ Sleuth.js只向外提供了一个require方法
 <script type="text/javascript" src="https://rawgithub.com/axemea/sleuth/master/mappings/mapping-ch.min.js"></script>
 //加载一个库
 Sleuth.require(['jquery'],function(){
-	//write your code 
+	//write your code
 });
 {% endhighlight javascript %}
 
@@ -47,7 +47,7 @@ Sleuth.require(['jquery'],function(){
 {% highlight javascript %}
 //加载多个库
 Sleuth.require(['jquery','prototype','response'],function(){
-//write your code 
+//write your code
 });
 {% endhighlight javascript %}
 
@@ -56,7 +56,7 @@ Sleuth.require(['jquery','prototype','response'],function(){
 {% highlight javascript %}
 //选择版本加载
 Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
-//write your code 
+//write your code
 });
 {% endhighlight javascript %}
 
@@ -150,7 +150,7 @@ Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
 
 
 如果想引用github中开源库的代码，需要注意的是其引用地址，比如Sleuth.js,
-[Sleuth.js](https://github.com/AxeMea/Sleuth/blob/master/sleuth.js) 
+[Sleuth.js](https://github.com/AxeMea/Sleuth/blob/master/sleuth.js)
 这个地址是不行的，需要的是直接访问文件系统的地址，
 [Sleuth.js](https://rawgithub.com/axemea/sleuth/master/sleuth.js)
 
@@ -163,7 +163,7 @@ Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
 
 	　　　　Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
 
-			//write your code 
+			//write your code
 
 			});
 	　　});
@@ -180,12 +180,12 @@ Sleuth.require(['jquery|1.8.3','prototype','response'],function(){
 
 库名 | 版本号 | 脚本引用地址 | 样式引用地址
 -----|--------|--------------|-------------
-prototype | 1.7.2  | http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js | 
-jquery | 1.8.3  | http://code.jquery.com/jquery-1.8.3.min.js | 
- | 1.8.2  | http://code.jquery.com/jquery-1.8.2.min.js | 
+prototype | 1.7.2  | http://cdn.bootcss.com/prototype/1.7.2/prototype.min.js |
+jquery | 1.8.3  | http://code.jquery.com/jquery-1.8.3.min.js |
+ | 1.8.2  | http://code.jquery.com/jquery-1.8.2.min.js |
 ext | 4.2.1  | http://cdn.bootcss.com/extjs/4.2.1/ext-all.js | http://cdn.bootcss.com/extjs/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css
 backbone | 1.1.2  | http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js |  
-response | 0.9.1+201410311050  | http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js | 
+response | 0.9.1+201410311050  | http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js |
 
 
 

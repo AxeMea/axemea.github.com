@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Javascript帮助手册
-category: javascript
+category: Javascript
 comments: true
 ---
 
@@ -244,7 +244,7 @@ George.John.Thomas
 * toPrecision 	
 把数字格式化为指定的长度。
 * valueOf 	
-返回一个 Number 对象的基本数字值。 
+返回一个 Number 对象的基本数字值。
 
 ***
 
@@ -592,7 +592,7 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 向元素添加新的子节点，作为最后一个子节点。
 * element.attributes 	
 返回元素属性的 NamedNodeMap。
-* element.childNodes 
+* element.childNodes
 返回元素子节点的 NodeList。
 * element.className 	
 设置或返回元素的 class 属性。

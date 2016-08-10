@@ -1,12 +1,12 @@
 ---
 layout: page
 title: the-next-palindrome-SPOJ-5
-category: python
+category: Python
 comments: true
 ---
 
 ```
-A positive integer is called a palindrome if its representation in the decimal system is the same when read from left to right and from right to left. For a given positive integer K of not more than 1000000 digits, write the value of the smallest palindrome larger than K to output. Numbers are 
+A positive integer is called a palindrome if its representation in the decimal system is the same when read from left to right and from right to left. For a given positive integer K of not more than 1000000 digits, write the value of the smallest palindrome larger than K to output. Numbers are
 always displayed without leading zeros.
 ```
 
@@ -110,7 +110,7 @@ def palindrome(line):
         if(i != l - i -1):
             if(int(_list[i]) > int(_list[l - i  -1])):
                 s = True
-            
+
         _list[l - i  - 1] = _list[i]
 
 
@@ -119,17 +119,17 @@ def palindrome(line):
     else:
         return fill_zero(line)
 
-  
+
 '''if __name__ == '__main__':
     while True:
         group = sys.stdin.readline()
         for i in xrange(int(group)):
             line = sys.stdin.readline()
-            print 'transform before : ',line 
+            print 'transform before : ',line
             line = transform_line(line)
             print 'transform after : ',line
             '''
-            
+
 if __name__ == '__main__':
     file = open_file('test.txt')
     group = file.readline()
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     file.close();
 
     print 'duration is',time.time() - start
-  
+
 {% endhighlight python %}
 
 ### 扯淡
