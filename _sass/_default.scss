@@ -303,3 +303,18 @@ strong {
         font-size: 18px;
     }
 }
+
+.content{
+  word-break: break-all;
+  
+  table{
+    th, td{
+      padding: 10px;
+      border: 1px #d8d8d8 solid;
+    }
+
+    th{
+      background: #e8e8e8
+    }
+  }
+}

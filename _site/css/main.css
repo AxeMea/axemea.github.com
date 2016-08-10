@@ -251,6 +251,14 @@ strong {
 
   .post-title__subtitle {
     font-size: 18px; } }
+.content {
+  word-break: break-all; }
+  .content table th, .content table td {
+    padding: 10px;
+    border: 1px #d8d8d8 solid; }
+  .content table th {
+    background: #e8e8e8; }
+
 /* Source: http://codepen.io/bulby97/pen/fcvay */
 .glitch {
   position: relative;

@@ -79,42 +79,40 @@
 
 <p>这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：</p>
 
-<pre>
-project_pub-
-            app-
-                controller-
-                           moduleA
-                           moduleB
-                           ...
-                view-
-                     moduleA
-                     moduleB
-                     ...
-                ...
-            ...
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">project_pub</span><span class="o">-</span>
+            <span class="nx">app</span><span class="o">-</span>
+                <span class="nx">controller</span><span class="o">-</span>
+                           <span class="nx">moduleA</span>
+                           <span class="nx">moduleB</span>
+                           <span class="p">...</span>
+                <span class="nx">view</span><span class="o">-</span>
+                     <span class="nx">moduleA</span>
+                     <span class="nx">moduleB</span>
+                     <span class="p">...</span>
+                <span class="p">...</span>
+            <span class="p">...</span>
 
-</pre>
-
-<pre>
-project_dev-
-            moduleA-   
-		            app-
-		                controller-
-		                           moduleA
-		                view-
-		                     moduleA
-		                ...
-		            ...
-		    moduleB-   
-		            app-
-		                controller-
-		                           moduleB
-		                view-
-		                     moduleB
-		                ...
-		            ...
-		    ...
- </pre>
+<span class="o">&lt;</span><span class="sr">/pre&gt;</span><span class="err">
+</span>
+<span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;</span>
+<span class="nx">project_dev</span><span class="o">-</span>
+            <span class="nx">moduleA</span><span class="o">-</span>   
+		            <span class="nx">app</span><span class="o">-</span>
+		                <span class="nx">controller</span><span class="o">-</span>
+		                           <span class="nx">moduleA</span>
+		                <span class="nx">view</span><span class="o">-</span>
+		                     <span class="nx">moduleA</span>
+		                <span class="p">...</span>
+		            <span class="p">...</span>
+		    <span class="nx">moduleB</span><span class="o">-</span>   
+		            <span class="nx">app</span><span class="o">-</span>
+		                <span class="nx">controller</span><span class="o">-</span>
+		                           <span class="nx">moduleB</span>
+		                <span class="nx">view</span><span class="o">-</span>
+		                     <span class="nx">moduleB</span>
+		                <span class="p">...</span>
+		            <span class="p">...</span>
+		    <span class="p">...</span></code></pre></figure>
 
 <h3 id="section-1">国际化</h3>
 

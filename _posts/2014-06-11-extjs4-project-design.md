@@ -13,7 +13,7 @@ comments: true
 
 这样，我们可以看做要维护两个大工程，举例分别为，project_pub，project_dev，那么两个工程下的文件结构类似如下：
 
-<pre>
+{% highlight javascript %}
 project_pub-
             app-
                 controller-
@@ -48,7 +48,7 @@ project_dev-
 		                ...
 		            ...
 		    ...
- </pre>
+{% endhighlight javascript %}
 
 ### 国际化
 
