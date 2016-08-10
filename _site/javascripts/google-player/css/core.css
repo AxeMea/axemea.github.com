@@ -1,0 +1,266 @@
+ul{
+	list-style-type: none;
+}
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	background: #E5E5E5;
+	font-size: 14px;
+	font-family: Roboto, UILanguageFont, Arial, sans-serif;
+
+}
+
+.invisible{
+	visibility: hidden;
+}
+
+.hidden{
+	display: none;
+}
+
+.page-header{
+	background: #F1F1F1;
+	height: 60px;
+}
+
+.base-menu{
+	width: 200px;
+	position: relative;
+	padding-top: 50px;
+	overflow: hidden;
+	height: 150px;
+}
+
+.breadboard{
+	padding-left: 200px;
+	background: white;
+	height: 50px;
+}
+
+.breadboard.float-top{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.breadboard li{
+	float: left;
+	padding: 16px 20px
+}
+
+.breadboard li.active{
+	border-bottom: 2px #1AA1E1 solid
+}
+
+.breadboard li:hover{
+	background-color: #F1F1F1;
+	cursor: pointer;
+	border-bottom: 2px #f1f1f1 solid
+}
+.breadboard li.active:hover{
+	border-bottom: 2px #1AA1E1 solid
+}
+
+.breadboard li a{
+	color: black;
+	text-decoration: none;
+}
+
+
+.menu-wrapper{
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	z-index: 99
+}
+
+.base-menu.float-top{
+	position: fixed;
+	top: 0px;
+}
+
+.base-menu .side{
+	background-color: white;
+	width: 20px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	cursor: pointer;
+	background-image: url('../images/arrow.png');
+	background-repeat: no-repeat;
+	background-position: center 100px;
+}
+
+.base-menu .side:hover{
+	background: #efefef
+}
+
+.base-menu .sub-menu{
+	padding-left: 20px;
+	display: none;
+	background-color: #E6E6E6;
+}
+
+.base-menu .sub-menu ul{
+	/*background: rgb(218, 218, 218);*/
+}
+
+.base-menu .sub-menu ul{
+	clear: both;
+}
+
+.base-menu .sub-menu ul li{
+	padding: 10px 15px 10px 15px ;
+	cursor: pointer;
+}
+
+.base-menu .sub-menu ul li:hover{
+	background:#E6E6E6
+}
+
+.base-menu .sub-menu ul li.chosen{
+	color: #8d9d29
+}
+
+.base-menu .icon-box{
+	float: left;
+	width: 60px;
+	height: 50px;
+	position: relative;
+	background: inherit;
+}
+
+.base-menu .icon-box:after{
+	content: '';
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border-radius: 50%;
+	background-color: white;
+	right: 20px;
+	top: 20px;
+	position: absolute;
+}
+
+.base-menu .title-box:hover{
+	background: inherit;
+}
+
+.base-menu .title-box{
+	width: 125px;
+	background: white;
+	float: left;
+	height: 50px;
+	color: black;
+	line-height: 50px;
+	padding-left: 15px;
+}
+
+.base-menu .menu.float-top .title-box{
+	background-color: inherit;
+	color: white
+}
+
+.base-menu .menu.default{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 99
+}
+
+.base-menu li dt:hover .title-box{
+	color: white;
+	background-color: inherit;
+}
+
+
+
+.base-menu li dt{
+	cursor: pointer;
+	overflow: hidden;
+	width: 100%;
+}
+
+/*菜单颜色*/
+.menu-movie dt{
+	background: #CE5043;
+}
+
+.menu-application dt{
+	background: #B3C833;
+}
+
+.menu-music dt{
+	background: #FB8521;
+}
+
+.menu-book dt{
+	background: #1AA1E1;
+}
+
+.menu-newspaper dt{
+	background: #3F5CA9;
+}
+
+.menu-device dt{
+	background: #658092;
+}
+
+.menu-store dt{
+	background: #444444;
+}
+
+.main-wrapper dt{
+	padding-left: 200px;
+}
+
+.main-wrapper .body{
+	margin-top: 20px;
+	/*height: 2000px;*/
+	padding-left:200px;
+}
+
+.mask{
+	position: fixed;
+	top: 110px;
+	left: 0px;
+	width: 100%;
+	height:100%;
+	z-index: 90;
+	background-color: #ddd;
+	opacity: 0.65;
+	text-align: center;
+	display: none;
+}
+
+.mask img{
+	margin-top: 150px;
+	width: 150px;
+}
+
+.mask.float-top{
+	top: 50px;
+}
+
+.base-menu{
+	box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 6px 0px;
+	background-color: rgba(245, 245, 245, 0.952941);
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.base-menu ul{
+	background-color: rgba(245, 245, 245, 0.952941);
+}
+
+.base-menu ul li.now{
+	display: none
+}

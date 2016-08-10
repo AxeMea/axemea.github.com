@@ -366,9 +366,54 @@
   
     
     <url>
+      <loc>http://axemea.github.io/</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
       <loc>http://axemea.github.io/about/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>http://axemea.github.io/archives/</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>http://axemea.github.io/categories/</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -383,7 +428,7 @@
     <url>
       <loc>http://axemea.github.io/categories/css/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -398,7 +443,7 @@
     <url>
       <loc>http://axemea.github.io/categories/daily/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -413,9 +458,24 @@
   
     
     <url>
+      <loc>http://axemea.github.io/guestbook/</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
       <loc>http://axemea.github.io/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -430,7 +490,7 @@
     <url>
       <loc>http://axemea.github.io/categories/javascript/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -447,7 +507,7 @@
     <url>
       <loc>http://axemea.github.io/categories/production/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -462,7 +522,7 @@
     <url>
       <loc>http://axemea.github.io/categories/python/</loc>
       
-        <lastmod>2016-08-10T13:55:41+08:00</lastmod>
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -475,6 +535,36 @@
   
     
   
+    
+  
+    
+    <url>
+      <loc>http://axemea.github.io/tags/</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>http://axemea.github.io/zfeed.xml</loc>
+      
+        <lastmod>2016-08-10T22:23:38+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
     
   
 </urlset>
