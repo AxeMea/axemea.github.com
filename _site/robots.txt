@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: http://axemea.github.io/sitemap.xml

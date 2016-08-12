@@ -2,6 +2,6 @@
 *.project
 *.swp
 *.md~
-_site
-*.git
-*.sass_cache
+/_site/
+/.git
+/.sass-cache/
