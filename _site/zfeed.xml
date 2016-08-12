@@ -6,9 +6,76 @@
 </description>
     <link>http://axemea.github.io/</link>
     <atom:link href="http://axemea.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Aug 2016 22:23:38 +0800</pubDate>
-    <lastBuildDate>Wed, 10 Aug 2016 22:23:38 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Aug 2016 22:59:23 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Aug 2016 22:59:23 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>闲谈Javascript的继承</title>
+        <description>&lt;p&gt;这是一篇值得自己之后，回头多看看的记录。&lt;/p&gt;
+
+&lt;p&gt;纵使写个再多功能，玩过再多框架，这些问题没彻彻底底弄清楚，也是枉然。&lt;/p&gt;
+
+&lt;p&gt;这将不会是个完整的教程，但会清晰讲述出Javascript中一些基础的概念和机制。&lt;/p&gt;
+
+&lt;p&gt;我们经常看到三个关键单词，prototype,constructor,&lt;strong&gt;proto&lt;/strong&gt;，那么它们到底是什么鬼，之间又是什么样的关系。&lt;/p&gt;
+
+&lt;p&gt;首先贴出张图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/javascript-inheritance/prototype.jpg&quot; alt=&quot;菜单&quot; /&gt;
+&lt;a href=&quot;http://blog.csdn.net/hikvision_java_gyh/article/details/8937157&quot;&gt;picture from:http://blog.csdn.net/hikvision_java_gyh/article/details/8937157&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;从以上图中可以看出。当一个函数F声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，一个指向函数F的引用。&lt;/p&gt;
+
+&lt;p&gt;现在就差__proto__没出场了。先上一小段代码。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;代码很简单，声明一个Base函数，并且实例化一个base对象。此时，base对象会有一个__proto__属性，这个属性指向函数Base的原型属性，即prototype对象。&lt;/p&gt;
+
+&lt;p&gt;那么总结这三个玩意就是：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;[函数身上]prototype：是函数的原型属性，类型是一个对象。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[函数身上]constructor：是prototype对象的一个属性，指向函数的引用。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[实例身上]&lt;strong&gt;proto&lt;/strong&gt;: 实例的一个属性，指向函数的prototype对象。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;三个关系基本捋清楚了，那么就要开始一顿等价模式，虽然有点绕，不过验证下我们的认识是否牢固。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;– 开启等价模式 –&lt;/h3&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;&lt;strong&gt;**&lt;/strong&gt;&lt;strong&gt;**&lt;/strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  
+  &lt;span class=&quot;c1&quot;&gt;// true              &lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__proto__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// true     &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;咦。。。之前不是说constructor是在函数身上，不再对象身上。这就要归功于Javascript的原型链了，当发现base实例中没有constructor时，会找去实例__proto__属性指向的原型上找，而之前我们说到了，属性__proto__是指向函数的prototype对象，这样就找到了constructor属性，而constructor属性指向函数本身。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;&lt;strong&gt;**&lt;/strong&gt;&lt;strong&gt;**&lt;/strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/h4&gt;
+</description>
+        <pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://axemea.github.io/javascript/2016/08/11/%E9%97%B2%E8%B0%88Javascript%E7%9A%84%E7%BB%A7%E6%89%BF.html</link>
+        <guid isPermaLink="true">http://axemea.github.io/javascript/2016/08/11/%E9%97%B2%E8%B0%88Javascript%E7%9A%84%E7%BB%A7%E6%89%BF.html</guid>
+        
+        
+        <category>Javascript</category>
+        
+      </item>
     
       <item>
         <title>Gulp - 使用总结</title>
@@ -295,7 +362,6 @@
     &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uglify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jsPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;03 Mar 2016&lt;/p&gt;
 </description>
         <pubDate>Thu, 03 Mar 2016 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2016/03/03/gulp%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93.html</link>
@@ -378,7 +444,6 @@
 &lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;showbm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;01 Mar 2016&lt;/p&gt;
 </description>
         <pubDate>Tue, 01 Mar 2016 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/production/2016/03/01/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%BD%91%E5%9D%80%E6%94%B6%E8%97%8F%E5%A4%B9.html</link>
@@ -437,8 +502,6 @@
 &lt;p&gt;iPhone版本&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/funnyface/iphone-qr.jpg&quot; alt=&quot;body&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;14 Jan 2016&lt;/p&gt;
 </description>
         <pubDate>Thu, 14 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/production/2016/01/14/%E8%B6%A3%E8%84%B8%E7%9A%84%E6%95%85%E4%BA%8B.html</link>
@@ -533,8 +596,6 @@
 &lt;p&gt;从表面上看，iFreeLayer是对8个操作区域的mousemove事件进行了监听，然后去改变容器的高宽。如果只简单这样实现，会出现一个问题。由于8个操作区域的大小有限，当鼠标的移动速度超过宽高的改变速度，鼠标很容易超出操作区域范围，中止移动。为了解决这个问题，在鼠标按下后，iFreeLayer同时还监听了它的parent的mousemove事件，这样，就算鼠标移出了区域范围，仍然能够调整宽高。&lt;/p&gt;
 
 &lt;p&gt;其他部分就没啥好讲的了。&lt;/p&gt;
-
-&lt;p&gt;17 Dec 2015&lt;/p&gt;
 </description>
         <pubDate>Thu, 17 Dec 2015 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2015/12/17/move-layer-plugin.html</link>
@@ -562,8 +623,6 @@
 &lt;h3 id=&quot;section-1&quot;&gt;截图&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/snap.png&quot; alt=&quot;菜单&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;22 Jul 2015&lt;/p&gt;
 </description>
         <pubDate>Wed, 22 Jul 2015 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2015/07/22/%E4%BB%BFgoogle%E7%9A%84play%E6%A8%A1%E5%9D%97%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95.html</link>
@@ -682,8 +741,7 @@
 
 &lt;h4 id=&quot;section-1&quot;&gt;5.页面节点动态变化&lt;/h4&gt;
 
-&lt;p&gt;由于iScroll的scroll高度，是初始化时，就计算好了。如果在页面中动态添加节点，则会出现，显示不全的现象。可以在每一次操作完dom后，通过scroll.refresh方法刷新视图，重新计算高度。但可能在实际的页面中，会有许多地方对dom节点进行动态的操作。所以，可以用一个定时器，定时刷新视图，方便许多。
-26 Jun 2015&lt;/p&gt;
+&lt;p&gt;由于iScroll的scroll高度，是初始化时，就计算好了。如果在页面中动态添加节点，则会出现，显示不全的现象。可以在每一次操作完dom后，通过scroll.refresh方法刷新视图，重新计算高度。但可能在实际的页面中，会有许多地方对dom节点进行动态的操作。所以，可以用一个定时器，定时刷新视图，方便许多。&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Jun 2015 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2015/06/26/iscroll5-%E7%AC%94%E8%AE%B0.html</link>
@@ -759,8 +817,6 @@
 &lt;p&gt;移动端：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/mini-designer/mini-designer-mobile.jpg&quot; alt=&quot;mobile&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;18 Jun 2015&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Jun 2015 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2015/06/18/mini-designer.html</link>
@@ -988,8 +1044,6 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;p&gt;23 Nov 2014&lt;/p&gt;
 </description>
         <pubDate>Sun, 23 Nov 2014 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2014/11/23/framwork-sleuth.html</link>
@@ -1779,8 +1833,6 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。&lt;
   &lt;li&gt;type 	
 返回当前 Event 对象表示的事件的名称。&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;13 Aug 2014&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Aug 2014 00:00:00 +0800</pubDate>
         <link>http://axemea.github.io/javascript/2014/08/13/javascript-help.html</link>
@@ -1788,137 +1840,6 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。&lt;
         
         
         <category>Javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>HTML、XHTML的区别</title>
-        <description>&lt;h4 id=&quot;dtd&quot;&gt;声明DTD&lt;/h4&gt;
-
-&lt;p&gt;XHTML文件的开始要声明DTD&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html
-PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
-&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;section&quot;&gt;嵌套使用&lt;/h4&gt;
-
-&lt;p&gt;XHTML元素一定要被正确的嵌套使用，在HTML里一些元素可以不正确嵌套也能正常显示，如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;This text is bold and italic&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;而在XHTML必须要正确嵌套之后才能正常使用，如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;This text is bold and italic&lt;span class=&quot;nt&quot;&gt;&amp;lt;/i&amp;gt;&amp;lt;/b&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;所有的标签和标签的属性都必须小写，属性值可以大写&lt;/h4&gt;
-
-&lt;p&gt;错误代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;BODY&amp;gt;&lt;/span&gt;
-　　&lt;span class=&quot;nt&quot;&gt;&amp;lt;P&amp;gt;&lt;/span&gt;This is a paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/P&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/BODY&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;正确代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-　　&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;属性值&lt;/h4&gt;
-
-&lt;p&gt;错误代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;正确代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100%&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;标签闭合&lt;/h4&gt;
-
-&lt;p&gt;所有的标签都必须被关闭，空标签也不例外。关闭空标签的方法如下：
-HTML中的&lt;br /&gt;要写成&lt;br /&gt;。注意，后面加了一个空格”“和一个反斜杠”/“。&lt;/p&gt;
-
-&lt;h4 id=&quot;dtd-1&quot;&gt;严格的dtd&lt;/h4&gt;
-
-&lt;p&gt;如果你使用的是strict.dtd。也就是最严格的XHTML，那么许多定义外观的属性都将不被允许。
-例如你为图片添加链接的同时想去掉边框。不可以再使用&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;border=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;，而是必须通过CSS来实现。我们推荐您在使用strict.dtd时，舍弃所有的定义外观属性，而完全使用CSS来定义页面外观&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;属性的缩写&lt;/h4&gt;
-
-&lt;p&gt;属性的缩写被禁止。如：
-错误代码&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dl&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;compact&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;readonly&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;selected&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;noresize&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;正确代码&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dl&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;compact=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;compact&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checked&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;readonly=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;readonly&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;disabled&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;selected&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;frame&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;noresize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;noresize&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;name&quot;&gt;部分标签的name属性禁用&lt;/h4&gt;
-
-&lt;p&gt;HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.在 XHTML 里name属性是不能被使用的，应该用id 来替换它。如：
-错误代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture.gif&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;正确代码：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture.gif&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;注意：我们为了使旧浏览器也能正常的执行该内容我们也可以在标签中同时使用id和name属性。如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture.gif&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;picture1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;为了适应新的浏览器浏览我们在上述代码中的最后我加了/来结束标签。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;特殊符号表示&lt;/h4&gt;
-
-&lt;p&gt;任何小于号（&amp;lt;），不是标签的一部分，都必须被编码为&amp;amp; l t ;
-任何大于号（&amp;gt;），不是标签的一部分，都必须被编码为&amp;amp; g t ;
-任何与号（&amp;amp;），不是实体的一部分的，都必须被编码为&amp;amp; a m p;
-注：以上字符之间无空格。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;注释内容&lt;/h4&gt;
-&lt;p&gt;不要在注释内容中使“–”，“–”只能发生在XHTML注释的开头和结束，也就是说，在内容中它们不再有效。例如下面的代码是无效的:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--这里是注释-----------这里是注释--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;用等号或者空格替换内部的虚线。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--这里是注释============这里是注释--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上这些规范有的看上去比较奇怪，但这一切都是为了使我们的代码有一个统一、唯一的标准，便于以后的数据再利用。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-7&quot;&gt;图片必须有说明文字&lt;/h4&gt;
-
-&lt;p&gt;每个图片标签都必须有ALT说明文字。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ball.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;large red ball&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;01 Jul 2014&lt;/p&gt;
-</description>
-        <pubDate>Tue, 01 Jul 2014 00:00:00 +0800</pubDate>
-        <link>http://axemea.github.io/css/2014/07/01/diff-html-xhtml.html</link>
-        <guid isPermaLink="true">http://axemea.github.io/css/2014/07/01/diff-html-xhtml.html</guid>
-        
-        
-        <category>CSS</category>
         
       </item>
     

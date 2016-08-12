@@ -21,6 +21,3 @@ Demo:[链接](http://axemea.github.io/javascripts/google-player/manage.html)
 ### 截图
 
 ![菜单](/images/snap.png)
-
-
-{{ page.date | date_to_string }}

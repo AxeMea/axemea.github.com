@@ -21,6 +21,3 @@ comments: true
 ### 36kr首页简略结构图如下
 
 ![36kr](/images/36kr.png)
-
-
-{{ page.date | date_to_string }}

@@ -31,5 +31,3 @@ comments: true
 *	自动化测试
 
 好了，目标明确，走起！
-
-{{ page.date | date_to_string }}

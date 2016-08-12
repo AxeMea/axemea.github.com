@@ -2,3 +2,6 @@
 *.project
 *.swp
 *.md~
+_site
+*.git
+*.sass_cache

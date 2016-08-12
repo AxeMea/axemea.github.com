@@ -149,5 +149,3 @@ Ext.apply(Ext.form.field.VTypes,{
 ExtJS框架对于组件的扩展是很自由的，通过ExtJS的源码则可以体现出来，所以没啥好扯的，值得注意的，如果通过sencha architect进行项目构建时，由于工具自身的约束，会对组件的扩展产生障碍，但可以通过一些兼容的方式进行。
 
 ### 前端架构参考
-
-{{ page.date | date_to_string }}

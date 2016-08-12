@@ -68,6 +68,3 @@ PC端：
 移动端：
 
 ![mobile](/images/mini-designer/mini-designer-mobile.jpg)
-
-
-{{ page.date | date_to_string }}

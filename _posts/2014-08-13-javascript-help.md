@@ -754,6 +754,3 @@ window 属性等价于 self 属性，它包含了对窗口自身的引用。
 返回事件生成的日期和时间。
 * type 	
 返回当前 Event 对象表示的事件的名称。
-
-
-{{ page.date | date_to_string }}

@@ -95,8 +95,3 @@ User.query.order_by(User.username)
 from sqlalchemy import desc
 User.query.order_by(desc(AclLogTable.date))
 {% endhighlight python %}
-
-
-
-
-{{ page.date | date_to_string }}

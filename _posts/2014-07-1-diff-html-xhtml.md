@@ -154,27 +154,3 @@ HTML 4.01 中为a，applet, frame, iframe, img 和 map定义了一个name属性.
 {% highlight html %}
 <img src="ball.jpg" alt="large red ball" />
 {% endhighlight html %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{ page.date | date_to_string }}
