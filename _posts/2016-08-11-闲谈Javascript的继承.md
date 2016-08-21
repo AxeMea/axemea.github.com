@@ -14,7 +14,7 @@ comments: true
 ![菜单](/images/javascript-inheritance/prototype.jpg)
 [picture from:http://blog.csdn.net/hikvision_java_gyh/article/details/8937157](http://blog.csdn.net/hikvision_java_gyh/article/details/8937157)
 
-从以上图中可以看出。当一个函数F声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，一个指向函数F的引用。
+从以上图中可以看出。当一个函数F声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，是一个指向函数F的引用。
 
 现在就差__proto__没出场了。先上一小段代码。
 
