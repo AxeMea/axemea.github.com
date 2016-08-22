@@ -14,7 +14,7 @@ comments: true
 ![菜单](/images/javascript-inheritance/prototype.jpg)
 [picture from:http://blog.csdn.net/hikvision_java_gyh/article/details/8937157](http://blog.csdn.net/hikvision_java_gyh/article/details/8937157)
 
-从以上图中可以看出。当一个函数F声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，是一个指向函数F的引用。
+从以上图中可以看出。当一个函数F定义时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，是一个指向函数F的引用。
 
 现在就差__proto__没出场了。先上一小段代码。
 
@@ -24,7 +24,7 @@ comments: true
   var base = new Base();
 {% endhighlight javascript %}
 
-代码很简单，声明一个Base函数，并且实例化一个base对象。此时，base对象会有一个__proto__属性，这个属性指向函数Base的原型属性，即prototype对象。
+代码很简单，定义一个Base函数，并且实例化一个base对象。此时，base对象会有一个__proto__属性，这个属性指向函数Base的原型属性，即prototype对象。
 
 那么总结这三个玩意就是：
 
