@@ -1,6 +1,8 @@
 (function(){
+  // get action name when click items in operation panel
   var action = window.location.href.substr(window.location.href.indexOf('action=') + 7);
 
+  // two draw type
   var $DRAW_TYPE = {
     DRAW_LINE: 'DRAW_LINE',
     DRAW_FILL: 'DRAW_FILL'
@@ -9,7 +11,7 @@
   var leftFromAngle = '',
       rightFromAngle = '';
 
-  // for animation 
+  // switch fromAngle for left circle line and right circle line
   if (action === 'animation') {
     leftFromAngle = Math.PI * 0.5;
     rightFromAngle = -Math.PI * 0.5;
@@ -22,9 +24,10 @@
   var offsetX = 155,
       offsetY = 30;
 
+  // all elements
   var elemeQuene = [];
 
-  // canvas地图
+  // canvas map object
   var elemeMap = {
     rect: [
       // component: center blue rect background
@@ -161,28 +164,28 @@
     ],
   };
 
-  // draw seperate line
+  // draw seperate line when click 'seperate' action
   if (action === 'seperate') {
     var lines = [
       {
         fromPoint: new Point(0 - offsetX, 200 - offsetY),
         toPoint: new Point(600 - offsetX, 200 - offsetY),
-        static: true
+        staticEleme: true
       },
       {
         fromPoint: new Point(0 - offsetX, 300 - offsetY),
         toPoint: new Point(600 - offsetX, 300 - offsetY),
-        static: true
+        staticEleme: true
       },
       {
         fromPoint: new Point(0 - offsetX, 530 - offsetY),
         toPoint: new Point(600 - offsetX, 530 - offsetY),
-        static: true
+        staticEleme: true
       },
       {
         fromPoint: new Point(0 - offsetX, 690 - offsetY),
         toPoint: new Point(600 - offsetX, 690 - offsetY),
-        static: true
+        staticEleme: true
       }
     ];
 
@@ -191,10 +194,11 @@
     }
   }
 
+  // calculate speed for every element
   var LIMIT_SECOND = 80;
   for (var k in elemeMap) {
     for (var i = 0 ; i < elemeMap[k].length; i++) {
-      if (!elemeMap[k][i].static) {
+      if (!elemeMap[k][i].staticEleme) {
         elemeMap[k][i].xSpeed = elemeMap[k][i].presentOffset.offsetX / LIMIT_SECOND;
         elemeMap[k][i].ySpeed = elemeMap[k][i].presentOffset.offsetY / LIMIT_SECOND;
         elemeMap[k][i].originPresentOffset = new PresentOffset(elemeMap[k][i].presentOffset.offsetX, elemeMap[k][i].presentOffset.offsetY);
@@ -285,6 +289,10 @@
     };
   }
 
+  /**
+   * draw
+   * @return {[type]} [description]
+   */
   ElemeLogoDrawer.prototype.draw = function() {
     var self = this;
 
@@ -346,6 +354,11 @@
     }
   };
 
+  /**
+   * core function: draw arc-like object
+   * @param  {[type]} obj [description]
+   * @return {[type]}     [description]
+   */
   ElemeLogoDrawer.prototype._coreArcDraw = function(obj) {
     var a = obj.a || 20,
         b = obj.b || 20,
@@ -389,6 +402,11 @@
     this.$ctx.closePath();
   };
 
+  /**
+   * core function: draw rect-like object
+   * @param  {[type]} obj [description]
+   * @return {[type]}     [description]
+   */
   ElemeLogoDrawer.prototype._coreRectDraw = function(obj) {
     var rect = obj.rect || new Rect(0, 0, 20, 20),
         presentOffset = obj.presentOffset || new PresentOffset(0, 0),
@@ -416,6 +434,11 @@
     this.$ctx.closePath();
   };
 
+  /**
+   * core function: draw line-like object
+   * @param  {[type]} obj [description]
+   * @return {[type]}     [description]
+   */
   ElemeLogoDrawer.prototype._coreLineDraw = function(obj) {
     var fromPoint = obj.fromPoint || new Point(0, 0),
         toPoint = obj.toPoint || new Point(10, 10),
@@ -443,6 +466,11 @@
 
   };
 
+  /**
+   * core function: draw parallelogram-like object
+   * @param  {[type]} obj [description]
+   * @return {[type]}     [description]
+   */
   ElemeLogoDrawer.prototype._coreParallelogramDraw = function(obj) {
     var point = obj.o.point || new Point(0, 0),
         length = obj.o.length || 10,
@@ -489,21 +517,45 @@
 
   };
 
+  /**
+   * clear canvas
+   * @return {[type]} [description]
+   */
   ElemeLogoDrawer.prototype.clear = function() {
     this.$ctx.clearRect(0, 0, 600, 800);
   };
 
+  // init ElemeLogoDrawer object
   var drawer = new ElemeLogoDrawer('eleme');
 
+  // two circle's radius
   var R = 24;
+
+  // increase angle per animation frame [circle speed]
   var angle = 2 / Math.PI / R;
+
+  // some tmp from two mask line
   var rightAngle1 = rightAngle2 = defaultRightAngle = -Math.PI / 2,
       leftAngle1 = leftAngle2 = defaultLeftAngle = Math.PI / 2;
 
+  // 1/4 circumference
   var LINE_LENGTH = 37.7;
+
+  // color of two mask line
   var BLANK_COLOR = 'white';
+
+  // line width of two mask line
   var LINE_WIDTH = 4;
+
+  // increase 0.6px per animation frame [line speed]
   var LINE_SPEED = 0.6;
+
+  // center point of left circle
+  var LEFT_CENTER_POINT = new Point(100, 70);
+
+  // center point of right circle
+  var RIGHT_CENTER_POINT = new Point(190, 70);
+
   function flashEngine(blankPoint, index) {
     if (index == 1) {
       rightAngle = rightAngle1;
@@ -514,19 +566,19 @@
     }
 
     // top line
-    if (blankPoint.rect.x >= 100 && blankPoint.rect.x <= 190 && blankPoint.rect.y < 70) {
-      var extraLength = 190 - blankPoint.rect.x - LINE_LENGTH;
+    if (blankPoint.rect.x >= LEFT_CENTER_POINT.x && blankPoint.rect.x <= RIGHT_CENTER_POINT.x && blankPoint.rect.y < LEFT_CENTER_POINT.y) {
+      var extraLength = RIGHT_CENTER_POINT.x - blankPoint.rect.x - LINE_LENGTH;
 
       drawer._coreLineDraw({
         fromPoint: new Point(blankPoint.rect.x, blankPoint.rect.y),
-        toPoint: new Point(extraLength > 0 ? blankPoint.rect.x + LINE_LENGTH : 190 , 70 - R),
+        toPoint: new Point(extraLength > 0 ? blankPoint.rect.x + LINE_LENGTH : RIGHT_CENTER_POINT.x , LEFT_CENTER_POINT.y - R),
         strokeStyle: BLANK_COLOR,
         lineWidth: LINE_WIDTH
       });
 
       if (extraLength < 0) {
         drawer._coreArcDraw({
-          centerPoint: new Point(190, 70),
+          centerPoint: RIGHT_CENTER_POINT,
           a: R,
           b: R,
           fromAngle: Math.PI * 1.5,
@@ -537,13 +589,13 @@
       }
 
       blankPoint.rect.x += LINE_SPEED;
-      blankPoint.rect.y = 70 - R;
+      blankPoint.rect.y = LEFT_CENTER_POINT.y - R;
     }
     // right circle
-    else if (blankPoint.rect.x >= 190) {
+    else if (blankPoint.rect.x >= RIGHT_CENTER_POINT.x) {
 
       drawer._coreArcDraw({
-        centerPoint: new Point(190, 70),
+        centerPoint: RIGHT_CENTER_POINT,
         a: R,
         b: R,
         fromAngle: rightAngle,
@@ -555,8 +607,8 @@
       if (rightAngle > 0) {
         var extraLength = rightAngle * R;
         drawer._coreLineDraw({
-          fromPoint: new Point(190, 70 + R),
-          toPoint: new Point(190 - extraLength, 70 + R),
+          fromPoint: new Point(RIGHT_CENTER_POINT.x, RIGHT_CENTER_POINT.y + R),
+          toPoint: new Point(RIGHT_CENTER_POINT.x - extraLength, RIGHT_CENTER_POINT.y + R),
           strokeStyle: BLANK_COLOR,
           lineWidth: LINE_WIDTH
         });
@@ -564,23 +616,23 @@
 
       leftAngle = defaultLeftAngle;
       rightAngle = rightAngle + angle;
-      blankPoint.rect.x = 190 + Math.cos(rightAngle) * R;
-      blankPoint.rect.y = 70 + Math.sin(rightAngle) * R;
+      blankPoint.rect.x = RIGHT_CENTER_POINT.x + Math.cos(rightAngle) * R;
+      blankPoint.rect.y = RIGHT_CENTER_POINT.y + Math.sin(rightAngle) * R;
     }
     // bottom line
-    else if (blankPoint.rect.x >= 100 && blankPoint.rect.x < 190 && blankPoint.rect.y > 70) {
-      var extraLength = blankPoint.rect.x - 100 - LINE_LENGTH;
+    else if (blankPoint.rect.x >= LEFT_CENTER_POINT.x && blankPoint.rect.x < RIGHT_CENTER_POINT.x && blankPoint.rect.y > LEFT_CENTER_POINT.y) {
+      var extraLength = blankPoint.rect.x - LEFT_CENTER_POINT.x - LINE_LENGTH;
 
       drawer._coreLineDraw({
         fromPoint: new Point(blankPoint.rect.x, blankPoint.rect.y),
-        toPoint: new Point(extraLength > 0 ? blankPoint.rect.x - LINE_LENGTH : 100 , 70 + R),
+        toPoint: new Point(extraLength > 0 ? blankPoint.rect.x - LINE_LENGTH : LEFT_CENTER_POINT.x , LEFT_CENTER_POINT.y + R),
         strokeStyle: BLANK_COLOR,
         lineWidth: LINE_WIDTH
       });
 
       if (extraLength < 0) {
         drawer._coreArcDraw({
-          centerPoint: new Point(100, 70),
+          centerPoint: LEFT_CENTER_POINT,
           a: R,
           b: R,
           fromAngle: Math.PI * 0.5,
@@ -591,12 +643,12 @@
       }
 
       blankPoint.rect.x -= LINE_SPEED;
-      blankPoint.rect.y = 70 + R;
+      blankPoint.rect.y = LEFT_CENTER_POINT.y + R;
     }
     // left circle
-    else if (blankPoint.rect.x <= 100) {
+    else if (blankPoint.rect.x <= LEFT_CENTER_POINT.x) {
       drawer._coreArcDraw({
-        centerPoint: new Point(100, 70),
+        centerPoint: LEFT_CENTER_POINT,
         a: R,
         b: R,
         fromAngle: leftAngle,
@@ -608,8 +660,8 @@
       if (leftAngle > Math.PI) {
         var extraLength = (Math.PI - leftAngle) * R;
         drawer._coreLineDraw({
-          fromPoint: new Point(100, 70 - R),
-          toPoint: new Point(100 - extraLength, 70 - R),
+          fromPoint: new Point(LEFT_CENTER_POINT.x, LEFT_CENTER_POINT.y - R),
+          toPoint: new Point(LEFT_CENTER_POINT.x - extraLength, LEFT_CENTER_POINT.y - R),
           strokeStyle: BLANK_COLOR,
           lineWidth: LINE_WIDTH
         });
@@ -617,8 +669,8 @@
 
       rightAngle = defaultRightAngle;
       leftAngle = leftAngle + angle
-      blankPoint.rect.x = 100 + Math.cos(leftAngle) * R;
-      blankPoint.rect.y = 70 + Math.sin(leftAngle) * R;
+      blankPoint.rect.x = LEFT_CENTER_POINT.x + Math.cos(leftAngle) * R;
+      blankPoint.rect.y = LEFT_CENTER_POINT.y + Math.sin(leftAngle) * R;
     }
 
     if (index == 1) {
@@ -630,12 +682,14 @@
     }
   }
 
+  // left mask line object
   var blankPointLeft = {
     rect: new Rect(100, 94, 1, 1),
     fillStyle: 'red',
     drawType: $DRAW_TYPE.DRAW_FILL
   };
 
+  // right mask line object
   var blankPointRight = {
     rect: new Rect(190, 46, 1, 1),
     fillStyle: 'red',
@@ -655,6 +709,7 @@
     drawer.clear();
     drawer.draw();
 
+    // show different when switch action
     if (action === 'animation') {
       flashEngine(blankPointLeft, 1);
       flashEngine(blankPointRight, 2);
@@ -695,6 +750,8 @@
 }
 
 animate();
+
+// show different when refresh page
 switch (action) {
   case 'animation':
     break;
