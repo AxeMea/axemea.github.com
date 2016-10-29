@@ -313,7 +313,7 @@ strong {
   }
 
   ul li {
-    margin: 10px 0;
+    margin: 0;
   }
 
   a {
@@ -322,6 +322,12 @@ strong {
 
   ul {
     margin: 0;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 14px !important;
+    line-height: 30px;
   }
 
   table{

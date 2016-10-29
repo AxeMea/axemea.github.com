@@ -37,9 +37,7 @@ comments: true
 三个关系基本捋清楚了，那么就要开始一波等价模式，虽然有点绕，不过验证下我们的认识是否牢固。
 
 
-### -- 开启等价模式 --
-
-#### ****************
+### 开启等价模式
 
 {% highlight javascript %}
   function Base() {}
@@ -53,8 +51,6 @@ comments: true
 {% endhighlight javascript %}
 
 咦。。。之前不是说constructor是在函数身上，不在对象身上。这就要归功于Javascript的原型链了，当发现base实例中没有constructor时，会找去实例__proto__属性指向的原型上找，而之前我们说到了，属性__proto__是指向函数的prototype对象，这样就找到了constructor属性，而constructor属性指向函数本身。
-
-#### ****************
 
 {% highlight javascript %}
   function Base() {}
@@ -70,9 +66,7 @@ comments: true
 
 函数Base的prototype属性的constructor指向函数Base本身。
 
-#### ****************
-
-### -- 关于寄生组合式继承 --
+### 关于寄生组合式继承
 
 众所周知标准的寄生组合式继承如下
 
