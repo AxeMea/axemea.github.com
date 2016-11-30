@@ -7,16 +7,16 @@ comments: true
 
 这将不会是个完整的教程，但会明确Javascript中一些基础的概念和机制。
 
-我们经常看到三个关键单词，prototype,constructor,__proto__，那么它们到底是什么鬼，之间又是什么样的关系。
+我们经常看到三个关键单词，`prototype`,`constructor`,`__proto__`，那么它们到底是什么鬼，之间又是什么样的关系。
 
 首先贴出张图。
 
 ![菜单](/images/javascript-inheritance/prototype.jpg)
 [picture from:http://blog.csdn.net/hikvision_java_gyh/article/details/8937157](http://blog.csdn.net/hikvision_java_gyh/article/details/8937157)
 
-从以上图中可以看出。当一个函数F声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个prototype对象。这个对象包含一个constructor属性，是一个指向函数F的引用。
+从以上图中可以看出。当一个函数`F`声明时，Javascript内部会自动给函数添加一个原型属性，这个属性是一个`prototype`对象。这个对象包含一个`constructor`属性，是一个指向函数`F`的引用。
 
-现在就差__proto__没出场了。先上一小段代码。
+现在就差`__proto__`没出场了。先上一小段代码。
 
 {% highlight javascript %}
   function Base() {}
@@ -24,15 +24,15 @@ comments: true
   var base = new Base();
 {% endhighlight javascript %}
 
-代码很简单，声明一个Base函数，并且实例化一个base对象。此时，base对象会有一个__proto__属性，这个属性指向函数Base的原型属性，即prototype对象。
+代码很简单，声明一个`Base`函数，并且实例化一个`base`对象。此时，`base`对象会有一个`__proto__`属性，这个属性指向函数`Base`的原型属性，即`prototype`对象。
 
 那么总结这三个玩意就是：
 
-*	[函数身上]prototype：是函数的原型属性，类型是一个对象。
+*	[函数身上]`prototype`：是函数的原型属性，类型是一个对象。
 
-* [函数身上]constructor：是prototype对象的一个属性，指向函数的引用。
+* [函数身上]`constructor`：是`prototype`对象的一个属性，指向函数的引用。
 
-* [实例身上]__proto__: 实例的一个属性，指向函数的prototype对象。
+* [实例身上]`__proto__`: 实例的一个属性，指向函数的`prototype`对象。
 
 三个关系基本捋清楚了，那么就要开始一波等价模式，虽然有点绕，不过验证下我们的认识是否牢固。
 
@@ -52,7 +52,7 @@ comments: true
   // true     
 {% endhighlight javascript %}
 
-咦。。。之前不是说constructor是在函数身上，不在对象身上。这就要归功于Javascript的原型链了，当发现base实例中没有constructor时，会找去实例__proto__属性指向的原型上找，而之前我们说到了，属性__proto__是指向函数的prototype对象，这样就找到了constructor属性，而constructor属性指向函数本身。
+咦。。。之前不是说`constructor`是在函数身上，不在对象身上。这就要归功于Javascript的原型链了，当发现`base`实例中没有`constructor`时，会找去实例`__proto__`属性指向的原型上找，而之前我们说到了，属性`__proto__`是指向函数的`prototype`对象，这样就找到了`constructor`属性，而`constructor`属性指向函数本身。
 
 #### ****************
 
@@ -68,7 +68,7 @@ comments: true
 
 {% endhighlight javascript %}
 
-函数Base的prototype属性的constructor指向函数Base本身。
+函数`Base`的`prototype`属性的`constructor`指向函数`Base`本身。
 
 #### ****************
 
@@ -98,9 +98,9 @@ comments: true
 
 寄生组合式继承的好处就不赘述了，继承构造函数的部分就略过了，想了解的，可以google，详细的解读很多。我们将重点放在原型链的继承。
 
-在谈这个方式的同时，可以先来看看，我们一般是如何判断继承关系。上面的代码用的是instanceof方法，那么这个instanceof内部又是如何判断的呢？
+在谈这个方式的同时，可以先来看看，我们一般是如何判断继承关系。上面的代码用的是`instanceof`方法，那么这个`instanceof`内部又是如何判断的呢？
 
-ECMAScript规范中对于instanceof有清晰的定义，规范定义比较晦涩，涉及到很多概念，就不贴出来了，将其转换成Javascript代码的话，如下：
+ECMAScript规范中对于`instanceof`有清晰的定义，规范定义比较晦涩，涉及到很多概念，就不贴出来了，将其转换成Javascript代码的话，如下：
 
 {% highlight javascript %}
 function instance_of(L, R) {//L 表示左表达式，R 表示右表达式
