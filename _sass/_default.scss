@@ -1,6 +1,6 @@
 /* =Base */
 body {
-    font-family: 'Inconsolata', ;
+    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
     color: $iron;
     background-color: $dorian;
 }
@@ -16,8 +16,9 @@ a {
 }
 
 p {
-    font-size: 18px;
-    line-height: 32px;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 15px 0;
 }
 
 img {
@@ -308,11 +309,26 @@ strong {
   word-break: break-all;
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 50px 0;
+    margin: 20px 0;
   }
 
   ul li {
-    margin: 15px 0;
+    margin: 0;
+    font-size: 14px !important;
+  }
+
+  a {
+    color: #0089d1;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 14px !important;
+    line-height: 30px;
   }
 
   table{
@@ -325,4 +341,9 @@ strong {
       background: #e8e8e8
     }
   }
+}
+
+.hljs{
+  font-size: 13px !important;
+  line-height: 20px !important;
 }
