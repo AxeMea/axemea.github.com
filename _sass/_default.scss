@@ -7,8 +7,6 @@ body {
   font-weight: 400;
 }
 
-$fontSize: 17px;
-
 a {
     color: $cloudy;
     font-weight: bold;
@@ -317,23 +315,23 @@ strong {
   }
 
   h1 {
-    font-size: $fontSize + 5
+    font-size: 26px;
   }
 
   h2 {
-    font-size: $fontSize + 4
+    font-size: 24px
   }
 
   h3 {
-    font-size: $fontSize + 3
+    font-size: 22px
   }
 
   h4 {
-    font-size: $fontSize + 2
+    font-size: 20px
   }
 
   h5 {
-    font-size: $fontSize + 1
+    font-size: 18px
   }
 
   ul li {
@@ -351,7 +349,7 @@ strong {
 
   p {
     margin: 5px 0;
-    font-size: $fontSize !important;
+    font-size: 17px !important;
     line-height: 35px;
   }
 
@@ -368,7 +366,7 @@ strong {
 }
 
 .hljs{
-  font-size: $fontSize !important;
+  font-size: 17px !important;
   line-height: 25px !important;
 }
 
