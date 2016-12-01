@@ -1,8 +1,10 @@
 /* =Base */
 body {
-    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
-    color: $iron;
-    background-color: $dorian;
+  font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: $iron;
+  background-color: $dorian;
+  font-weight: 400;
 }
 
 a {
@@ -346,4 +348,16 @@ strong {
 .hljs{
   font-size: 13px !important;
   line-height: 20px !important;
+}
+
+.highlighter-rouge {
+  color: #9e8a8a;
+  padding: 3px 4px;
+  margin: 0 4px;
+  border-radius: 2px;
+}
+
+hr {
+  border: 1px #eaeaea solid;
+  margin: 20px 0;
 }
