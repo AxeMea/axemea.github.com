@@ -7,6 +7,8 @@ body {
   font-weight: 400;
 }
 
+$fontSize: 17px;
+
 a {
     color: $cloudy;
     font-weight: bold;
@@ -314,9 +316,29 @@ strong {
     margin: 20px 0;
   }
 
+  h1 {
+    font-size: $fontSize + 5
+  }
+
+  h2 {
+    font-size: $fontSize + 4
+  }
+
+  h3 {
+    font-size: $fontSize + 3
+  }
+
+  h4 {
+    font-size: $fontSize + 2
+  }
+
+  h5 {
+    font-size: $fontSize + 1
+  }
+
   ul li {
-    margin: 0;
-    font-size: 14px !important;
+    margin: 10px 0;
+    line-height: 25px;
   }
 
   a {
@@ -329,8 +351,8 @@ strong {
 
   p {
     margin: 5px 0;
-    font-size: 14px !important;
-    line-height: 30px;
+    font-size: $fontSize !important;
+    line-height: 35px;
   }
 
   table{
@@ -346,8 +368,8 @@ strong {
 }
 
 .hljs{
-  font-size: 13px !important;
-  line-height: 20px !important;
+  font-size: $fontSize !important;
+  line-height: 25px !important;
 }
 
 .highlighter-rouge {
