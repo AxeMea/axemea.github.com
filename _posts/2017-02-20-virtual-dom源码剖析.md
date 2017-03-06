@@ -398,6 +398,7 @@ function patchRecursive(rootNode, patches, renderOptions) {
 通过前面的讲述知道，`patches`对象的数字 `key` 为节点索引，`value` 为相应的 `VPatch`， 这里，先通过 `patchIndices` 方法将索引取出组成数组 `indices`。接着通过 `domIndex` 方法将节点索引和对应的 `dom` 节点映射上，生成 `index` 对象。在 `domIndex` 方法中有个细节需要提一下。
 
 ```Javascript
+// @vdom/dom-index.js
 indices.sort(ascending)
 ```
 
@@ -417,6 +418,7 @@ indices.sort(ascending)
 接着通过在 `applyPatch` 中，调用 `patchOp` 给需要的节点打上相应的 `patche`，也就是对 `dom` 进行操作。部分代码如下，结构较简单，这里就不多说了。
 
 ```Javascript
+// @vdom/patch-op.js
 function applyPatch(vpatch, domNode, renderOptions) {
     var type = vpatch.type
     var vNode = vpatch.vNode
@@ -489,6 +491,7 @@ items = {
 方法的最开始，进行了两个特殊逻辑判断。
 
 ```Javascript
+// @vtree/diff.js
 ...
 
 if (bFree.length === bChildren.length) {
