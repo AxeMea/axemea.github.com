@@ -548,7 +548,7 @@ var newItems = [
 
 不用 `track-by` 的场景下，在做 `diff` 时，会直接按照数组的顺序进行比较，结果是，所有节点都有状态更新，然后最后执行 3 条 `dom` 更新操作。这显示是没必要的，因为列表数据并没有发生改变，只是位置改变了。（当然前提是，业务只关心数据，不关心顺序）我们知道， Js 的执行速度是比 `dom` 操作快很多的。所以，如果我们预先将 `newItems` 进行一个排序，再进行 `diff` ，就无需更新 `dom` 。好了，我们继续，先上个图。
 
-![virtual-dom](../../../../../images/virtual-dom/reorder.png)
+![virtual-dom](../../../../../images/virtual-dom/reorder-demo.png)
 
 首先要明确一点，`reorder` 这个阶段的重新排序，并没有真正将 `newChildren` 进行重新排序，而只是生成一个 `insert` 和 `remove` 操作记录数组，将在 `patch` 阶段时对 `dom` 节点进行操作。
 
