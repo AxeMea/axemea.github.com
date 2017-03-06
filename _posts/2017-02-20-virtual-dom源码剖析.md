@@ -556,7 +556,7 @@ var newItems = [
 
 #### 1. 准备阶段
 
-初始化简单，`newChildren`，`oldChildren` 为新旧子节点状态。这里设定的新旧子节点还是比较有典型性的。
+`newChildren`，`oldChildren` 为新旧子节点状态。这里设定的新旧子节点还是比较有典型性的。
 
 * 有新增 `key` 的节点
 * 有删除 `key` 的节点
