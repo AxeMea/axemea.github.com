@@ -573,9 +573,9 @@ var newItems = [
 
 这里自己定义了一个 `key 类型` 概念。总共有 3 中类型。
 
-* 无`key` 节点： 如 `{ VText('string') }`
+* 无 `key` 节点： 如 `{ VText('string') }`
 * `key` 节点：如  `{ h('div', { key: 'key1' }) }`, `{ h('div', { key: 'key2' }) }`
-* `null` 元素：标识被删除的元素
+* `null` 节点：标识被删除的元素
 
 #### 1. 准备阶段
 
