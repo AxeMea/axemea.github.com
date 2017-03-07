@@ -31,11 +31,11 @@ comments: true
 
 #### [Hooks](https://github.com/AxeMea/virtual-dom/blob/master/docs/hooks.md)
 
-`Hooks` 钩子方法，给节点注册事件。比如 `ev-click`, `ev-dbclick` 等等。
+`Hooks` 钩子方法，基于 `ev-store` 库给节点注册事件。
 
 #### [Thunk](https://github.com/AxeMea/virtual-dom/blob/master/docs/thunk.md)
 
-`Thunk` 方法允许开发者参与 `diff` 的过程。比如某些节点，能够预先知道，状态不会发生改变，就可以通过这个方法，在 `diff` 的过程直接返回旧 `VNode` 。
+`Thunk` 方法允许开发者参与 `diff` 的过程。如对于某节点，能够预先判断，状态不会发生改变，就可以通过这个方法，在 `diff` 的过程直接返回旧 `VNode` 。
 
 #### [Widget](https://github.com/AxeMea/virtual-dom/blob/master/docs/widget.md)
 
@@ -75,7 +75,7 @@ if (notClassId.test(tagParts[1])) {
 return props.namespace ? tagName : tagName.toUpperCase();
 ```
 
-这里牵扯出一个 `namespace` 的概念，可能在平时写 `HTML` 对于这个概念比较陌生，但如果接触过 `XML` 的话，这个概念还是挺重要的，可以用来避免元素名冲突。有兴趣的可以[自行了解](https://www.w3schools.com/xml/xml_namespaces.asp)下，这里不展开介绍。继续往下。
+这里牵扯出一个 `namespace` 的概念，可能在平时多接触 `HTML` 对于这个概念比较陌生，但如果了解 `XML` 的话，这个概念还是挺重要的，可以用来避免元素名冲突。有兴趣的可以[自行了解](https://www.w3schools.com/xml/xml_namespaces.asp)下，这里不展开介绍。继续往下。
 
 ```Javascript
 // @virtual-hyperscript/index.js
@@ -86,16 +86,16 @@ if (children !== undefined && children !== null) {
 }
 ```
 
-`props` 中并不全是像 `id` , `class` 等可以直接设置到 `dom` 元素上的属性值，还支持像 `ev-click` , `ev-dbclick` 等事件的注册。 `transformProperties` 对属性进行预处理。标签名和属性处理完后，开始对子节点进行不同类型的处理，最后组装成 `childNodes` 数组。
+`props` 中并不全是像 `id` , `class` 等可以直接设置到 `dom` 元素上的属性值，还支持像 `ev-click` 等事件的注册。 `transformProperties` 对属性进行预处理。标签名和属性处理完后，开始对子节点进行不同类型的处理，最后组装成 `childNodes` 数组。
 
-接着就可以生成主角 `VNode`对象 了。
+接着就可以生成主角 `VNode` 对象了。
 
 ```Javascript
 // @virtual-hyperscript/index.js
 return new VNode(tag, props, childNodes, key, namespace);
 ```
 
-我们来看看，这个 `VNode` 里面是啥。
+这个 `VNode` 里面都发生了啥？
 
 ```Javascript
 // @vnode/vnode.js
@@ -139,7 +139,7 @@ for (var i = 0; i < count; i++) {
 }
 
 ```
-这里省略了部分逻辑判断，让逻辑更加清晰。首先，将属性中所有的 `Hook` 保存。然后，遍历所有子节点，统计子孙节点的数量，同时打上各种标记，比如是否有 `Widget` ， 是否有 `Thunk` 等等。这些标记以及数量，现在还看不出什么价值，在后面的几个阶段中，会被使用到。不过，按常规来猜测的话，无非是冗余数据，为了后续的一些查找遍历节省时间。
+这里省略了部分逻辑判断，让逻辑更加清晰。首先，将属性中所有的 `Hook` 注册的事件缓存。然后，遍历所有子节点，统计子孙节点的数量，同时打上各种标记，比如子节点是否有 `Widget` ， 是否有 `Thunk` 等等。这些标记以及数量统计，现在还看不出什么价值，在后面的几个阶段中，会被用到。不过，按常规来猜测的话，无非是冗余数据，为了后续的一些查找遍历节省时间，提升性能。
 
 
 -----------
@@ -158,7 +158,7 @@ if (isWidget(vnode)) {
 }
 ```
 
-`createElement` 支持传 `Thunk` ，为了统一拿到 `vnode` ，进行的兼容处理。可以理解为 `handleThunk(vnode, null)`。接着，处理掉两个和视图渲染直接相关的 `Widget` 和 `Text`。好了，渲染视图的特殊 `case` 都处理完了，接着就应该是如何渲染 `vnode` 了。
+`createElement` 支持传 `Thunk` ，为了统一拿到 `VNode` ，`handleThunk` 首先做兼容处理。可以理解为 `handleThunk(vnode, null)`。接着，处理掉两个和 `dom` 直接相关的两种类型 `Widget` 和 `Text`。特殊 `case` 处理完了，接着就应该是如何处理 `VNode` 了。
 
 ```Javascript
 // @vdom/create-element.js
@@ -179,9 +179,9 @@ for (var i = 0; i < children.length; i++) {
 }
 ```
 
-先通过 `createElement/createElementNS` 创建 `dom` 元素。`applyProperties` 方法用于将属性 `props` 通过 `setAttribute/removeAttribute/dom[key] = value` 的方式设置到 `dom` 上。
+先通过 `createElement/createElementNS` 创建 `dom` 元素。接着，`applyProperties` 方法用于将属性 `props` 通过 `setAttribute/removeAttribute/dom[key] = value` 的方式设置到 `dom` 上。
 
-当前节点渲染好，遍历子元素，递归创建节点，将子节点 `appendChild` 到当前 `node` 中。这样，一个真实的 `dom` 节点就创建好了，可以将它渲染到页面中去了。
+当前节点自身生成好后，遍历子元素，递归创建节点，将子节点 `appendChild` 到当前 `node` 中。这样，一个真实完整的 `dom` 节点就创建好了，可以将它渲染到页面中去了。
 
 
 -----------
@@ -197,9 +197,22 @@ function diff(a, b) {
 }
 ```
 
-初始化 `patch` 中只有旧 `VNode` `a`，通过 `walk` 方法的递归将一个一个更新补丁打进 `patch` 中。
+`patch` 是一个补丁对象，最终的结构如下
 
-为了方便理解，可以这么描述，`walk` 是用来对比 `a` `b` 两个新旧节点，如果有状态更新，则将 `VPatch` 打到 `patch[index]` 上。
+```javascript
+patch = {
+  0: {VPatch},
+  1: {VPatch},
+  ...
+  a: VNode
+};
+```
+
+最后 `a` 的 `value` 为旧 `VNode`。数字 `key` 代表着对应的 `a` 的子节点索引，`value` 为相应的补丁。
+
+通过 `walk` 方法的递归将一个一个更新补丁打进 `patch` 中。
+
+为了方便理解，可以这么描述，`walk` 是用来对比 `a` `b` 两个新旧虚拟节点，如检测到 `index` 节点有状态更新，则将 `VPatch` 打到 `patch[index]` 上。
 
 ```Javascript
 // @vtree/diff.js
@@ -307,8 +320,8 @@ function walk(a, b, patch, index) {
 // @vtree/diff.js
 function diffChildren(a, b, patch, apply, index) {
     var aChildren = a.children
-    //　对新旧节点的子节点进行一个对比，重新排序，生成一个变化操作对象
-    //　这里暂且略过，后面会着重来谈。
+    //　对新旧节点的子节点进行一个对比，重新排序，生成一个操作补丁对象
+    //　内容暂且略过，后面会着重来谈。
     //　{
     //　 children: [],
     //　 moves: {
@@ -363,7 +376,7 @@ function diffChildren(a, b, patch, apply, index) {
 -----------
 
 
-### 5. patch - 将 `diff` 对比出的 `patch` 打到旧 `dom`
+### 5. patch - 将 `diff` 对比出的 `patch` 更新到相应的 `dom` 节点上
 
 `patch` 主要关注 `patchRecursive` 。
 
@@ -413,9 +426,11 @@ indices.sort(ascending)
 }
 ```
 
-那么通过 `patchIndices` 中 `for in` 遍历 `patches` 生成出来的数组不应该本来就是递增的吗？为何还要在 `domIndex` 显式进行一次升序排序呢？由于对象是 `key-value` 结构，是无序的，无法完全保证在不同浏览器下，通过 `for in` 遍历出的顺序一致。这里为了安全，显示再进行了一次升序排列。
+那么通过 `patchIndices` 中 `for in` 遍历 `patches` 生成出来的数组不应该本来就是递增的吗？为何还要在 `domIndex` 显式进行一次升序排序呢？
 
-接着通过在 `applyPatch` 中，调用 `patchOp` 给需要的节点打上相应的 `patche`，也就是对 `dom` 进行操作。部分代码如下，结构较简单，这里就不多说了。
+由于对象是 `key-value` 结构，无序的，无法完全保证在不同浏览器下，通过 `for in` 遍历出的顺序一致。这里为了确保表现一致，显式地进行了一次升序排序。
+
+接着通过在 `applyPatch` 中，调用 `patchOp` 给节点打上相应的 `patche`，也就是对 `dom` 进行操作。部分代码如下，结构较简单，这里就不多说了。
 
 ```Javascript
 // @vdom/patch-op.js
@@ -434,7 +449,7 @@ function applyPatch(vpatch, domNode, renderOptions) {
 }
 ```
 
-**到目前为，已经完成了 `virtual-dom` 从创建到渲染的整个过程。不得不说，文章已经挺长了，但还没有结束。（抱歉，该喝水的，先去喝水吧。码字有些上头了，控制不住记几。）`diff` 阶段中有个被我当时一笔带过的 `reorder` 方法。这里打算单独谈一谈。在 `virtual-dom` 的过程中，这个方法起到了很重要的作用。**
+**到目前为，已经完成了 `virtual-dom` 从创建到渲染的整个过程。不得不说，文章已经挺长了，但还没有结束。（抱歉，该喝水的，先去喝水吧。码字有些上头了，控制不住记几。）`diff` 阶段中有个当时被一笔带过的 `reorder` 方法。这里打算单独谈一谈。在 `virtual-dom` 的过程中，这个方法起到了很重要的作用。**
 
 
 -----------
@@ -442,7 +457,7 @@ function applyPatch(vpatch, domNode, renderOptions) {
 
 ### 6. reorder - 重新排序
 
-`reorder` 会用在哪些场景呢，我以 `Vue` 的语法，举几个栗子。
+`reorder` 会用在哪些场景呢，以 `Vue` 的语法，举几个栗子。
 
 ```html
 <!--
@@ -484,9 +499,9 @@ items = {
 </ul>
 ```
 
-第一种场景，遍历对象。由于对象是 `key-value` 结构，为无序数据结构。不同环境下的遍历，不能保证其顺序。所以这里需要通过其 `key` 按照第一次渲染的顺序进行一次排序，这样每一次状态的更新，都能按照相对固定的顺序进行差异对比。
+第一种场景，遍历对象。由于对象是 `key-value` 结构，为无序数据结构。不同环境下的遍历，不能保证其顺序。所以这里内部需要调用 `reorder` 强制 `key` 按照第一次渲染的顺序进行排序，这样每次状态的更新，都能按照相对固定的顺序进行差异对比，性能最佳.
 
-第二种场景，遍历数组。这里又分了两种，区别在于是否在 `track-by`。那么会问了，两种使用有啥区别呢，哪种更好。带着这个问题，我们开始对 `reorder` 的探索。
+第二种场景，遍历数组。这里又分了两种，区别在于是否用 `track-by`。问题来了，两种使用有啥区别呢，哪种更好。带着这个问题，我们开始对 `reorder` 的探索。
 
 方法的最开始，进行了两个特殊逻辑判断。
 
@@ -511,7 +526,7 @@ if (aFree.length === aChildren.length) {
 }
 ```
 
-其实，我们大多数时候不加 `track-by` 列表循环，在这里就直接 `return` 了。可能会问了？这样不就足够了吗，直接返回新的子节点，然后按次序和旧子节点进行对比，对结果也不会有影响。我们来考虑下下面这个栗子。
+其实，我们大多数时候不加 `track-by` 列表循环，在这里就直接 `return` 了。这时，是否会有疑惑，这样不就足够了吗，直接返回新的子节点，然后按次序和旧子节点进行对比，对结果也不会有影响。我们来考虑下下面这个栗子。
 
 ```Javascript
 var oldItems = [
@@ -546,22 +561,30 @@ var newItems = [
 
 ```
 
-不用 `track-by` 的场景下，在做 `diff` 时，会直接按照数组的顺序进行比较，结果是，所有节点都有状态更新，然后最后执行 3 条 `dom` 更新操作。这显示是没必要的，因为列表数据并没有发生改变，只是位置改变了。（当然前提是，业务只关心数据，不关心顺序）我们知道， Js 的执行速度是比 `dom` 操作快很多的。所以，如果我们预先将 `newItems` 进行一个排序，再进行 `diff` ，就无需更新 `dom` 。好了，我们继续，先上个图。
+不用 `track-by` 的场景下，在做 `diff` 时，会直接按照数组的顺序进行比较，结果是，所有节点都有状态更新，然后最后执行 3 条 `dom` 更新操作。这显示是没必要的，因为列表数据并没有发生改变，只是位置改变了。（当然前提是，业务只关心数据，不关心顺序）我们知道， Js 的执行速度是比 `dom` 操作快很多的。所以，如果我们预先将 `newItems` 进行一个排序，再进行 `diff` ，就无需更新 `dom` 。
+
+那么 `reorder` 是如何重新排序的呢？往下看。
 
 ![virtual-dom](../../../../../images/virtual-dom/reorder-demo.png)
 
-首先要明确一点，`reorder` 这个阶段的重新排序，并没有真正将 `newChildren` 进行重新排序，而只是生成一个 `insert` 和 `remove` 操作记录数组，将在 `patch` 阶段时对 `dom` 节点进行操作。
+首先要明确一点，在 `reorder` 阶段的排序，并没有真正将 `newChildren` 进行重新排序，而只是生成一个 `insert` 和 `remove` 操作记录数组，将在 `patch` 阶段时对 `dom` 节点进行操作。
 
-我将 `reorder` 的过程分为四个阶段，我分别称之为 `准备阶段`，`相同 key 还原阶段`，`新增 key 添加阶段`， `新旧顺序转换阶段`。
+这里将 `reorder` 的过程粗略分为四个阶段，分别称之为 `准备阶段`，`key 类型顺序还原阶段`，`新增 key 添加阶段`， `新旧顺序转换阶段`。
+
+这里自己定义了一个 `key 类型` 概念。总共有 3 中类型。
+
+* 无`key` 节点： 如 `{ VText('string') }`
+* `key` 节点：如  `{ h('div', { key: 'key1' }) }`, `{ h('div', { key: 'key2' }) }`
+* `null` 元素：标识被删除的元素
 
 #### 1. 准备阶段
 
-`newChildren`，`oldChildren` 为新旧子节点状态。这里设定的新旧子节点还是比较有典型性的。
+`newChildren`，`oldChildren` 为新旧子节点状态。这里设定的两个新旧子节点还是比较有典型性的。
 
 * 有新增 `key` 的节点
 * 有删除 `key` 的节点
 * 有相同 `key` 的节点
-* 有非 `key` 节点
+* 有无 `key` 节点
 
 #### 2. 相同 `key` 还原阶段
 
@@ -571,7 +594,7 @@ var newItems = [
 [非key, key1, 非key, key2]
 ```
 
-`oldChildren` 第一个节点为非 `key` 节点，对应的 `newChildren` 中的第一个非 `key` 节点为 `b2` 。接着 `oldChildren` 第二个节点为 `key1` 节点，`newChildren` 中的 `key1` 节点为 `b1`。依次类推，得出 `simulateChildren` 数组为
+`oldChildren` 第一个节点为无 `key` 节点，对应的 `newChildren` 中的第一个无 `key` 节点为 `b2` 。接着 `oldChildren` 第二个节点为 `key1` 节点，`newChildren` 中的 `key1` 节点为 `b1`。依次类推，得出 `simulateChildren` 数组为
 
 ```javascript
 [b2, b1, b4, null]
@@ -589,7 +612,7 @@ var newItems = [
 
 #### 4. 新旧顺序转换阶段
 
-这个算法还是有点绕，推荐直接看源码，一步一步来看转换的过程（其实就是我文字太弱，表达不清楚。 = =）。但总结来说就是，如何将 `simulateChildren`的 `key` 类型顺序 转换成 `newChildren` 的 `key` 类型顺序的过程。
+这一步算法还是有点绕，建议直接看源码，一步步来观察转换的过程（其实就是我文字太弱，表达不清楚。 = =）。总结起来就是，如何将 `simulateChildren`的 `key` 类型顺序 转换成 `newChildren` 的 `key` 类型顺序的过程。
 
 ```javascript
 [非key, key1, 非key, null, key3] ==> [key1, 非key, key3, 非key]
@@ -599,7 +622,7 @@ var newItems = [
 
 很显然了，因为通过前两步已经将 `simulateChildren` 的 `key` 类型顺序和 `oldChildren` 做成一样了。
 
-**现在回过头看，想一下刚才的问题？我个人理解为，是否适合用 `track-by` 要看具体的场景。如果子节点的更新幅度很大，重复数据数据较少，如翻页，就不适合用 `track-by` ，省去 `reorder` 这一步直接做 `diff`。如果是较少数据会更新，如对于往固定列表中插入一行数据，这时用 `track-by` 可以减少 `dom` 操作。**
+**现在回过头看，想刚才的问题？我个人理解为，是否适合用 `track-by` 要看具体的场景。如果子节点状态更新幅度很大，重复数据数据较少，如翻页，就不适合用 `track-by` ，省去 `reorder` 这一步直接做 `diff`。如果是较少数据会更新，如对于往固定列表中插入一行数据，这时用 `track-by` 可以减少 `dom` 操作。**
 
 
 -----------
@@ -609,6 +632,6 @@ var newItems = [
 
 到此为止 `virtual-dom` 的大体过程也说的差不多了。（这是真要结束了。）
 
-**个人理解深度，文字水平有限。有没说清楚的地方请各位看官多包涵，有说错的地方，请留言指正。谢谢。**
+**因个人理解深度，文字水平有限。有没说清楚的地方请各位看官多包涵，有说错的地方，请留言指正。谢谢。**
 
 ^_^
