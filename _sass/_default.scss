@@ -1,10 +1,9 @@
 /* =Base */
 body {
-  font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  color: $iron;
-  background-color: $dorian;
-  font-weight: 400;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: #333333;
+  background-color: #F5F5F5;
 }
 
 a {
@@ -67,7 +66,7 @@ strong {
 
 /* =Header */
 .wrapper {
-    max-width: 800px;
+    max-width: 900px;
     margin: 100px auto;
 }
 
@@ -315,23 +314,23 @@ strong {
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   h2 {
-    font-size: 24px
-  }
-
-  h3 {
     font-size: 22px
   }
 
-  h4 {
+  h3 {
     font-size: 20px
   }
 
+  h4 {
+    font-size: 16px
+  }
+
   h5 {
-    font-size: 18px
+    font-size: 14px
   }
 
   ul li {
@@ -345,12 +344,13 @@ strong {
 
   ul {
     margin: 0;
+    padding-left: 30px;
   }
 
   p {
-    margin: 5px 0;
-    font-size: 17px !important;
-    line-height: 35px;
+    margin: 20px 0;
+    font-size: 15px !important;
+    line-height: 30px;
   }
 
   table{
@@ -366,18 +366,17 @@ strong {
 }
 
 .hljs{
-  font-size: 17px !important;
-  line-height: 25px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
 
-.highlighter-rouge {
-  color: #9e8a8a;
-  padding: 3px 4px;
-  margin: 0 4px;
-  border-radius: 2px;
+code{
+  &.highlighter-rouge {
+    color: #a7a1a1;
+  }
 }
 
 hr {
   border: 1px #eaeaea solid;
-  margin: 20px 0;
+  margin: 50px 0;
 }
